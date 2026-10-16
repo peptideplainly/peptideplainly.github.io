@@ -2,10 +2,12 @@
 import pathlib,html
 P=pathlib.Path(__file__).parent; BASE="https://peptideplainly.github.io"  # placeholder domain
 NAV=[("index.html","Home"),("peptides-101.html","Peptides 101"),("peptides/index.html","Peptide guides"),("glossary.html","Glossary"),("index.html#archive","Archive"),("about.html","About")]
+EMBED='<div class="bh-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="a82b15dd-c14b-4719-8c4a-a19f32016cdc"></script></div><p class="fine sub-fallback">Form not loading? <a href="https://peptideplainly.beehiiv.com/subscribe" rel="noopener">Subscribe here</a>.</p>'
+ATTR='<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
 def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>, PMID {i}'
 def page(path,title,desc,body):
     root="../"*path.count("/")
-    nav="".join(f'<a href="{root}{h}">{t}</a>' for h,t in NAV)
+    nav="".join(f'<a href="{root}{h}">{t}</a>' for h,t in NAV)+'<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" rel="noopener">Subscribe</a>'
     url=f"{BASE}/{path}".replace("/index.html","/")
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}">
@@ -14,16 +16,16 @@ def page(path,title,desc,body):
 <header class="nav"><a class="brand" href="{root}index.html">Peptide <span>Plainly</span></a><nav>{nav}</nav></header>
 <main>{body}</main>
 <section class="cta-band"><h2>Get new peptide research, explained plainly</h2><p>One friendly email a week. Free, no hype, no sales pitch.</p>
-<form class="signup" onsubmit="event.preventDefault();this.innerHTML='<p class=ok>Thanks! Signups open soon.</p>'"><input type="email" required placeholder="you@example.com" aria-label="Email address"><button>Subscribe free</button></form></section>
-<footer><p><a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}peptides/index.html">Peptide guides</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}about.html">About &amp; disclaimer</a></p><p>Not medical advice. Research summaries for education only. © 2026 Peptide Plainly</p></footer></body></html>'''
+{EMBED}</section>
+<footer><p><a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}peptides/index.html">Peptide guides</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}about.html">About &amp; disclaimer</a></p><p>Not medical advice. Research summaries for education only. © 2026 Peptide Plainly</p></footer>{ATTR}</body></html>'''
 DISC='<p class="disclaimer"><strong>Not medical advice.</strong> This page is for education only. We don\'t recommend products, doses, or treatments. Talk to a licensed clinician about your health.</p>'
 pages={}
 pages["index.html"]=("Peptide Plainly: peptide research, explained plainly","New to peptides? Get a free weekly email that explains the latest peptide research in plain English: what was found, how strong the evidence is, and what's still unknown.",f'''
 <section class="hero"><p class="eyebrow">Free weekly newsletter · Beginner-friendly</p>
 <h1>Peptide research,<br>explained <em>plainly</em>.</h1>
 <p class="lead">Heard about Ozempic, BPC-157, or collagen and wondered what's actually true? Every week we read the newest studies so you don't have to. Then we explain them in plain English: what was found, how strong the evidence is, and what's still unknown.</p>
-<form class="signup" onsubmit="event.preventDefault();this.innerHTML='<p class=ok>Thanks! Signups open soon.</p>'"><input type="email" required placeholder="you@example.com" aria-label="Email address"><button>Get the free weekly email</button></form>
-<p class="fine">One email a week. No spam, no sales pitch. Unsubscribe anytime. (Signup is a placeholder for now.)</p></section>
+{EMBED}
+<p class="fine">One email a week. No spam, no sales pitch. Unsubscribe anytime.</p></section>
 <section class="how"><div><h3>No jargon</h3><p>If you can read a news article, you can read this.</p></div><div><h3>Real studies only</h3><p>Every claim links to the original paper on PubMed.</p></div><div><h3>Honest about limits</h3><p>We tell you when the evidence is thin, or comes only from mice.</p></div></section>
 <section><h2>Start here</h2><div class="grid">
 <a class="card" href="peptides-101.html"><span class="num">101</span><div><h3>Peptides 101</h3><p>What peptides are, approved vs. research-only, and how to spot hype.</p></div></a>

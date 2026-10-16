@@ -24,3 +24,5 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:40px 20px;b
 .cta-band{background:var(--ink);color:#fff;text-align:center;padding:44px 22px;margin-top:50px}.cta-band h2{margin:0 0 6px}.cta-band p{color:#cbd5e1}
 .gloss dt{font-weight:700;margin-top:16px}.gloss dd{margin:2px 0 0;color:var(--muted)}
 .issue li{margin-bottom:8px}
+.nav nav a.nav-sub{background:var(--accent);color:#fff;padding:6px 12px;border-radius:8px}
+.bh-embed{max-width:520px;margin:0 auto;min-height:60px}.cta-band .fine a{color:#9ee6dc}
