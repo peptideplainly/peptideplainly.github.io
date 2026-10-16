@@ -26,3 +26,8 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:40px 20px;b
 .issue li{margin-bottom:8px}
 .nav nav a.nav-sub{background:var(--accent);color:#fff;padding:6px 12px;border-radius:8px}
 .bh-embed{max-width:520px;margin:0 auto;min-height:60px}.cta-band .fine a{color:#9ee6dc}
+.badge{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.02em}
+.badge.approved{background:#dcfce7;color:#166534}.badge.research{background:#eef2ff;color:#3730a3}.badge.supplement{background:#fef3c7;color:#92400e}
+.quick{background:#fff;border:2px solid var(--accent);border-radius:14px;padding:6px 22px 10px;margin:20px 0}.quick h2{margin:.6em 0 .2em;font-size:1.2rem}
+.note{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:8px;font-size:.95rem}
+details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin:8px 0}summary{font-weight:700;cursor:pointer}

@@ -1,0 +1,23 @@
+# Peptide Plainly
+
+> Friendly, plain-English explanations of peptide research, plus a free weekly newsletter. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.
+
+## Start here
+- [Peptides 101](https://peptideplainly.github.io/peptides-101.html): what peptides are, approved vs research-only, reading studies
+- [Why is peptide info so confusing?](https://peptideplainly.github.io/why-peptide-info-is-confusing.html)
+- [Glossary](https://peptideplainly.github.io/glossary.html)
+
+## Peptide guides (quick answer, dosing & timing, evidence, FAQ)
+- [Semaglutide (Ozempic, Wegovy, Rybelsus): dose schedule, timing & evidence](https://peptideplainly.github.io/peptides/semaglutide.html): FDA-approved. What is semaglutide (Ozempic, Wegovy)? A plain-English guide to what it is, its approval status, the key human trials, and common myths.
+- [Tirzepatide (Mounjaro, Zepbound): dose schedule, when to take it & evidence](https://peptideplainly.github.io/peptides/tirzepatide.html): FDA-approved. What is tirzepatide (Mounjaro, Zepbound)? A plain-English guide to how it works, its approval status, key trials, and myths.
+- [BPC-157: dosage questions, evidence & what we actually know](https://peptideplainly.github.io/peptides/bpc-157.html): Research purposes only. What is BPC-157? A plain-English, evidence-first look at the 'healing peptide': regulatory status, the limited human evidence, and common myths.
+- [TB-500 (thymosin beta-4): dosage questions, evidence & what we know](https://peptideplainly.github.io/peptides/tb-500.html): Research purposes only. What is TB-500? A plain-English guide to thymosin beta-4 and TB-500: what they are, regulatory status, the human evidence, and myths.
+- [GHK-Cu (copper peptide): skincare vs injectable, evidence & dosage questions](https://peptideplainly.github.io/peptides/ghk-cu.html): Research purposes only (injectable). What is GHK-Cu, the copper peptide? A plain-English guide: what it is, where it's used, what the evidence shows, and common myths.
+- [Collagen peptides: do they work, how to take them & evidence](https://peptideplainly.github.io/peptides/collagen-peptides.html): Dietary supplement. Do collagen peptides work? A plain-English guide to collagen supplements: what they are, regulatory status, what meta-analyses show for skin, and myths.
+
+## Newsletter
+- [Issue #1](https://peptideplainly.github.io/issues/issue-001.html)
+- Subscribe: https://peptideplainly.beehiiv.com/subscribe
+
+## About
+- [About & medical disclaimer](https://peptideplainly.github.io/about.html)
