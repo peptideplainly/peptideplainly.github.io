@@ -1,6 +1,6 @@
 """Generate static pages. Run: python3 site.py"""
 import pathlib,html
-P=pathlib.Path(__file__).parent; BASE="https://teganjmcnealy.github.io/peptideplainly"  # placeholder domain
+P=pathlib.Path(__file__).parent; BASE="https://peptideplainly.github.io"  # placeholder domain
 NAV=[("index.html","Home"),("peptides-101.html","Peptides 101"),("peptides/index.html","Peptide guides"),("glossary.html","Glossary"),("index.html#archive","Archive"),("about.html","About")]
 def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>, PMID {i}'
 def page(path,title,desc,body):
