@@ -1,6 +1,6 @@
 """Generate static pages. Run: python3 site.py"""
 import pathlib,html
-P=pathlib.Path(__file__).parent; BASE="https://peptideplainly.github.io"  # placeholder domain
+P=pathlib.Path(__file__).parent; BASE="https://peptideplainly.com"  # placeholder domain
 NAV=[("index.html","Home"),("peptides-101.html","Peptides 101"),("peptides/index.html","Peptide guides"),("glossary.html","Glossary"),("why-peptide-info-is-confusing.html","Why so confusing?"),("about.html","About")]
 EMBED='<div class="bh-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="a82b15dd-c14b-4719-8c4a-a19f32016cdc"></script></div><p class="fine sub-fallback">Form not loading? <a href="https://peptideplainly.beehiiv.com/subscribe" rel="noopener">Subscribe here</a>.</p>'
 ATTR='<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
