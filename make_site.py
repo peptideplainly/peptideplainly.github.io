@@ -1,0 +1,117 @@
+"""Generate static pages. Run: python3 site.py"""
+import pathlib,html
+P=pathlib.Path(__file__).parent; BASE="https://teganjmcnealy.github.io/peptideplainly"  # placeholder domain
+NAV=[("index.html","Home"),("peptides-101.html","Peptides 101"),("peptides/index.html","Peptide guides"),("glossary.html","Glossary"),("index.html#archive","Archive"),("about.html","About")]
+def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>, PMID {i}'
+def page(path,title,desc,body):
+    root="../"*path.count("/")
+    nav="".join(f'<a href="{root}{h}">{t}</a>' for h,t in NAV)
+    url=f"{BASE}/{path}".replace("/index.html","/")
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="{root}style.css"></head><body>
+<header class="nav"><a class="brand" href="{root}index.html">Peptide <span>Plainly</span></a><nav>{nav}</nav></header>
+<main>{body}</main>
+<section class="cta-band"><h2>Get new peptide research, explained plainly</h2><p>One friendly email a week. Free, no hype, no sales pitch.</p>
+<form class="signup" onsubmit="event.preventDefault();this.innerHTML='<p class=ok>Thanks! Signups open soon.</p>'"><input type="email" required placeholder="you@example.com" aria-label="Email address"><button>Subscribe free</button></form></section>
+<footer><p><a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}peptides/index.html">Peptide guides</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}about.html">About &amp; disclaimer</a></p><p>Not medical advice. Research summaries for education only. © 2026 Peptide Plainly</p></footer></body></html>'''
+DISC='<p class="disclaimer"><strong>Not medical advice.</strong> This page is for education only. We don\'t recommend products, doses, or treatments. Talk to a licensed clinician about your health.</p>'
+pages={}
+pages["index.html"]=("Peptide Plainly: peptide research, explained plainly","New to peptides? Get a free weekly email that explains the latest peptide research in plain English: what was found, how strong the evidence is, and what's still unknown.",f'''
+<section class="hero"><p class="eyebrow">Free weekly newsletter · Beginner-friendly</p>
+<h1>Peptide research,<br>explained <em>plainly</em>.</h1>
+<p class="lead">Heard about Ozempic, BPC-157, or collagen and wondered what's actually true? Every week we read the newest studies so you don't have to. Then we explain them in plain English: what was found, how strong the evidence is, and what's still unknown.</p>
+<form class="signup" onsubmit="event.preventDefault();this.innerHTML='<p class=ok>Thanks! Signups open soon.</p>'"><input type="email" required placeholder="you@example.com" aria-label="Email address"><button>Get the free weekly email</button></form>
+<p class="fine">One email a week. No spam, no sales pitch. Unsubscribe anytime. (Signup is a placeholder for now.)</p></section>
+<section class="how"><div><h3>No jargon</h3><p>If you can read a news article, you can read this.</p></div><div><h3>Real studies only</h3><p>Every claim links to the original paper on PubMed.</p></div><div><h3>Honest about limits</h3><p>We tell you when the evidence is thin, or comes only from mice.</p></div></section>
+<section><h2>Start here</h2><div class="grid">
+<a class="card" href="peptides-101.html"><span class="num">101</span><div><h3>Peptides 101</h3><p>What peptides are, approved vs. research-only, and how to spot hype.</p></div></a>
+<a class="card" href="peptides/index.html"><span class="num">A–Z</span><div><h3>Popular peptides, explained</h3><p>Semaglutide, tirzepatide, BPC-157, TB-500, GHK-Cu, collagen.</p></div></a>
+<a class="card" href="glossary.html"><span class="num">?</span><div><h3>Glossary</h3><p>RCT, meta-analysis, placebo, and other terms in plain English.</p></div></a></div></section>
+<section id="archive"><h2>Newsletter archive</h2>
+<a class="card" href="issues/issue-001.html"><span class="num">#1</span><div><h3>BPC-157's thin human evidence, tirzepatide vs. semaglutide, and more</h3><p>October 16, 2026 · 5 studies</p></div></a></section>{DISC}''')
+pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Peptide Plainly","What are peptides? A plain-English beginner's guide: approved medicines vs research-only compounds, how to read a study, and red flags in online peptide hype.",f'''<article class="issue">
+<p class="eyebrow">Beginner's guide</p><h1>Peptides 101</h1><p class="lead">Everything you need to make sense of peptide headlines, in about five minutes.</p>
+<h2>What is a peptide?</h2><p>A peptide is a short chain of <strong>amino acids</strong>, the same building blocks that make up proteins. Long chains are called proteins and short ones are called peptides. Your body makes thousands of them, and many act as messengers. <strong>Insulin</strong>, for example, is a peptide hormone that helps control blood sugar.</p>
+<p>"Peptides" is a huge, loose category. It covers prescription medicines, ingredients in skin creams, food supplements like collagen, and experimental compounds that have never been properly tested in people. The word alone tells you nothing about whether something is safe or works.</p>
+<h2>Approved medicines vs. "research-only" compounds</h2>
+<ul><li><strong>Approved drugs</strong> (for example semaglutide and tirzepatide) have passed large clinical trials. Regulators like the U.S. FDA reviewed the data, and they're made under strict quality controls. They're prescribed by clinicians.</li>
+<li><strong>Dietary supplements</strong> (for example collagen peptides) are sold as foods. In the U.S. they don't need FDA approval for safety or effectiveness before going on sale.</li>
+<li><strong>"Research chemicals"</strong> (for example BPC-157 and TB-500) are often sold online labeled "not for human consumption." They aren't approved as medicines. Their purity isn't verified, and the human evidence is usually very limited. Some are banned in competitive sport.</li></ul>
+<h2>How to read a study (the quick version)</h2>
+<ol><li><strong>Who was studied?</strong> Cells in a dish → animals → people. Lab and animal results often don't hold up in humans.</li>
+<li><strong>How many?</strong> 12 people is a pilot. Thousands is much more convincing.</li>
+<li><strong>Was there a comparison group?</strong> A randomized controlled trial (RCT) compares people who got the treatment with people who got a placebo. Without one, it's hard to know whether the treatment did anything.</li>
+<li><strong>What was measured?</strong> A lab marker isn't the same as feeling better or living longer.</li>
+<li><strong>Who paid?</strong> Industry funding is common and not automatically bad, but it's worth noting.</li>
+<li><strong>One study is never the final word.</strong> Look for systematic reviews and meta-analyses that pool many studies.</li></ol>
+<p>New to the terms? See the <a href="glossary.html">glossary</a>.</p>
+<h2>Red flags in online peptide hype</h2>
+<ul><li>"Miracle," "heals everything," or a long list of unrelated benefits.</li>
+<li>Claims backed only by animal studies, or by no citations at all.</li>
+<li>Testimonials and before/after photos instead of trials.</li>
+<li>"Research use only" labels on products clearly marketed for people to use.</li>
+<li>Pressure to buy now, discount codes, or a seller who is also the "educator."</li>
+<li>Dosing protocols shared by influencers rather than clinicians.</li></ul>
+<h2>Where to go next</h2><p>Read our plain-English <a href="peptides/index.html">guides to popular peptides</a>, or browse the <a href="index.html#archive">newsletter archive</a>.</p>{DISC}</article>''')
+G=[("Abstract","A short summary at the top of a research paper."),("Amino acid","A building block of proteins and peptides. There are 20 standard ones."),("Animal study","Research done in animals, often mice or rats. Results often don't carry over to humans."),("Bias","Anything that systematically skews a study's results away from the truth."),("Case report","A description of one patient or a few patients. Useful for ideas, weak as evidence."),("Clinical trial","A study that tests a treatment in people."),("Cohort study","An observational study that follows groups of people over time. It can show links but not cause and effect."),("Confidence interval (CI)","The range the true effect probably falls in. Narrow is more precise."),("Control group","Participants who don't get the treatment, used for comparison."),("Double-blind","Neither participants nor researchers know who got the real treatment."),("FDA","U.S. Food and Drug Administration, which approves medicines in the U.S."),("GLP-1","A natural gut hormone (glucagon-like peptide-1) involved in appetite and blood sugar. Semaglutide mimics it."),("GLP-1 receptor agonist","A drug that activates the GLP-1 receptor, such as semaglutide."),("Hazard ratio (HR)","Compares how often an event happens in two groups. Below 1 means less often in the treatment group."),("In vitro","Done in cells or tissue in a lab, not in a living body."),("Meta-analysis","A study that statistically combines the results of many earlier studies."),("Observational study","Researchers watch what happens without assigning treatments."),("Peptide","A short chain of amino acids."),("Pilot study","A small, early study to test whether a bigger one is feasible."),("Placebo","An inactive dummy treatment used for comparison."),("PMID","PubMed ID, a unique number for each paper on PubMed."),("PubMed","A free database of medical research run by the U.S. National Library of Medicine."),("Randomized controlled trial (RCT)","Participants are randomly assigned to a treatment or a control. The gold standard for testing treatments."),("Research chemical","A compound sold for lab research, not approved for human use."),("Retrospective study","Looks back at existing records rather than following people forward."),("Systematic review","A structured review of all studies on a question, following a set method."),("WADA","World Anti-Doping Agency, which maintains the list of substances banned in sport.")]
+pages["glossary.html"]=("Peptide research glossary: plain-English definitions | Peptide Plainly","Plain-English definitions of peptide and research terms: RCT, meta-analysis, placebo, hazard ratio, GLP-1, PMID and more.",'<article class="issue"><p class="eyebrow">Reference</p><h1>Glossary</h1><p class="lead">Research terms, translated into plain English.</p><dl class="gloss">'+"".join(f'<dt id="{t.split()[0].lower()}">{t}</dt><dd>{d}</dd>' for t,d in G)+'</dl><p>Ready to use them? Try <a href="peptides-101.html">Peptides 101</a>.</p>'+DISC+'</article>')
+PEP={
+"semaglutide":("Semaglutide","What is semaglutide (Ozempic, Wegovy)? A plain-English guide to what it is, its approval status, the key human trials, and common myths.",
+"Semaglutide is a lab-made version of the gut hormone GLP-1. It's sold under brand names including Ozempic and Rybelsus (type 2 diabetes) and Wegovy (weight management).",
+"An FDA-approved prescription medicine, for type 2 diabetes and for chronic weight management in certain people. Use is prescribed and monitored by a clinician.",
+f'''<li><strong>STEP 1</strong> ({pm(33567185,"NEJM, 2021")}): an RCT in adults with overweight or obesity. Over 68 weeks, weight changed by −15.3 kg with semaglutide vs. −2.6 kg with placebo, alongside lifestyle intervention. Nausea and diarrhea were the most common side effects.</li>
+<li><strong>SELECT</strong> ({pm(37952131,"NEJM, 2023")}): 17,604 people with heart disease and overweight/obesity but no diabetes. Major cardiovascular events occurred in 6.5% on semaglutide vs. 8.0% on placebo.</li>
+<li><strong>Kidney disease trial</strong> ({pm(42823485,"Nature Medicine, 2026")}): a 106-person RCT exploring how it may protect the kidneys in type 2 diabetes. Covered in <a href="../issues/issue-001.html">Issue #1</a>.</li>''',
+["<strong>Myth: it works without side effects.</strong> Gastrointestinal side effects are common in trials, and some people stop treatment because of them.","<strong>Myth: \"research\" or compounded versions are the same thing.</strong> Only the approved products went through the regulatory review of the trial data described above."]),
+"tirzepatide":("Tirzepatide","What is tirzepatide (Mounjaro, Zepbound)? A plain-English guide to how it works, its approval status, key trials, and myths.",
+"Tirzepatide activates two hormone receptors, GIP and GLP-1. It's sold as Mounjaro (type 2 diabetes) and Zepbound (weight management).",
+"An FDA-approved prescription medicine for type 2 diabetes and chronic weight management in certain people.",
+f'''<li><strong>SURMOUNT-1</strong> ({pm(35658024,"NEJM, 2022")}): a 72-week RCT in adults with obesity that found substantial, sustained weight reduction vs. placebo. GI side effects were the most common.</li>
+<li><strong>SURMOUNT-5</strong> ({pm(40353578,"NEJM, 2025")}): a head-to-head trial in 751 people with obesity but without diabetes. Average weight change was −20.2% with tirzepatide vs. −13.7% with semaglutide at 72 weeks.</li>
+<li><strong>Real-world heart outcomes</strong> ({pm(42840232,"2026")}): an observational study linking tirzepatide to fewer cardiovascular events than semaglutide in type 2 diabetes. Association only. See <a href="../issues/issue-001.html">Issue #1</a>.</li>''',
+["<strong>Myth: it's just a stronger semaglutide.</strong> It acts on an extra receptor (GIP), so it's a different molecule with its own trial record.","<strong>Myth: weight stays off after stopping.</strong> These trials measured people while they were on treatment. Ask a clinician about what happens after stopping."]),
+"bpc-157":("BPC-157","What is BPC-157? A plain-English, evidence-first look at the 'healing peptide': regulatory status, the limited human evidence, and common myths.",
+"BPC-157 (\"Body Protection Compound-157\") is a synthetic peptide of 15 amino acids, originally derived from a protein found in stomach juice. It's popular online for injury recovery.",
+"Not approved by the FDA for any human use. It is on the World Anti-Doping Agency's prohibited list, and it's mostly sold online as a \"research chemical.\"",
+f'''<li><strong>Systematic review, 2026</strong> ({pm(42885452,"Acta Orthop Belg")}): found only 3 human studies with 30 people in total, all poor quality. The certainty of evidence was rated <em>very low</em>. The authors advise against clinical use outside regulated trials.</li>
+<li><strong>Systematic review, 2025</strong> ({pm(40756949,"HSS Journal")}): 36 studies, almost all in animals. The single human study cited reported that 7 of 12 people with knee pain felt relief after one injection. The authors note there is no clinical safety data in humans.</li>''',
+["<strong>Myth: \"it's proven to heal tendons.\"</strong> Healing results come mostly from animal studies. Human data is tiny and low quality.","<strong>Myth: \"no side effects = safe.\"</strong> No reported side effects in 30 people isn't evidence of safety, and products bought online may not contain what the label says."]),
+"tb-500":("TB-500 (thymosin beta-4)","What is TB-500? A plain-English guide to thymosin beta-4 and TB-500: what they are, regulatory status, the human evidence, and myths.",
+"Thymosin beta-4 (Tβ4) is a natural protein involved in cell movement and tissue repair. \"TB-500\" is the name used online for a synthetic product based on part of Tβ4. TB-500 itself is not the same molecule that has been tested in clinical trials.",
+"TB-500 is not approved for human use and is prohibited in sport by WADA. Thymosin beta-4 has been studied in early-stage clinical trials, for example as eye drops, but it isn't an approved medicine in the U.S.",
+f'''<li><strong>Heart attack trial</strong> ({pm(41229390,"Cardiovasc Res, 2025")}): recombinant human Tβ4 was tested in 96 heart-attack patients. The overall difference in infarct size vs. placebo was <em>not</em> significant. A benefit was seen only in a subgroup dosed early.</li>
+<li><strong>Eye research review</strong> ({pm(30063853,"Expert Opin Biol Ther, 2018")}): describes Tβ4 eye drops being developed for corneal and dry-eye conditions. This is a researcher's narrative review, not trial results.</li>
+<li>We found <strong>no</strong> controlled human trials of products sold as "TB-500."</li>''',
+["<strong>Myth: TB-500 is a clinically tested drug.</strong> Clinical research has used thymosin beta-4 itself, not the online TB-500 product.","<strong>Myth: it speeds up any injury.</strong> Most repair data comes from lab and animal studies."]),
+"ghk-cu":("GHK-Cu (copper peptide)","What is GHK-Cu, the copper peptide? A plain-English guide: what it is, where it's used, what the evidence shows, and common myths.",
+"GHK is a tiny natural peptide made of three amino acids (glycine, histidine, lysine) that binds copper, which gives the name GHK-Cu. It's best known as a skincare ingredient.",
+"It's used as a cosmetic ingredient in topical skincare. It isn't an FDA-approved drug, and injectable products sold online are unapproved.",
+f'''<li><strong>Review, 2018</strong> ({pm(29986520,"Int J Mol Sci")}): summarizes lab, animal, and gene-expression research suggesting roles in skin repair and collagen production. The evidence comes mainly from lab and gene-expression data, not large human clinical trials.</li>
+<li>Most other recent research is in cells or animals, for example a rat ligament-healing model ({pm(25731775,"J Orthop Res, 2015")}).</li>
+<li>We did not find large randomized trials of GHK-Cu in people, injected or applied to the skin.</li>''',
+["<strong>Myth: it reverses aging.</strong> Lab findings on gene activity don't show anti-aging effects in people.","<strong>Myth: skincare results apply to injections.</strong> Skin creams and injected research products are very different things."]),
+"collagen-peptides":("Collagen peptides","Do collagen peptides work? A plain-English guide to collagen supplements: what they are, regulatory status, what meta-analyses show for skin, and myths.",
+"Collagen peptides (hydrolyzed collagen) are collagen protein broken into small pieces, usually from cows, pigs, or fish. They're sold as powders and drinks.",
+"Sold as dietary supplements and foods. In the U.S., supplements don't require FDA approval for safety or effectiveness before sale.",
+f'''<li><strong>Meta-analysis, 2023</strong> ({pm(37432180,"Nutrients")}): 26 RCTs with 1,721 people found improved skin hydration and elasticity vs. placebo. The authors flagged biases in the studies and called for larger trials.</li>
+<li><strong>Meta-analysis, 2021</strong> ({pm(33742704,"Int J Dermatol")}): 19 RCTs with 1,125 people (95% women) found favorable effects on hydration, elasticity, and wrinkles.</li>''',
+["<strong>Myth: collagen you eat goes straight to your skin.</strong> It's digested into smaller pieces first. How the benefits seen in trials happen is still being studied.","<strong>Myth: every collagen product is backed by these trials.</strong> The studies tested specific products, sources, and durations, and some studies had industry funding."]),
+}
+cards=""
+for slug,(name,desc,what,reg,ev,myths) in PEP.items():
+    cards+=f'<a class="card" href="{slug}.html"><span class="num">{name[0]}</span><div><h3>{name}</h3><p>{reg.split(".")[0]}.</p></div></a>'
+    others=" · ".join(f'<a href="{s}.html">{v[0]}</a>' for s,v in PEP.items() if s!=slug)
+    pages[f"peptides/{slug}.html"]=(f"{name}: what it is, evidence & myths | Peptide Plainly",desc,f'''<article class="issue"><p class="eyebrow"><a href="index.html">Peptide guides</a> / {name}</p><h1>{name}, explained plainly</h1>
+<h2>What it is</h2><p>{what}</p><h2>Regulatory status</h2><p>{reg}</p><p class="fine">Regulatory status as of October 2026. Rules vary by country and change over time.</p>
+<h2>What the human evidence says</h2><ul>{ev}</ul><p>Not sure what an RCT or meta-analysis is? See the <a href="../glossary.html">glossary</a>.</p>
+<h2>Common myths</h2><ul>{"".join(f"<li>{m}</li>" for m in myths)}</ul>{DISC}<p>Other guides: {others} · <a href="../peptides-101.html">Peptides 101</a></p></article>''')
+pages["peptides/index.html"]=("Popular peptides explained: semaglutide, BPC-157 & more | Peptide Plainly","Plain-English, evidence-first guides to popular peptides: semaglutide, tirzepatide, BPC-157, TB-500, GHK-Cu, and collagen peptides.",f'<p class="eyebrow">Peptide guides</p><h1>Popular peptides, explained plainly</h1><p class="lead">What each one is, whether it\'s approved, and what the human evidence actually shows. Every claim links to PubMed.</p><div class="grid">{cards}</div>{DISC}')
+for path,(t,d,b) in pages.items():
+    (P/path).parent.mkdir(exist_ok=True); (P/path).write_text(page(path,t,d,b))
+urls=list(pages)+["about.html","issues/issue-001.html"]
+(P/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>2026-10-16</lastmod></url>\n".replace("/index.html","/") for u in urls)+"</urlset>\n")
+(P/"robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
+ab=(P/"about_body.html").read_text()
+(P/"about.html").write_text(page("about.html","About Peptide Plainly & medical disclaimer","About Peptide Plainly: how we summarize peptide research from PubMed, plus our full medical disclaimer.",ab))

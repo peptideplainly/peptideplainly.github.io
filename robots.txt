@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://teganjmcnealy.github.io/peptideplainly/sitemap.xml

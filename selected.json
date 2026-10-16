@@ -1,0 +1,56 @@
+[
+ {
+  "pmid": "42885452",
+  "title": "Human evidence for BPC-157 in orthopaedic and regenerative medicine: a systematic review of efficacy and safety.",
+  "journal": "Acta orthopaedica Belgica",
+  "types": [
+   "Journal Article",
+   "Systematic Review"
+  ],
+  "abstract": "or mzyjp23@nottingham.ac.uk Body Protective Compound-157 (BPC-157) is a synthetic pentadecapeptide popular among athletic populations for musculoskeletal injury recovery, despite lacking regulatory approval for human use and evidence being largely limited to animal models. This PRISMA-compliant systematic review, prospectively registered with PROSPERO (CRD420261406325), aimed to evaluate the efficacy and safety of BPC-157 for orthopaedic and regenerative purposes in humans. Electronic databases (Embase, PubMed, Cochrane Library and ClinicalTrials.gov) were searched up to 1 June 2026. Eligibility included quantitative and qualitative studies investigating BPC-157 for any indication in human participants. Methodological quality and certainty of evidence was assessed using the National Institutes of Health Quality Assessment Tool for Before-After Studies With No Control Group and GRADE framework respectively. Findings were narratively synthesised in accordance with SWiM guidance. Three studies (n=30) met the inclusion criteria, consisting of a retrospective study of intra-articular BPC-157 injections for knee pain (n=16), a retrospective pilot study of intravesical BPC-157 for interstitial cystitis (n=12), and a prospective pilot study evaluating intravenous BPC-157 safety (n=2). All studies reported symptom improvement in most participants without treatment-related adverse events, but were judged to be of poor methodological quality. Overall certainty of evidence was rated very low due to serious risk of bias, indirectness and imprecision. Accordingly, BPC-157 should not be used clinically in humans outside ethically approved, regulated, high-quality clinical trials.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/42885452/"
+ },
+ {
+  "pmid": "42840232",
+  "title": "Cardiovascular outcomes with tirzepatide versus semaglutide in type 2 diabetes.",
+  "journal": "Journal of diabetes and metabolic disorders",
+  "types": [
+   "Journal Article"
+  ],
+  "abstract": "PURPOSE: tirzepatide is associated with greater glycemic control and weight reduction compared to semaglutide in patients with T2D. Tirzepatide has also been recently shown to be non-inferior to dulaglutide in cardiovascular risk reduction among patients with T2D. Whether tirzepatide is more or less effective than semaglutide for cardioprotection is underexplored.\nMETHODS: The Research Collaborative Network of the TriNetX platform was accessed to collect de-identified, real world data on patients with T2D and compare the incidence of a composite of cardiovascular outcomes including acute myocardial infarction, stroke and acute heart failure, as well as all-cause mortality between patients who used tirzepatide and patients who used semaglutide during the period May 13, 2022 to Aug 11, 2026. One-to-one propensity score matching was applied to control for possible confounding covariates.\nRESULTS: two well-matched cohorts (N\u2009=\u2009271,685 for each) were analyzed. Compared to the semaglutide group, the tirzepatide group had lower incidences of the primary composite outcome (4.6% vs. 5.5%; absolute risk difference [ARD] -0.9%, 95% confidence interval [CI] -1.01 to -0.77; hazard ratio [HR] 0.9, 95% CI 0.92\u25000.96) and all-cause mortality (0.6% vs. 0.9%; ARD\u2009-\u20090.3%, 95% CI -0.33 to -0.24; HR 0.8, 95% CI 0.74\u25000.84).\nCONCLUSION: Tirzepatide was associated with lower risk of a composite of outcome of cardiovascular events as well as all-cause mortality compared to semaglutide in patients with T2D.\nCLINICAL TRIAL REGISTRATION: Clinical trial number: not applicable.\nSUPPLEMENTARY INFORMATION: The online version contains supplementary material available at https://doi.org/10.1007/s40200-026-02087-z.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/42840232/"
+ },
+ {
+  "pmid": "42823485",
+  "title": "Effects of semaglutide on kidney disease in type 2 diabetes: a randomized placebo-controlled trial.",
+  "journal": "Nature medicine",
+  "types": [
+   "Journal Article"
+  ],
+  "abstract": "The GLP-1 receptor agonist semaglutide preserves kidney function in people with type 2 diabetes and chronic kidney disease, but the underlying mechanisms are unclear. Here we report a 52-week randomized trial of subcutaneous semaglutide 1\u2009mg once weekly versus placebo (n\u2009=\u2009106 (n\u2009=\u200925 women, n\u2009=\u200981 men)) in participants with type 2 diabetes and chronic kidney disease. To identify kidney-specific mechanisms of action for semaglutide, we performed integrated multiparametric magnetic resonance imaging of the kidney and biopsy for histology (n\u2009=\u200933), alongside single-nucleus (n\u2009=\u200922) and spatial transcriptomics (n\u2009=\u200913) on paired samples with before- and after-treatment measurements. Coprimary magnetic resonance imaging outcomes (oxygenation by R2*, global perfusion and tissue inflammation by T1 mapping) were not significantly altered by semaglutide versus placebo treatment. Secondary outcomes revealed that semaglutide treatment, as compared to placebo, was associated with a significantly reduced renal artery resistive index and stabilization of the apparent diffusion coefficient, indicating prevention of fibrosis progression. Moreover, secondary transcriptomic outcomes revealed pronounced effects of semaglutide on glomerular endothelial cells, consistent with the results of spatial analyses indicating reduced numbers of immune cells in the proximity of these endothelial cells. The results from this trial indicate that mechanisms of kidney protection by semaglutide may include reduced vascular resistance, prevention of fibrosis and improved underlying molecular programs promoting endothelial cell health. ClinicalTrials.gov identifier: NCT04865770 .",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/42823485/"
+ },
+ {
+  "pmid": "42837024",
+  "title": "GLP-1 receptor agonists for obstructive sleep apnea: a meta-analysis of randomized controlled trials.",
+  "journal": "Sleep & breathing = Schlaf & Atmung",
+  "types": [
+   "Journal Article",
+   "Meta-Analysis",
+   "Systematic Review"
+  ],
+  "abstract": "PURPOSE: Weight reduction is recommended in all overweight and obese patients with obstructive sleep apnea (OSA). Glucagon-like peptide-1 (GLP-1) receptor agonists-based therapies have demonstrated clinical benefits in reducing weight and could potentially improve OSA outcomes. We aim to analyze the efficacy and safety of GLP-1 receptor agonists-based therapies in patients with moderate-to-severe OSA.\nMETHODS: We conducted a systematic review and meta-analysis of randomized controlled trials (RCTs) that compared GLP-1 receptor agonists-based therapies versus control in adults with moderate-to-severe OSA. We systematically searched electronic databases and registries up to February 10, 2025. Outcomes assessed included apnea-hypopnea index (AHI), body weight, oxygen desaturation index (ODI), minimum oxygen saturation, systolic blood pressure (SBP), diastolic blood pressure (DBP), and adverse events.\nRESULTS: A total of 6 RCTs involving 1,069 participants were included, four evaluating liraglutide and two tirzepatide. Compared with control, GLP-1 receptor agonist-based therapies reduced AHI by\u2009-\u20099.99 events/hour (95% CI,\u2009-\u200916.47 to\u2009-\u20093.50; p\u2009<\u20090.01; I2\u2009=\u200987%) and body weight by\u2009-\u20099.68\u00a0kg (95% CI,\u2009-\u200915.84 to\u2009-\u20093.51; p\u2009<\u20090.01; I2\u2009=\u200998%). These therapies also reduced SBP by -4.77\u00a0mmHg (95% CI, -7.04 to -2.51; p\u2009<\u20090.01), and DBP by -1.41\u00a0mmHg (95% CI, -2.71 to -0.11; p\u2009=\u20090.03). No significant differences were observed in ODI or minimum oxygen saturation. GLP-1 receptor agonists-based therapies did not increase the risk of adverse events.\nCONCLUSION: GLP-1 receptor agonist-based therapies reduced AHI and body weight in the populations studied. Substantial heterogeneity limits interpretation of the pooled effect magnitude. These findings support their potential role within comprehensive OSA management but do not establish them as substitutes for CPAP.\nREGISTRY: International Prospective Register of Systematic Reviews; No.: CRD42024564018; URL: https://www.crd.york.ac.uk/prospero/ .",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/42837024/"
+ },
+ {
+  "pmid": "42846869",
+  "title": "Antimicrobial peptides in the era of resistance: integrating AI-driven design, host-microbe interactions, and nanotechnological delivery.",
+  "journal": "Frontiers in microbiology",
+  "types": [
+   "Journal Article",
+   "Review"
+  ],
+  "abstract": "The escalating crisis of antimicrobial resistance (AMR) requires a fundamental transition from traditional antibiotic development to innovative therapeutic strategies rooted in microbial physiology and host defense mechanisms. Antimicrobial peptides (AMPs), evolutionarily conserved effectors of innate immunity, offer a potent alternative due to their rapid, multifaceted modes of action that reduce the likelihood of rapid resistance emergence compared to single-target antibiotics, although bacterial adaptation via membrane remodeling and efflux mechanisms remains a documented challenge. This review synthesizes recent advances in AMP research, focusing on their structural diversity, mechanistic interactions with microbial membranes, and immunomodulatory roles in shaping host-microbe dynamics. We critically examine the transition from empirical isolation to rational design, highlighting the integration of artificial intelligence (AI) and machine learning (ML) algorithms in predicting peptide efficacy and optimizing sequence-activity relationships. Furthermore, we explore the application of CRISPR-Cas technologies in engineering producer organisms and modulating pathogen susceptibility. A significant portion of this review addresses the translational challenges of AMPs, including proteolytic instability and toxicity, by evaluating next-generation nanotechnological delivery systems such as liposomal encapsulation and stimuli-responsive hydrogels. By bridging fundamental microbiological insights with cutting-edge computational and material science innovations, this article establishes a framework for overcoming current limitations. We conclude by outlining future perspectives for integrating AMPs into clinical practice, emphasizing their potential as synergistic agents in combination therapies and their role in extending the clinical utility of existing antimicrobial agents within a One Health context.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/42846869/"
+ }
+]
