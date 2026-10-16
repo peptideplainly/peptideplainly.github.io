@@ -7,13 +7,20 @@
 - [Why is peptide info so confusing?](https://peptideplainly.com/why-peptide-info-is-confusing.html)
 - [Glossary](https://peptideplainly.com/glossary.html)
 
-## Peptide guides (quick answer, dosing & timing, evidence, FAQ)
+## Peptide guides (straight answer, quick facts, dosing & timing, evidence, FAQ)
 - [Semaglutide (Ozempic, Wegovy, Rybelsus): dose schedule, timing & evidence](https://peptideplainly.com/peptides/semaglutide.html): FDA-approved. What is semaglutide (Ozempic, Wegovy)? A plain-English guide to what it is, its approval status, the key human trials, and common myths.
 - [Tirzepatide (Mounjaro, Zepbound): dose schedule, when to take it & evidence](https://peptideplainly.com/peptides/tirzepatide.html): FDA-approved. What is tirzepatide (Mounjaro, Zepbound)? A plain-English guide to how it works, its approval status, key trials, and myths.
+- [Retatrutide: Phase 3 results, approval status & what 'research' vials really are](https://peptideplainly.com/peptides/retatrutide.html): Research purposes only (investigational). What is retatrutide? Plain-English guide to Lilly's triple-agonist weight-loss shot: Phase 3 TRIUMPH results, approval status (not approved), and why 'research' vials are a gamble.
+- [Orforglipron (Foundayo): dose schedule, how to take it & trial results](https://peptideplainly.com/peptides/orforglipron.html): FDA-approved. What is orforglipron (Foundayo)? Plain-English guide to Lilly's daily GLP-1 weight-loss pill: FDA label dosing, trial results, and how it differs from Wegovy pills.
 - [BPC-157: dosage questions, evidence & what we actually know](https://peptideplainly.com/peptides/bpc-157.html): Research purposes only. What is BPC-157? A plain-English, evidence-first look at the 'healing peptide': regulatory status, the limited human evidence, and common myths.
 - [TB-500 (thymosin beta-4): dosage questions, evidence & what we know](https://peptideplainly.com/peptides/tb-500.html): Research purposes only. What is TB-500? A plain-English guide to thymosin beta-4 and TB-500: what they are, regulatory status, the human evidence, and myths.
 - [GHK-Cu (copper peptide): skincare vs injectable, evidence & dosage questions](https://peptideplainly.com/peptides/ghk-cu.html): Research purposes only (injectable). What is GHK-Cu, the copper peptide? A plain-English guide: what it is, where it's used, what the evidence shows, and common myths.
 - [Collagen peptides: do they work, how to take them & evidence](https://peptideplainly.com/peptides/collagen-peptides.html): Dietary supplement. Do collagen peptides work? A plain-English guide to collagen supplements: what they are, regulatory status, what meta-analyses show for skin, and myths.
+- [Tesamorelin (Egrifta): what it's approved for, label dosing & evidence](https://peptideplainly.com/peptides/tesamorelin.html): FDA-approved (HIV lipodystrophy only). What is tesamorelin (Egrifta)? Plain-English guide: what it's FDA-approved for (HIV belly fat), label dosing, the evidence, and why off-label fat-loss use is a different story.
+- [CJC-1295 & ipamorelin: the 'GH stack', evidence & dosage questions](https://peptideplainly.com/peptides/cjc-1295-ipamorelin.html): Research purposes only. CJC-1295 and ipamorelin explained plainly: what the 'GH stack' is, the thin human evidence, FDA and WADA status, and why dosing numbers online conflict.
+- [MOTS-c: the mitochondrial 'exercise' peptide, evidence & dosage questions](https://peptideplainly.com/peptides/mots-c.html): Research purposes only. What is MOTS-c? Plain-English guide to the 'exercise mimetic' mitochondrial peptide: what it is, zero published human treatment trials, FDA and WADA status.
+- [Semax: the nasal 'nootropic' peptide, evidence & dosage questions](https://peptideplainly.com/peptides/semax.html): Research purposes only. What is Semax? Plain-English guide to the nasal 'nootropic' peptide: Russian stroke research, what the evidence really shows, and FDA status.
+- [PT-141 (bremelanotide, Vyleesi): label use, dosing & evidence](https://peptideplainly.com/peptides/pt-141.html): FDA-approved (as Vyleesi). What is PT-141 (bremelanotide, Vyleesi)? Plain-English guide: FDA label use and dosing, trial results, side effects, and how 'research PT-141' differs.
 
 ## Newsletter
 - [Issue #1](https://peptideplainly.com/issues/issue-001.html)

@@ -12,3 +12,8 @@
 - Verified regulatory claims against WADA 2026 Prohibited List, Drugs@FDA, FDA compounding and DSHEA/cosmetics pages; added official source links.
 - Added Peptides 101, six peptide explainers, glossary, SEO tags.
 - Launched v1: home page, about/disclaimer, Issue #1, weekly PubMed fetch script.
+
+## 2026-10-16 — Redesign + 7 new guides
+- New guides: retatrutide, orforglipron (Foundayo), tesamorelin (Egrifta), CJC-1295 & ipamorelin, MOTS-c, Semax, PT-141 (Vyleesi).
+- Editorial redesign: Fraunces + Inter, warm paper palette, category SVG icons, Straight answer box, compare table with filter chips, sticky nav.
+- BreadcrumbList + CollectionPage schema; sitemap/llms.txt updated.
