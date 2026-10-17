@@ -1,7 +1,7 @@
 """Generate static pages. Run: python3 site.py"""
 import pathlib,html
 P=pathlib.Path(__file__).parent; BASE="https://peptideplainly.com"  # placeholder domain
-NAV=[("peptides/index.html","Peptide guides"),("peptides-101.html","Peptides 101"),("glossary.html","Glossary"),("about.html","About")]
+NAV=[("peptides/index.html","Peptide guides"),("peptides-101.html","Peptides 101"),("glossary.html","Glossary"),("about.html","About"),("advertise.html","Advertise")]
 EMBED='<div class="bh-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="a82b15dd-c14b-4719-8c4a-a19f32016cdc"></script></div><p class="fine sub-fallback">Form not loading? <a href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Subscribe here</a>.</p>'
 ATTR='<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
 def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>, PMID {i}'
@@ -18,13 +18,13 @@ def page(path,title,desc,body,schema=()):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=5">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=6">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the email</a></nav></div></header>
 <main id="main">{body}</main>
 <section class="cta-band" id="signup"><div class="cta-in"><p class="kicker">Every Monday · free</p><h2>The week's biggest peptide news. Five minutes. Free.</h2><p>New results, new compounds, explained plainly every Monday.</p>
 {EMBED}</div></section>
-<footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}about.html">About &amp; disclaimer</a> · <a href="{root}advertise.html">Advertise</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
+<footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}index.html#archive">Newsletter archive</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}about.html">About &amp; disclaimer</a> · <a href="{root}advertise.html">Advertise</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
 DISC='<p class="disclaimer"><strong>Not medical advice.</strong> Education only. We don\'t sell anything or tell you what to take. Label doses are there so you can follow along with your prescriber. Talk to a licensed clinician about your health.</p>'
 pages={}
 pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Peptide Plainly","What are peptides? A plain-English beginner's guide: approved medicines vs research-only compounds, how to read a study, and how to pick a quality source.",f'''<article class="issue">
