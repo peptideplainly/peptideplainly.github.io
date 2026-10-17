@@ -263,6 +263,9 @@ for h in (P/"issues").glob("issue-*.html"):
 for st in _sent: (P/"issues"/f"{st}.html").write_text(_stub)
 urls=list(pages)+["about.html"]
 (P/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n".replace("/index.html","/") for u in urls)+"</urlset>\n")
+# IndexNow key file (served at /<key>.txt). Ping with: python3 scripts/indexnow.py  (needs Tegan OK)
+INDEXNOW_KEY="9a85cb3b2d8f745f25610a7da0dbad98"
+(P/f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
 (P/"robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 ab=(P/"about_body.html").read_text()
 (P/"about.html").write_text(page("about.html","About Peptide Plainly & medical disclaimer","About Peptide Plainly: how we summarize peptide research from PubMed, plus our full medical disclaimer.",ab,seo.about_schema(BASE,ORG)))
