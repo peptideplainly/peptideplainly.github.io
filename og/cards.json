@@ -151,5 +151,23 @@
   "badge": "",
   "badge_t": "",
   "hot": false
+ },
+ "semaglutide-vs-tirzepatide.html": {
+  "card": "semaglutide-vs-tirzepatide",
+  "kicker": "Head-to-head · weight loss",
+  "title": "Semaglutide vs tirzepatide",
+  "sub": "SURMOUNT-5: −20.2% vs −13.7% at 72 weeks.",
+  "badge": "approved",
+  "badge_t": "Both FDA-approved",
+  "hot": false
+ },
+ "peptides/retatrutide-fda-approval-status.html": {
+  "card": "retatrutide-fda-status",
+  "kicker": "Status tracker · Oct 2026",
+  "title": "Retatrutide release date & FDA status",
+  "sub": "Lilly plans to submit in Q1 2027. Every readout so far.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": true
  }
 }

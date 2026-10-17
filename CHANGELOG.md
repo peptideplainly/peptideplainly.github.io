@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17 (traffic push 2)
+- New: /semaglutide-vs-tirzepatide.html (SURMOUNT-5, STEP 1, SURMOUNT-1 from PubMed abstracts) and /peptides/retatrutide-fda-approval-status.html (TRIUMPH timeline from Lilly releases, ClinicalTrials.gov, NEJM/Lancet; FDA Oct 2 2026 classification letter).
+- Calculator: share block (navigator.share + clipboard fallback, X and Reddit intents, GoatCounter events); calculator callouts on all GLP-1 pages and the home page.
+- Above-the-fold signup strip on home, semaglutide, retatrutide. FALLBACK choice: no GoatCounter API token available, so no real traffic ranking was used.
+
 ## 2026-10-17 (traffic push)
 - SEO: JSON-LD on Peptides 101 (Article, BreadcrumbList), Glossary (DefinedTermSet), About (AboutPage); all titles <=70 chars, all meta descriptions <=155 (enforced by seo.check at build).
 - IndexNow: key file /9a85cb3b2d8f745f25610a7da0dbad98.txt; scripts/indexnow.py (POSTs sitemap URLs; --dry-run available). Not pinged yet, waiting on Tegan's OK.
