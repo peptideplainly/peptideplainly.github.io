@@ -236,11 +236,13 @@ pages["advertise.html"]=("Advertise with Peptide Plainly: sponsor guides & newsl
 <h2>Let's build something</h2><p>Tell us about your brand and what you'd like to promote. We'll send audience stats and placement details.</p>
 <p><a class="btn" href="{ADV_MAILTO}" data-goatcounter-click="advertise-contact-bottom">Email us about sponsoring</a></p>
 <p class="fine">Email not opening? Write to us at <strong>{ADV_EMAIL}</strong> with the subject "Sponsoring Peptide Plainly".</p></article>''',[ORG,{"@type":"WebPage","name":"Advertise with Peptide Plainly","url":BASE+"/advertise.html","description":"Sponsor Peptide Plainly's peptide guides and Friday newsletter.","publisher":{"@id":BASE+"/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in ADV_FAQ]}])
+import seo; seo.apply(pages,BASE,ORG,G)
 t,d,b=pages["index.html"]
 pages["index.html"]=(t,d,b,[ORG,{"@type":"WebSite","name":"Peptide Plainly","url":BASE+"/","description":d,"publisher":{"@id":BASE+"/#org"}}])
 import glp1cmp; pages["glp1-comparison.html"]=glp1cmp.build(BASE,ORG,DISC)
 # "Compare all four GLP-1s" button: rendered only if Bean's comparison page exists at build time
 # (a pages["glp1-comparison.html"] entry in the generator, or a glp1-comparison.html file in the repo root).
+seo.check(pages)
 HAS_GLP1CMP="glp1-comparison.html" in pages or (P/"glp1-comparison.html").exists()
 import re as _re
 def _cmp(m): return f'<p class="glp1-cta"><a class="btn" href="{"../" if m.group(1)=="" else ""}glp1-comparison.html" data-goatcounter-click="glp1-compare">Compare all four GLP-1s →</a></p>' if HAS_GLP1CMP else ""
@@ -263,7 +265,7 @@ urls=list(pages)+["about.html"]
 (P/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n".replace("/index.html","/") for u in urls)+"</urlset>\n")
 (P/"robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 ab=(P/"about_body.html").read_text()
-(P/"about.html").write_text(page("about.html","About Peptide Plainly & medical disclaimer","About Peptide Plainly: how we summarize peptide research from PubMed, plus our full medical disclaimer.",ab))
+(P/"about.html").write_text(page("about.html","About Peptide Plainly & medical disclaimer","About Peptide Plainly: how we summarize peptide research from PubMed, plus our full medical disclaimer.",ab,seo.about_schema(BASE,ORG)))
 
 LL=["# Peptide Plainly","","> Friendly, plain-English explanations of peptide research, plus a free newsletter every Friday. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.","","## Start here",f"- [Peptides 101]({BASE}/peptides-101.html): what peptides are, approved vs research-only, reading studies",f"- [Why is peptide info so confusing?]({BASE}/why-peptide-info-is-confusing.html)",f"- [Glossary]({BASE}/glossary.html)","","## Peptide guides (why people are excited, quick facts, dosing & timing, evidence, FAQ)"]
 LL[LL.index("## Start here"):LL.index("## Start here")]=["## Featured: the GLP-1 weight-loss guides","Our most popular guides. Retatrutide is the hottest one right now."]+[f"- [{glp1cmp.TITLE}]({BASE}/glp1-comparison.html): {glp1cmp.DESC}"]+[f"- [{GLP1_TITLE[s]}]({BASE}/peptides/{s}.html): {X[s]['badge'][1]}. {PEP[s][1]}" for s in GLP1]+[""]

@@ -42,6 +42,7 @@ DESC={
 "cjc-1295-ipamorelin":"CJC-1295 and ipamorelin explained plainly: the popular GH stack, what studies found, status, and FAQs.",
 "mots-c":"What is MOTS-c? Plain-English guide to the 'exercise in a vial' mitochondrial peptide: the research, status, and FAQs.",
 "semax":"What is Semax? Plain-English guide to the nasal brain peptide: the research on BDNF and stroke recovery, status, and FAQs.",
+"pt-141":"What is PT-141 (bremelanotide, Vyleesi)? FDA label use and dosing, trial results, side effects, and how 'research PT-141' differs.",
 "tesamorelin":"What is tesamorelin (Egrifta)? Plain-English guide: how it cuts deep belly fat, FDA label dosing, the trial, and FAQs.",
 }
 H1={

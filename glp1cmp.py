@@ -40,8 +40,8 @@ FAQ=[
 ("Is orforglipron a peptide?","No. Orforglipron is a small-molecule drug that hits the same GLP-1 receptor as semaglutide. That's part of why it can be a simple daily pill."),
 ("Can you compare these trial numbers directly?","Only loosely. Each trial had different people, doses and lengths (64 to 80 weeks). The only head-to-head trial among these four is SURMOUNT-5, tirzepatide vs semaglutide."),
 ]
-TITLE="GLP-1 comparison: semaglutide vs tirzepatide vs retatrutide vs orforglipron"
-DESC="Semaglutide (Ozempic, Wegovy), tirzepatide (Zepbound), retatrutide and orforglipron (Foundayo) side by side: weight-loss results, pills vs shots, receptors and FDA status."
+TITLE="GLP-1s: semaglutide vs tirzepatide vs retatrutide vs orforglipron"
+DESC="Semaglutide, tirzepatide, retatrutide and orforglipron side by side: weight-loss results, pills vs shots, receptors and FDA status."
 def build(BASE,ORG,DISC):
     trs="".join(f'<tr><th scope="row"><a href="peptides/{s}.html">{n}</a></th><td><span class="badge {bk}">{bt}</span></td><td>{how}</td><td>{mech}</td><td>{res}</td><td>{brands}</td><td>{dose}</td></tr>' for s,n,(bk,bt),how,mech,res,brands,dose in ROWS)
     faqh="".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in FAQ)
@@ -59,4 +59,4 @@ def build(BASE,ORG,DISC):
      {"@type":"Article","headline":TITLE,"description":DESC,"url":url,"datePublished":"2026-10-16","dateModified":"2026-10-16","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}},
      {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":strip(a)}} for q,a in FAQ]},
      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Peptide guides","item":BASE+"/peptides/"},{"@type":"ListItem","position":3,"name":"GLP-1 comparison","item":url}]}]
-    return (TITLE+" | Peptide Plainly",DESC,body,schema)
+    return (TITLE,DESC,body,schema)
