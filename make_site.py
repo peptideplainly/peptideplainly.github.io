@@ -20,7 +20,7 @@ def page(path,title,desc,body,schema=()):
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image">
 {FONTS}<link rel="stylesheet" href="{root}style.css?v=6">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the email</a></nav></div></header>
+<header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>
 <section class="cta-band" id="signup"><div class="cta-in"><p class="kicker">Every Friday · free</p><h2>The week's biggest peptide news. Five minutes. Free.</h2><p>New results, new compounds, explained plainly every Friday.</p>
 {EMBED}</div></section>
@@ -34,7 +34,7 @@ pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Pept
 <h2>Approved medicines vs. "research-only" compounds</h2>
 <ul><li><strong>Approved drugs</strong> (for example semaglutide and tirzepatide) have passed large clinical trials. Regulators like the U.S. FDA reviewed the data, and they're made under strict quality controls. They're prescribed by clinicians.</li>
 <li><strong>Dietary supplements</strong> (for example collagen peptides) are sold as foods. In the U.S. the <a href="https://www.fda.gov/food/information-consumers-using-dietary-supplements/questions-and-answers-dietary-supplements">FDA does not approve supplements before they are marketed</a>.</li>
-<li><strong><span class="badge research">Research purposes only</span></strong> compounds (for example BPC-157 and TB-500) aren't FDA-approved medicines. Product quality can vary, and the human evidence is usually early and limited. Some, including BPC-157 and TB-500, are banned in sport by the <a href="https://www.wada-ama.org/en/prohibited-list">WADA Prohibited List</a>.</li></ul>
+<li><strong><span class="badge research">Research purposes only</span></strong> compounds (for example BPC-157 and TB-500) aren't FDA-approved medicines. Product quality can vary, and the human evidence is usually early and limited. Some, including BPC-157 and TB-500, are banned in sport under the <a href="https://www.wada-ama.org/en/prohibited-list">WADA Prohibited List</a>.</li></ul>
 <h2>How to read a study (the quick version)</h2>
 <ol><li><strong>Who was studied?</strong> Cells in a dish → animals → people. Lab and animal results often don't hold up in humans.</li>
 <li><strong>How many?</strong> 12 people is a pilot. Thousands is much more convincing.</li>
@@ -106,6 +106,8 @@ for k in X:
     fx=QUICKFIX.get(k,{}); X[k]['quick']=[next((v for lab,v in fx.items() if q.startswith(f'<strong>{lab}:')),q) for q in X[k]['quick']]
     X[k]['faq']=[(q,FAQFIX.get((k,q),a)) for q,a in X[k]['faq']]
 for k,b in BOTTOM.items(): X[k]['quick']=[q for q in X[k]['quick'] if 'Bottom line' not in q]+[b]
+LOWER={"Semaglutide","Tirzepatide","Retatrutide","Orforglipron","Tesamorelin"}
+QH={"collagen-peptides":("What are collagen peptides?","Are collagen peptides FDA-approved?"),"cjc-1295-ipamorelin":("What are CJC-1295 and ipamorelin?","Are CJC-1295 and ipamorelin FDA-approved?")}
 STATUS_CLASS=lambda bk:{"approved":"approved","research":"research","supplement":"supplement"}[bk]
 HOMECARDS=""; rows=""; gcards=""
 for slug,(name,desc,what,reg,ev,myths) in PEP.items():
@@ -119,7 +121,7 @@ for slug,(name,desc,what,reg,ev,myths) in PEP.items():
     others=" · ".join(f'<a href="{s}.html">{PEP[s][0]}</a>' for s in PEP if s!=slug)
     rel="".join(f'<li><a href="{s}.html">{PEP[s][0]}</a></li>' for s in sib)
     faqh="".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in x["faq"])
-    url=f"{BASE}/peptides/{slug}.html"; short=name.split(" (")[0]
+    url=f"{BASE}/peptides/{slug}.html"; short=name.split(" (")[0]; low=short.lower() if short in LOWER else short
     schema=[ORG,{"@type":"MedicalWebPage","name":x["h1"],"description":desc,"url":url,"inLanguage":"en","lastReviewed":"2026-10-16","publisher":{"@id":BASE+"/#org"},"about":{"@type":"Drug" if bk!="supplement" else "DietarySupplement","name":short}},
       {"@type":"Article","headline":x["h1"],"description":desc,"url":url,"datePublished":"2026-10-16","dateModified":"2026-10-16","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}},
       {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":html.unescape(__import__('re').sub('<[^>]+>','',a))}} for q,a in x["faq"]]},
@@ -128,7 +130,7 @@ for slug,(name,desc,what,reg,ev,myths) in PEP.items():
 <header class="g-head"><span class="pic big">{icon(cat)}</span><div><p class="pcat">{CATS[cat]}</p><h1>{x["h1"]}</h1><p><span class="badge {bk}">{bt}</span> <span class="fine">Checked against official sources Oct 16, 2026</span></p></div></header>
 <aside class="excite" aria-label="Why people are excited"><p class="kicker">Why people are excited</p><p class="sa">{EXCITE[slug][0]}</p><ul>{"".join(f"<li>{h}</li>" for h in EXCITE[slug][1])}</ul></aside>
 <div class="quick"><h2>Quick facts</h2><ul>{"".join(f"<li>{q}</li>" for q in x["quick"])}</ul><p class="jump"><a href="#dosing">Dosing &amp; timing</a><a href="#evidence">Evidence</a><a href="#faq">FAQ</a></p></div>
-<h2>What is {short}?</h2><p>{INTRO.get(slug,what)}</p><h2>Is {short} FDA-approved?</h2><p>{reg}</p>
+<h2>{QH.get(slug,(f"What is {low}?",))[0]}</h2><p>{INTRO.get(slug,what)}</p><h2>{QH.get(slug,(0,f"Is {low} FDA-approved?"))[1]}</h2><p>{reg}</p>
 {x["dosing"]}
 <h2 id="evidence">What the research shows</h2><ul>{ev}</ul><p class="fine">New to these terms? See the <a href="../glossary.html">glossary</a>.</p>
 <h2 id="faq">{short} FAQ</h2>{faqh}{NOTE if bk=="research" else ""}{DISC}
@@ -148,7 +150,7 @@ pages["why-peptide-info-is-confusing.html"]=("Why is peptide info so confusing? 
 <h2>3. Dose numbers get copied without sources</h2><p>For approved drugs, the official dose schedule is on the FDA label, and we link it. For research-only peptides there is no established human dose, so numbers online usually trace back to animal studies or personal anecdotes.</p>
 <h2>4. Money shapes the message</h2><p>Some "educators" also sell products or earn affiliate commissions. That doesn't make them wrong, but it's worth knowing.</p>
 <h2>5. The science really is still moving</h2><p>Regulations and evidence change, and in 2026 they changed for several peptides. We date-stamp our pages and link official sources.</p>
-<h2>How to get clear answers</h2><ul><li>Start with our <a href="peptides-101.html">Peptides 101</a> guide.</li><li>Check the "Why people are excited" box and the source link on every claim.</li><li>Bring your questions to a clinician you trust.</li><li>Get the <a href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta">weekly newsletter</a> for new research, explained plainly.</li></ul>{DISC}</article>''',[ORG,{"@type":"Article","headline":"Why is peptide info so confusing?","url":BASE+"/why-peptide-info-is-confusing.html","datePublished":"2026-10-16","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}}])
+<h2>How to get clear answers</h2><ul><li>Start with our <a href="peptides-101.html">Peptides 101</a> guide.</li><li>Check the "Why people are excited" box and the source link on every claim.</li><li>Bring your questions to a clinician you trust.</li><li>Get the <a href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta">free Friday newsletter</a> for new research, explained plainly.</li></ul>{DISC}</article>''',[ORG,{"@type":"Article","headline":"Why is peptide info so confusing?","url":BASE+"/why-peptide-info-is-confusing.html","datePublished":"2026-10-16","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}}])
 pages["index.html"]=("Peptide Plainly: peptides explained plainly | retatrutide, tirzepatide, BPC-157 & more","The real results behind today's hottest peptides, from weight loss to recovery, skin and longevity. Sourced, plain-English guides plus a free weekly email.",f'''
 <section class="hero"><div class="hero-txt"><p class="kicker">Peptides, plainly. No BS.</p>
 <h1>Lose the weight. Heal faster. Glow up. <span class="hl">Know what actually works.</span></h1>
