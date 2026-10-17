@@ -1,4 +1,4 @@
-"""Design pieces: icons, categories, per-guide meta (category, use, route, straight answer)."""
+"""Design pieces: icons, categories, per-guide meta (category, use, route, legacy summary)."""
 def svg(paths,label):
     return f'<svg class="ico" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="{label}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">{paths}</svg>'
 ICON={
@@ -12,7 +12,7 @@ ICON={
 }
 CATS={"weight":"Weight & metabolism","recovery":"Healing & recovery","skin":"Skin","gh":"Growth hormone","longevity":"Longevity","brain":"Brain & focus","sexual":"Sexual health"}
 def icon(c): p,l=ICON[c]; return svg(p,l)
-# slug: (category, what it's for (short), how it's taken, straight answer for older guides)
+# slug: (category, what it's for (short), how it's taken, legacy summary (unused))
 META={
 "semaglutide":("weight","Type 2 diabetes, weight loss, heart risk","Weekly shot or daily pill","Semaglutide works: big trials show real weight loss and fewer heart events, and the only doses that matter are the ones on the FDA label your prescriber follows."),
 "tirzepatide":("weight","Type 2 diabetes, weight loss, sleep apnea","Weekly shot","Tirzepatide is the strongest approved weight-loss drug right now, and it beat semaglutide head-to-head in SURMOUNT-5."),

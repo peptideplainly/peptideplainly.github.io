@@ -15,5 +15,7 @@
 
 ## 2026-10-16 — Redesign + 7 new guides
 - New guides: retatrutide, orforglipron (Foundayo), tesamorelin (Egrifta), CJC-1295 & ipamorelin, MOTS-c, Semax, PT-141 (Vyleesi).
-- Editorial redesign: Fraunces + Inter, warm paper palette, category SVG icons, Straight answer box, compare table with filter chips, sticky nav.
+- Editorial redesign: Fraunces + Inter, warm paper palette, category SVG icons, summary box (since replaced by "Why people are excited"), compare table with filter chips, sticky nav.
 - BreadcrumbList + CollectionPage schema; sitemap/llms.txt updated.
+
+- Tone pass 2: benefit-led H1s, positive quick facts and FAQs, Peptides 101 'How to pick a quality source', new social preview image, removed legacy summary-box code.

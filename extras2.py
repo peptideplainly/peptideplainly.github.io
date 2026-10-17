@@ -57,7 +57,6 @@ f'''<li><strong>RECONNECT trials</strong> ({pm(31599840,"Obstet Gynecol, 2019")}
 X2={
 "retatrutide":dict(badge=("research","Research purposes only (investigational)"),
  h1="Retatrutide: Phase 3 results, approval status & what 'research' vials really are",
- straight="Retatrutide posted some of the biggest weight-loss numbers ever seen in an obesity trial, but it is not approved and the only real version is Lilly's trial drug.",
  quick=["<strong>What it is:</strong> an experimental weekly shot hitting GIP, GLP-1 and glucagon receptors.","<strong>Status:</strong> research purposes only. Not FDA-approved. Lilly plans to file in Q1 2027.","<strong>Evidence:</strong> strong trial data. TRIUMPH-1 showed about −24% to −25% average weight at 80 weeks on the top doses.","<strong>Dosage:</strong> no approved human dose exists. We list only what trials used.","<strong>Bottom line:</strong> real results, not available legitimately yet."],
  dosing=f'''<h2 id="dosing">Retatrutide dosage: what the trials used</h2><p>There is <strong>no approved human dose</strong>, so we don't give one. Here is what the studies did:</p><ul><li><strong>TRIUMPH-1</strong> ({pm(42814954,"PMID 42814954")}): once-weekly injections under the skin at 4, 9 or 12 mg, for 80 weeks.</li><li><strong>Phase 2</strong> ({pm(37366315,"PMID 37366315")}): weekly doses from 1 to 12 mg. Starting at 2 mg instead of 4 mg partly reduced GI side effects.</li><li>Trials stepped doses up gradually under medical supervision, with a pharmaceutical-grade product.</li></ul>
 <h3>Why online numbers don't match</h3><ul><li>People copy trial doses but use unregulated vials whose real content is unknown.</li><li>"Units" on insulin syringes depend on how a vial was mixed, so the same number means different doses.</li><li>Trials escalated slowly for side effects. Online "protocols" often don't.</li></ul>{RQHTML}''',
@@ -68,7 +67,6 @@ X2={
  ("What are retatrutide's side effects?","In trials, mostly gastrointestinal effects like nausea. The Phase 2 trial also saw dose-related heart-rate increases.")]),
 "orforglipron":dict(badge=("approved","FDA-approved"),
  h1="Orforglipron (Foundayo): dose schedule, how to take it & trial results",
- straight="Foundayo is an FDA-approved daily weight-loss pill that you can take with or without food; average weight loss in its main trial was smaller than with the leading shots.",
  quick=["<strong>What it is:</strong> a once-daily GLP-1 pill (small molecule, not technically a peptide).","<strong>Status:</strong> FDA-approved April 2026, prescription only, for weight management.","<strong>How it's taken:</strong> one tablet a day, with or without food, swallowed whole.","<strong>Evidence:</strong> strong. A 3,127-person Phase 3 trial.","<strong>Most common side effects:</strong> nausea, constipation, diarrhea, vomiting and other GI effects."],
  dosing=f'''<h2 id="dosing">Foundayo dose schedule: what the FDA label says</h2>{PRESC}
 <h3>Foundayo (tablet) — {L(FOU,"FDA label on DailyMed")}</h3><ul><li>Once daily, with or without food. Swallow whole. Don't break, crush, or chew. Never more than one tablet a day.</li><li>Starts at 0.8 mg daily. After at least 30 days, 2.5 mg. After at least 30 more days, 5.5 mg.</li><li>It can go up to 9 mg, 14.5 mg, or 17.2 mg, each step after at least 30 days, based on response and tolerability. Maximum 17.2 mg daily.</li><li>Missed dose: take it as soon as possible. Don't double up. If 7 or more doses in a row are missed, the label says to restart at a lower dose.</li><li>Some other medicines (strong CYP3A4 inhibitors or inducers) change the dosing. Tell your prescriber everything you take.</li></ul>''',
@@ -79,7 +77,6 @@ X2={
  ("How much weight do people lose on orforglipron?","In ATTAIN-1, average weight change at 72 weeks was −7.5% to −11.2% depending on dose, vs −2.1% on placebo.")]),
 "tesamorelin":dict(badge=("approved","FDA-approved (HIV lipodystrophy only)"),
  h1="Tesamorelin (Egrifta): what it's approved for, label dosing & evidence",
- straight="Tesamorelin is a real FDA-approved drug, but only for belly fat in adults with HIV lipodystrophy, and its own label says it is not a weight-loss drug.",
  quick=["<strong>What it is:</strong> a GHRH analog that raises your own growth hormone.","<strong>Status:</strong> FDA-approved for excess belly fat in adults with HIV lipodystrophy. Everything else is off-label.","<strong>How it's taken:</strong> a daily injection under the skin of the belly.","<strong>Evidence:</strong> solid in its approved group (412-person RCT). Little for other uses.","<strong>For athletes:</strong> banned by WADA."],
  dosing=f'''<h2 id="dosing">Tesamorelin dosing: what the FDA label says</h2>{PRESC}
 <h3>Egrifta WR — {L(EGW,"FDA label on DailyMed")}</h3><ul><li>1.28 mg injected under the skin once daily, into the abdomen. Rotate sites.</li><li>Mix only with the diluent supplied in the kit.</li></ul>
@@ -91,7 +88,6 @@ X2={
  ("Is tesamorelin banned in sports?","Yes. The 2026 WADA Prohibited List names tesamorelin under S2 growth hormone releasing factors.")]),
 "cjc-1295-ipamorelin":dict(badge=("research","Research purposes only"),
  h1="CJC-1295 & ipamorelin: the 'GH stack', evidence & dosage questions",
- straight="CJC-1295 and ipamorelin do raise growth-hormone signals in small studies, but there's no human trial of the stack, FDA has flagged safety signals, and neither is approved.",
  quick=["<strong>What they are:</strong> two lab-made peptides that push the body to release growth hormone.","<strong>Status:</strong> research purposes only. Not FDA-approved, on FDA's compounding safety-risk list, banned by WADA.","<strong>Human evidence:</strong> hormone-level studies for CJC-1295. A negative surgery trial for ipamorelin. None for the combo.","<strong>Dosage:</strong> no established human dose.","<strong>Bottom line:</strong> popular, thinly studied."],
  dosing=f'''<h2 id="dosing">CJC-1295 & ipamorelin dosage: what we actually know</h2><p>There is <strong>no established or approved human dose</strong> for either, so we don't give one. What studies used:</p><ul><li><strong>CJC-1295</strong> ({pm(16352683,"PMID 16352683")}): single and repeated injections under the skin, dosed by body weight, in healthy adults. The authors said 30 or 60 µg/kg was relatively well tolerated. One study, short term, hormone levels only.</li><li><strong>Ipamorelin</strong> ({pm(25331030,"PMID 25331030")}): 0.03 mg/kg by IV twice daily for up to 7 days in hospital after surgery. Not comparable to home injections.</li></ul>
 <h3>Why online numbers don't agree</h3><ul><li>Online "CJC-1295" may be the long-acting version from studies (with DAC) or a short-acting one without it. They behave very differently.</li><li>Study doses were per kilogram, by different routes.</li><li>Product content varies, and there is no trial of the combination to anchor anything.</li></ul>{RQHTML}''',
@@ -101,7 +97,6 @@ X2={
  ("Are CJC-1295 and ipamorelin banned in sport?","Yes. Both are named under S2.2.4 of the 2026 WADA Prohibited List, banned at all times.")]),
 "mots-c":dict(badge=("research","Research purposes only"),
  h1="MOTS-c: the mitochondrial 'exercise' peptide, evidence & dosage questions",
- straight="MOTS-c is fascinating mouse biology with zero published human treatment trials, so every human dose online is a guess.",
  quick=["<strong>What it is:</strong> a small peptide made by your mitochondria.","<strong>Status:</strong> research purposes only. Not FDA-approved. Banned by WADA.","<strong>Human evidence:</strong> no published treatment trials. One Phase 2a trial is registered.","<strong>Dosage:</strong> no established human dose.","<strong>Bottom line:</strong> early science, heavy hype."],
  dosing=f'''<h2 id="dosing">MOTS-c dosage: what we actually know</h2><p>There is <strong>no established human dose</strong>. There are no published human treatment trials to take one from.</p><ul><li>Online numbers come from mouse studies dosed by body weight, or from sellers.</li><li>A registered Phase 2a trial (<a href="https://clinicaltrials.gov/study/NCT07505745" rel="noopener">NCT07505745</a>) may give the first real human data.</li></ul>{WHYCONF}{RQHTML}''',
  faq=[("What is the MOTS-c dosage?","There's no established human dose. We found no published human treatment trials."),
@@ -110,7 +105,6 @@ X2={
  ("Does MOTS-c work like exercise?","That idea comes from mouse studies. It hasn't been shown in people.")]),
 "semax":dict(badge=("research","Research purposes only"),
  h1="Semax: the nasal 'nootropic' peptide, evidence & dosage questions",
- straight="Semax has some Russian stroke-rehab data, but no solid evidence that it sharpens focus or memory in healthy people.",
  quick=["<strong>What it is:</strong> a modified piece of the hormone ACTH, usually a nasal spray.","<strong>Status:</strong> research purposes only. Not FDA-approved.","<strong>Human evidence:</strong> small, mostly Russian studies in stroke patients.","<strong>Dosage:</strong> no established human dose for cognitive use.","<strong>Bottom line:</strong> not a proven brain booster."],
  dosing=f'''<h2 id="dosing">Semax dosage: what we actually know</h2><p>There is <strong>no FDA-established human dose</strong>. What the main human study used:</p><ul><li>The 2018 stroke study ({pm(29798983,"PMID 29798983")}) gave two 10-day courses of 6,000 µg a day, 20 days apart, in hospital stroke rehab. That's a medical setting, not a focus routine.</li><li>FDA says it has little or no safety information for the routes people use.</li></ul>{WHYCONF}{RQHTML}''',
  faq=[("What is the Semax dosage?","There's no FDA-established human dose. The main human study gave it to stroke patients in rehab, which doesn't translate to healthy people."),
@@ -118,7 +112,6 @@ X2={
  ("Does Semax improve focus?","We found no large randomized trials in healthy people showing that.")]),
 "pt-141":dict(badge=("approved","FDA-approved (as Vyleesi)"),
  h1="PT-141 (bremelanotide, Vyleesi): label use, dosing & evidence",
- straight="Bremelanotide is FDA-approved as Vyleesi for one group, premenopausal women with low sexual desire, and the label caps it at 8 doses a month.",
  quick=["<strong>What it is:</strong> a melanocortin-receptor drug that acts on desire in the brain.","<strong>Status:</strong> FDA-approved as Vyleesi for premenopausal women with HSDD. Not for men or postmenopausal women.","<strong>How it's taken:</strong> an as-needed autoinjector, at least 45 minutes before sex.","<strong>Evidence:</strong> two Phase 3 RCTs with 1,267 women. Modest effects.","<strong>Most common side effects:</strong> nausea, flushing, injection-site reactions, headache, vomiting."],
  dosing=f'''<h2 id="dosing">Vyleesi dosing & timing: what the FDA label says</h2>{PRESC}
 <h3>Vyleesi (autoinjector) — {L(VYL,"FDA label on DailyMed")}</h3><ul><li>1.75 mg injected under the skin of the abdomen or thigh, as needed, at least 45 minutes before expected sexual activity.</li><li>No more than one dose in 24 hours.</li><li>More than 8 doses a month is not recommended.</li></ul>

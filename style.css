@@ -64,8 +64,6 @@ main>.wide,main>.hero,main>.rules,main>.two{width:min(1080px,calc(100vw - 40px))
 /* guide */
 .crumbs{font-size:.85rem;color:var(--muted);margin:26px 0 0}.crumbs a{color:var(--muted)}
 .g-head{display:flex;gap:18px;align-items:flex-start;margin-top:10px}.g-head h1{font-size:clamp(1.8rem,4vw,2.6rem)}
-.straight{position:relative;background:var(--sun);border:2px solid var(--ink);border-radius:var(--r);padding:20px 22px;margin:22px 0;box-shadow:6px 6px 0 var(--ink)}
-.straight .kicker{color:var(--ink)}.straight .sa{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.35;margin:.3em 0 0}
 .quick{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:6px 22px 14px}.quick h2{margin-top:.8em;font-size:1.2rem}.quick li{margin-bottom:6px}
 .jump{display:flex;gap:8px;flex-wrap:wrap}.jump a{font-size:.85rem;font-weight:700;background:var(--soft);padding:4px 12px;border-radius:999px;text-decoration:none}
 .guide,.issue{padding-bottom:30px}.guide li,.issue li{margin-bottom:8px}

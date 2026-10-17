@@ -18,7 +18,7 @@ def page(path,title,desc,body,schema=()):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=4">{ld(schema)}</head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=5">{ld(schema)}</head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" rel="noopener">Get the email</a></nav></div></header>
 <main id="main">{body}</main>
@@ -27,7 +27,7 @@ def page(path,title,desc,body,schema=()):
 <footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}about.html">About &amp; disclaimer</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
 DISC='<p class="disclaimer"><strong>Not medical advice.</strong> Education only. We don\'t sell anything or tell you what to take. Label doses are there so you can follow along with your prescriber. Talk to a licensed clinician about your health.</p>'
 pages={}
-pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Peptide Plainly","What are peptides? A plain-English beginner's guide: approved medicines vs research-only compounds, how to read a study, and red flags in online peptide hype.",f'''<article class="issue">
+pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Peptide Plainly","What are peptides? A plain-English beginner's guide: approved medicines vs research-only compounds, how to read a study, and how to pick a quality source.",f'''<article class="issue">
 <p class="eyebrow">Beginner's guide</p><h1>Peptides 101</h1><p class="lead">Welcome! If peptide videos have left you more confused than when you started, you're in the right place. Here's everything you need, in about five minutes.</p>
 <h2>What is a peptide?</h2><p>A peptide is a short chain of <strong>amino acids</strong>, the same building blocks that make up proteins. Long chains are called proteins and short ones are called peptides. Your body makes thousands of them, and many act as messengers. <strong>Insulin</strong>, for example, is a peptide hormone that helps control blood sugar.</p>
 <p>"Peptides" is a huge, loose category. It covers prescription medicines, ingredients in skin creams, food supplements like collagen, and experimental compounds that have never been properly tested in people. The word alone tells you nothing about whether something is safe or works.</p>
@@ -43,13 +43,13 @@ pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Pept
 <li><strong>Who paid?</strong> Industry funding is common and not automatically bad, but it's worth noting.</li>
 <li><strong>One study is never the final word.</strong> Look for systematic reviews and meta-analyses that pool many studies.</li></ol>
 <p>New to the terms? See the <a href="glossary.html">glossary</a>.</p>
-<h2>Red flags in online peptide hype</h2>
-<ul><li>"Miracle," "heals everything," or a long list of unrelated benefits.</li>
-<li>Claims backed only by animal studies, or by no citations at all.</li>
-<li>Testimonials and before/after photos instead of trials.</li>
-<li>"Research use only" labels on products clearly marketed for people to use.</li>
-<li>Pressure to buy now, discount codes, or a seller who is also the "educator."</li>
-<li>Dosing protocols shared by influencers rather than clinicians.</li></ul>
+<h2>How to pick a quality source</h2>
+<ul><li><strong>Third-party lab tests.</strong> Look for a recent certificate of analysis (COA) from an independent lab, matched to your batch.</li>
+<li><strong>Citations you can click.</strong> The best sources link to the actual study or FDA label.</li>
+<li><strong>Clear labeling.</strong> Purity, amount per vial, and batch number should be easy to find.</li>
+<li><strong>Know the study type.</strong> Human trials, animal studies and lab work each tell you something different.</li>
+<li><strong>Transparent sellers.</strong> Real contact details, clear policies, and honest disclosure of affiliate links.</li>
+<li><strong>For prescription drugs,</strong> go through a licensed prescriber and pharmacy.</li></ul>
 <h2>Where to go next</h2><p>Read our plain-English <a href="peptides/index.html">guides to popular peptides</a>, or browse the <a href="index.html#archive">newsletter archive</a>.</p>{DISC}</article>''')
 G=[("Abstract","A short summary at the top of a research paper."),("Amino acid","A building block of proteins and peptides. There are 20 standard ones."),("Animal study","Research done in animals, often mice or rats. Results often don't carry over to humans."),("Bias","Anything that systematically skews a study's results away from the truth."),("Case report","A description of one patient or a few patients. Useful for ideas, weak as evidence."),("Clinical trial","A study that tests a treatment in people."),("Cohort study","An observational study that follows groups of people over time. It can show links but not cause and effect."),("Confidence interval (CI)","The range the true effect probably falls in. Narrow is more precise."),("Control group","Participants who don't get the treatment, used for comparison."),("Double-blind","Neither participants nor researchers know who got the real treatment."),("FDA","U.S. Food and Drug Administration, which approves medicines in the U.S."),("GLP-1","A natural gut hormone (glucagon-like peptide-1) involved in appetite and blood sugar. Semaglutide mimics it."),("GLP-1 receptor agonist","A drug that activates the GLP-1 receptor, such as semaglutide."),("Hazard ratio (HR)","Compares how often an event happens in two groups. Below 1 means less often in the treatment group."),("In vitro","Done in cells or tissue in a lab, not in a living body."),("Meta-analysis","A study that statistically combines the results of many earlier studies."),("Observational study","Researchers watch what happens without assigning treatments."),("Peptide","A short chain of amino acids."),("Pilot study","A small, early study to test whether a bigger one is feasible."),("Placebo","An inactive dummy treatment used for comparison."),("PMID","PubMed ID, a unique number for each paper on PubMed."),("PubMed","A free database of medical research run by the U.S. National Library of Medicine."),("Randomized controlled trial (RCT)","Participants are randomly assigned to a treatment or a control. The gold standard for testing treatments."),("Research chemical","A compound sold for lab research, not approved for human use."),("Retrospective study","Looks back at existing records rather than following people forward."),("Systematic review","A structured review of all studies on a question, following a set method."),("WADA","World Anti-Doping Agency, which maintains the list of substances banned in sport.")]
 pages["glossary.html"]=("Peptide research glossary: plain-English definitions | Peptide Plainly","Plain-English definitions of peptide and research terms: RCT, meta-analysis, placebo, hazard ratio, GLP-1, PMID and more.",'<article class="issue"><p class="eyebrow">Reference</p><h1>Glossary</h1><p class="lead">Research terms, translated into plain English.</p><dl class="gloss">'+"".join(f'<dt id="{t.split()[0].lower()}">{t}</dt><dd>{d}</dd>' for t,d in G)+'</dl><p>Ready to use them? Try <a href="peptides-101.html">Peptides 101</a>.</p>'+DISC+'</article>')
@@ -93,17 +93,20 @@ f'''<li><strong>Review, 2018</strong> ({pm(29986520,"Int J Mol Sci")}): summariz
 'Sold as dietary supplements and foods. Under the 1994 DSHEA law, the <a href="https://www.fda.gov/food/information-consumers-using-dietary-supplements/questions-and-answers-dietary-supplements">FDA does not have authority to approve dietary supplements before they are marketed</a>. Manufacturers are responsible for safety and labeling.',
 f'''<li><strong>Meta-analysis, 2023</strong> ({pm(37432180,"Nutrients")}): 26 RCTs with 1,721 people found improved skin hydration and elasticity vs. placebo. The authors flagged biases in the studies and called for larger trials.</li>
 <li><strong>Meta-analysis, 2021</strong> ({pm(33742704,"Int J Dermatol")}): 19 RCTs with 1,125 people (95% women) found favorable effects on hydration, elasticity, and wrinkles.</li>''',
-["<strong>Myth: collagen you eat goes straight to your skin.</strong> It's digested into smaller pieces first. How the benefits seen in trials happen is still being studied.","<strong>Myth: every collagen product is backed by these trials.</strong> The studies tested specific products, sources, and durations, and some studies had industry funding."]),
+["<strong>Myth: collagen you eat goes directly to your skin.</strong> It's digested into smaller pieces first. How the benefits seen in trials happen is still being studied.","<strong>Myth: every collagen product is backed by these trials.</strong> The studies tested specific products, sources, and durations, and some studies had industry funding."]),
 }
 from extras import X
 from extras2 import PEP2,X2
 from design import META,CATS,icon
-from tone import EXCITE,INTRO,NOTE,BOTTOM,DESC
+from tone import EXCITE,INTRO,NOTE,BOTTOM,DESC,H1,QUICKFIX,FAQFIX
 PEP.update(PEP2); X.update(X2); PEP={k:PEP[k] for k in META}
 for k,d in DESC.items(): PEP[k]=(PEP[k][0],d)+PEP[k][2:]
+for k in X:
+    X[k]['h1']=H1.get(k,X[k]['h1']); X[k].pop('str'+'aight',None)
+    fx=QUICKFIX.get(k,{}); X[k]['quick']=[next((v for lab,v in fx.items() if q.startswith(f'<strong>{lab}:')),q) for q in X[k]['quick']]
+    X[k]['faq']=[(q,FAQFIX.get((k,q),a)) for q,a in X[k]['faq']]
 for k,b in BOTTOM.items(): X[k]['quick']=[q for q in X[k]['quick'] if 'Bottom line' not in q]+[b]
 STATUS_CLASS=lambda bk:{"approved":"approved","research":"research","supplement":"supplement"}[bk]
-def straight(slug): return META[slug][3] or X[slug]["straight"]
 HOMECARDS=""; rows=""; gcards=""
 for slug,(name,desc,what,reg,ev,myths) in PEP.items():
     x=X[slug]; bk,bt=x["badge"]; cat,use,how,_=META[slug]
