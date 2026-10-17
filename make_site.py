@@ -20,7 +20,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=6">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=7">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>
@@ -110,6 +110,19 @@ for k in X:
 for k,b in BOTTOM.items(): X[k]['quick']=[q for q in X[k]['quick'] if 'Bottom line' not in q]+[b]
 LOWER={"Semaglutide","Tirzepatide","Retatrutide","Orforglipron","Tesamorelin"}
 QH={"collagen-peptides":("What are collagen peptides?","Are collagen peptides FDA-approved?"),"cjc-1295-ipamorelin":("What are CJC-1295 and ipamorelin?","Are CJC-1295 and ipamorelin FDA-approved?")}
+GLP1=["semaglutide","tirzepatide","retatrutide","orforglipron"]
+GLP1_DESC={'semaglutide': 'What is semaglutide (Ozempic, Wegovy, Rybelsus)? How it works, STEP 1 and SELECT results, FDA label dosing, side effects and FAQs.', 'tirzepatide': 'What is tirzepatide (Mounjaro, Zepbound)? How it works, how it beat semaglutide in SURMOUNT-5, FDA label dosing, side effects and FAQs.', 'retatrutide': "What is retatrutide? Lilly's triple-agonist shot hit up to −25% average weight change in TRIUMPH-1. Results, side effects, FDA status and FAQs.", 'orforglipron': "What is orforglipron (Foundayo)? Lilly's FDA-approved daily GLP-1 pill: how it works, ATTAIN-1 results, label dosing, side effects and FAQs."}
+GLP1_TITLE={'semaglutide': 'What is semaglutide? Ozempic & Wegovy results, dosing', 'tirzepatide': 'What is tirzepatide? Mounjaro & Zepbound results, dosing', 'retatrutide': 'What is retatrutide? Results, side effects & status', 'orforglipron': 'What is orforglipron (Foundayo)? The GLP-1 pill explained'}
+for k,d in GLP1_DESC.items(): PEP[k]=(PEP[k][0],d)+PEP[k][2:]
+def glp1_spot(R,h="h2"):
+    cards=""
+    for s in GLP1:
+        bk,bt=X[s]["badge"]; hot=s=="retatrutide"
+        cards+=f'<a class="pcard cat-weight glp1-card{" hot" if hot else ""}" href="{R}{s}.html" data-goatcounter-click="glp1-{s}">{'<span class="hot-tag">🔥 Hot right now</span>' if hot else ''}<span class="pbody"><strong class="pname">{PEP[s][0]}</strong><span class="badge {bk}">{bt}</span><span class="puse">{EXCITE[s][2]}</span><span class="glp1-go">Read the guide →</span></span></a>'
+    return f'<section class="wide glp1" aria-label="GLP-1 spotlight"><div class="glp1-in"><p class="kicker">Spotlight · weight loss</p><{h}>The GLP-1s everyone&#39;s talking about</{h}><p class="glp1-sub">The four biggest names in weight loss right now, from the drug that started it all to the triple-threat in trials.</p><div class="glp1-grid">{cards}</div><!--GLP1CMP:{R}--></div></section>'
+def glp1_compare(slug):
+    o="".join(f'<li><a href="{s}.html" data-goatcounter-click="compare-{slug}-{s}">{PEP[s][0]}</a></li>' for s in GLP1 if s!=slug)
+    return f'<nav class="related glp1-compare" aria-label="Compare the GLP-1s"><h2>Compare the GLP-1s</h2><ul>{o}</ul></nav>'
 STATUS_CLASS=lambda bk:{"approved":"approved","research":"research","supplement":"supplement"}[bk]
 HOMECARDS=""; rows=""; gcards=""
 for slug,(name,desc,what,reg,ev,myths) in PEP.items():
@@ -128,20 +141,20 @@ for slug,(name,desc,what,reg,ev,myths) in PEP.items():
       {"@type":"Article","headline":x["h1"],"description":desc,"url":url,"datePublished":"2026-10-16","dateModified":"2026-10-16","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}},
       {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":html.unescape(__import__('re').sub('<[^>]+>','',a))}} for q,a in x["faq"]]},
       {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Peptide guides","item":BASE+"/peptides/"},{"@type":"ListItem","position":3,"name":short,"item":url}]}]
-    pages[f"peptides/{slug}.html"]=(x["h1"]+" | Peptide Plainly",desc,f'''<article class="guide cat-{cat}"><p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Peptide guides</a> / {short}</p>
+    pages[f"peptides/{slug}.html"]=(GLP1_TITLE.get(slug,x["h1"]+" | Peptide Plainly"),desc,f'''<article class="guide cat-{cat}"><p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Peptide guides</a> / {short}</p>
 <header class="g-head"><span class="pic big">{icon(cat)}</span><div><p class="pcat">{CATS[cat]}</p><h1>{x["h1"]}</h1><p><span class="badge {bk}">{bt}</span> <span class="fine">Checked against official sources Oct 16, 2026</span></p></div></header>
 <aside class="excite" aria-label="Why people are excited"><p class="kicker">Why people are excited</p><p class="sa">{EXCITE[slug][0]}</p><ul>{"".join(f"<li>{h}</li>" for h in EXCITE[slug][1])}</ul></aside>
-<div class="quick"><h2>Quick facts</h2><ul>{"".join(f"<li>{q}</li>" for q in x["quick"])}</ul><p class="jump"><a href="#dosing">Dosing &amp; timing</a><a href="#evidence">Evidence</a><a href="#faq">FAQ</a></p></div>
+<div class="quick"><h2>Quick facts</h2><ul>{"".join(f"<li>{q}</li>" for q in x["quick"])}</ul><p class="jump"><a href="#dosing">Dosing &amp; timing</a><a href="#evidence">Evidence</a><a href="#faq">FAQ</a></p></div>{glp1_compare(slug) if slug in GLP1 else ""}
 <h2>{QH.get(slug,(f"What is {low}?",))[0]}</h2><p>{INTRO.get(slug,what)}</p><h2>{QH.get(slug,(0,f"Is {low} FDA-approved?"))[1]}</h2><p>{reg}</p>
 {x["dosing"]}
 <h2 id="evidence">What the research shows</h2><ul>{ev}</ul><p class="fine">New to these terms? See the <a href="../glossary.html">glossary</a>.</p>
 <h2 id="faq">{short} FAQ</h2>{faqh}{NOTE if bk=="research" else ""}{DISC}
-{f'<nav class="related" aria-label="Related guides"><h2>Same category</h2><ul>{rel}</ul></nav>' if rel else ''}
+{"" if slug in GLP1 else (f'<nav class="related" aria-label="Related guides"><h2>Same category</h2><ul>{rel}</ul></nav>' if rel else '')}
 <p class="fine">All guides: {others} · <a href="../peptides-101.html">Peptides 101</a> · <a href="../why-peptide-info-is-confusing.html">Why is peptide info so confusing?</a></p></article>''',schema)
 chips='<button type="button" class="chip" aria-pressed="true" data-f="all">All</button>'+"".join(f'<button type="button" class="chip" aria-pressed="false" data-f="{c}">{icon(c)}{l}</button>' for c,l in CATS.items())
 FILTERJS='<script>(function(){var b=document.querySelectorAll(".chip");b.forEach(function(x){x.addEventListener("click",function(){var f=x.dataset.f;b.forEach(function(y){y.setAttribute("aria-pressed",y===x)});document.querySelectorAll("[data-cat]").forEach(function(e){e.hidden=!(f==="all"||e.dataset.cat===f)})})})})();</script>'
 names=", ".join(v[0].split(" (")[0] for v in PEP.values())
-pages["peptides/index.html"]=("Peptide guides: semaglutide, tirzepatide, retatrutide, BPC-157 & more compared | Peptide Plainly",f"Compare popular peptides side by side: what each is for, FDA status, and how it's taken. Plain-English guides to {names}.",f'''<section class="wide"><p class="crumbs"><a href="../index.html">Home</a> / Peptide guides</p><h1>Find your peptide</h1><p class="lead">Weight loss, recovery, skin, growth hormone, longevity, focus: what each one does and how it's taken. Green means FDA-approved. Purple means research purposes only. Tap a category to filter.</p>
+pages["peptides/index.html"]=("Peptide guides: semaglutide, tirzepatide, retatrutide, BPC-157 & more compared | Peptide Plainly",f"Compare popular peptides side by side: what each is for, FDA status, and how it's taken. Plain-English guides to {names}.",f'''<section class="wide"><p class="crumbs"><a href="../index.html">Home</a> / Peptide guides</p><h1>Find your peptide</h1><p class="lead">Weight loss, recovery, skin, growth hormone, longevity, focus: what each one does and how it's taken. Green means FDA-approved. Purple means research purposes only. Tap a category to filter.</p></section>{glp1_spot("")}<section class="wide">
 <div class="chips" role="group" aria-label="Filter by category">{chips}</div>
 <div class="table-wrap"><table class="compare"><caption class="sr">Peptide comparison table</caption><thead><tr><th scope="col">Peptide</th><th scope="col">What it's for</th><th scope="col">Status (U.S.)</th><th scope="col">How it's taken</th></tr></thead><tbody>{rows}</tbody></table></div>
 <h2>Guides</h2><div class="cards">{gcards}</div></section>{DISC}{FILTERJS}''',[ORG,{"@type":"CollectionPage","name":"Peptide guides","url":BASE+"/peptides/","publisher":{"@id":BASE+"/#org"},"hasPart":[{"@type":"MedicalWebPage","name":X[s]["h1"],"url":f"{BASE}/peptides/{s}.html"} for s in PEP]}])
@@ -159,6 +172,7 @@ pages["index.html"]=("Peptide Plainly: peptides explained plainly | retatrutide,
 <p class="lead">Retatrutide, tirzepatide, BPC-157, GHK-Cu and more: the real results from the real studies, explained in plain English. Whether you're new, in the gym, or chasing longevity, start here.</p>
 <div class="hero-cta"><a class="btn" href="peptides/index.html">Find your peptide</a><a class="btn ghost" href="#signup">Get the Friday email</a></div></div>
 <div class="hero-art" aria-hidden="true"><svg viewBox="0 0 320 260" width="320" height="260"><g stroke="#1b1f24" stroke-width="3"><line x1="60" y1="70" x2="140" y2="110"/><line x1="140" y1="110" x2="110" y2="190"/><line x1="140" y1="110" x2="230" y2="80"/><line x1="230" y1="80" x2="260" y2="170"/><line x1="110" y1="190" x2="200" y2="215"/><line x1="200" y1="215" x2="260" y2="170"/></g><circle cx="60" cy="70" r="26" fill="#0f766e"/><circle cx="140" cy="110" r="30" fill="#e8b04b"/><circle cx="230" cy="80" r="22" fill="#c2410c"/><circle cx="110" cy="190" r="22" fill="#f3d9c4"/><circle cx="260" cy="170" r="28" fill="#0f766e"/><circle cx="200" cy="215" r="18" fill="#1b1f24"/><text x="140" y="117" text-anchor="middle" font-family="Fraunces,serif" font-weight="800" font-size="20" fill="#1b1f24">?</text></svg></div></section>
+{glp1_spot("peptides/")}
 <section class="rules" aria-label="How we work"><div><span class="rule-n">01</span><h3>Real results</h3><p>The biggest numbers from the actual trials, front and center.</p></div><div><span class="rule-n">02</span><h3>Every goal covered</h3><p>Weight loss, recovery, skin, growth hormone, longevity, focus.</p></div><div><span class="rule-n">03</span><h3>Sourced, so you can trust it</h3><p>Every claim links to the study or FDA label behind it.</p></div></section>
 <section class="wide"><div class="sec-head"><h2>The hottest peptides right now</h2><a href="peptides/index.html">Compare all {len(PEP)} →</a></div><div class="cards">{HOMECARDS}</div></section>
 <section class="wide two"><a class="tile" href="why-peptide-info-is-confusing.html"><h3>Tired of conflicting videos?</h3><p>Why advice clashes, and how to find the answer fast.</p></a><a class="tile" href="peptides-101.html"><h3>New here? Peptides 101</h3><p>Everything a beginner needs, in five minutes.</p></a><a class="tile" href="glossary.html"><h3>Glossary</h3><p>RCT, meta-analysis, placebo and the rest, in plain English.</p></a></section>
@@ -187,8 +201,13 @@ pages["advertise.html"]=("Advertise with Peptide Plainly: sponsor guides & newsl
 <p class="fine">Email not opening? Write to us at <strong>{ADV_EMAIL}</strong> with the subject "Sponsoring Peptide Plainly".</p></article>''',[ORG,{"@type":"WebPage","name":"Advertise with Peptide Plainly","url":BASE+"/advertise.html","description":"Sponsor Peptide Plainly's peptide guides and Friday newsletter.","publisher":{"@id":BASE+"/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in ADV_FAQ]}])
 t,d,b=pages["index.html"]
 pages["index.html"]=(t,d,b,[ORG,{"@type":"WebSite","name":"Peptide Plainly","url":BASE+"/","description":d,"publisher":{"@id":BASE+"/#org"}}])
+# "Compare all four GLP-1s" button: rendered only if Bean's comparison page exists at build time
+# (a pages["glp1-comparison.html"] entry in the generator, or a glp1-comparison.html file in the repo root).
+HAS_GLP1CMP="glp1-comparison.html" in pages or (P/"glp1-comparison.html").exists()
+import re as _re
+def _cmp(m): return f'<p class="glp1-cta"><a class="btn" href="{"../" if m.group(1)=="" else ""}glp1-comparison.html" data-goatcounter-click="glp1-compare">Compare all four GLP-1s →</a></p>' if HAS_GLP1CMP else ""
 for path,v in pages.items():
-    (P/path).parent.mkdir(exist_ok=True); (P/path).write_text(page(path,*v))
+    (P/path).parent.mkdir(exist_ok=True); (P/path).write_text(_re.sub(r'<!--GLP1CMP:([^>]*)-->',_cmp,page(path,*v)))
 import datetime;LASTMOD=datetime.date.today().isoformat()
 (P/"404.html").write_text(page("404.html","Page not found | Peptide Plainly","That page doesn't exist, but the peptide guides do. Find your peptide or get the free Friday newsletter.",f'''<article class="issue"><p class="eyebrow">404</p><h1>That page took a rest day.</h1>
 <p class="lead">Peptides, plainly. No BS. This link doesn't go anywhere, but everything good is one click away.</p>
@@ -203,6 +222,7 @@ ab=(P/"about_body.html").read_text()
 (P/"about.html").write_text(page("about.html","About Peptide Plainly & medical disclaimer","About Peptide Plainly: how we summarize peptide research from PubMed, plus our full medical disclaimer.",ab))
 
 LL=["# Peptide Plainly","","> Friendly, plain-English explanations of peptide research, plus a free newsletter every Friday. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.","","## Start here",f"- [Peptides 101]({BASE}/peptides-101.html): what peptides are, approved vs research-only, reading studies",f"- [Why is peptide info so confusing?]({BASE}/why-peptide-info-is-confusing.html)",f"- [Glossary]({BASE}/glossary.html)","","## Peptide guides (why people are excited, quick facts, dosing & timing, evidence, FAQ)"]
+LL[LL.index("## Start here"):LL.index("## Start here")]=["## Featured: the GLP-1 weight-loss guides","Our most popular guides. Retatrutide is the hottest one right now."]+[f"- [{GLP1_TITLE[s]}]({BASE}/peptides/{s}.html): {X[s]['badge'][1]}. {PEP[s][1]}" for s in GLP1]+[""]
 for slug,(name,desc,*_) in PEP.items(): LL.append(f"- [{X[slug]['h1']}]({BASE}/peptides/{slug}.html): {X[slug]['badge'][1]}. {desc}")
 LL+=["","## Newsletter (free, every Friday)"]+[f"- [Issue #{int(i.split('-')[1][:3])}]({BASE}/{i})" for i in ISSUES]+["- Subscribe: https://peptideplainly.beehiiv.com/subscribe","",f"## About\n- [About & medical disclaimer]({BASE}/about.html)",f"- [Advertise with us]({BASE}/advertise.html): sponsor the guides or the Friday newsletter (lab-tested vendors only, always labeled Sponsored)"]
 (P/"llms.txt").write_text("\n".join(LL)+"\n")
