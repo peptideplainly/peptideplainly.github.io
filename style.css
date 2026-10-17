@@ -103,3 +103,4 @@ footer{color:var(--muted);font-size:.9rem;padding:30px 20px}.foot-in{max-width:1
 @media (max-width:980px){.glp1-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.glp1-grid{grid-template-columns:1fr}.glp1-in{padding:18px;box-shadow:4px 4px 0 var(--accent)}.glp1-card.hot{margin-top:6px}}
 .glp1-cta{margin:16px 0 0}
+.nl-cta{margin:28px 0 8px;padding:20px;border:2px solid var(--ink);border-radius:var(--r);background:var(--card);box-shadow:4px 4px 0 var(--accent)}.nl-cta h2{margin-top:0}

@@ -1,7 +1,7 @@
 """Generate static pages. Run: python3 site.py"""
 import pathlib,html
 P=pathlib.Path(__file__).parent; BASE="https://peptideplainly.com"  # placeholder domain
-NAV=[("peptides/index.html","Peptide guides"),("peptides-101.html","Peptides 101"),("glossary.html","Glossary"),("about.html","About"),("advertise.html","Advertise")]
+NAV=[("peptides/index.html","Peptide guides"),("peptides-101.html","Peptides 101"),("glossary.html","Glossary"),("newsletter.html","Newsletter"),("about.html","About"),("advertise.html","Advertise")]
 EMBED='<div class="bh-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="a82b15dd-c14b-4719-8c4a-a19f32016cdc"></script></div><p class="fine sub-fallback">Form not loading? <a href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Subscribe here</a>.</p>'
 ATTR='<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
 def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>, PMID {i}'
@@ -20,15 +20,51 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/preview.png">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=7">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=8">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>
 <section class="cta-band" id="signup"><div class="cta-in"><p class="kicker">Every Friday · free</p><h2>The week's biggest peptide news. Five minutes. Free.</h2><p>New results, new compounds, explained plainly every Friday.</p>
 {EMBED}</div></section>
-<footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}index.html#archive">Newsletter archive</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}about.html">About &amp; disclaimer</a> · <a href="{root}advertise.html">Advertise</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
+<footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}newsletter.html">This week&#39;s issue</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}about.html">About &amp; disclaimer</a> · <a href="{root}advertise.html">Advertise</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
 DISC='<p class="disclaimer"><strong>Not medical advice.</strong> Education only. We don\'t sell anything or tell you what to take. Label doses are there so you can follow along with your prescriber. Talk to a licensed clinician about your health.</p>'
 pages={}
+# ---- Newsletter: only the newest SENT issue is published, at /newsletter.html ----
+# An issue is published only if issues/issue-NNN.md starts with front matter containing `sent: true`:
+#   ---
+#   sent: true
+#   headline: One-line teaser for the home page (optional)
+#   ---
+# Unmarked issues are skipped entirely: no HTML, not "newest", not in sitemap or llms.txt.
+import markdown as _md, re as _r2, datetime as _dt
+def _issue(p):
+    t=p.read_text(); fm={}
+    m=_r2.match(r"---\s*\n(.*?)\n---\s*\n",t,_r2.S)
+    if m:
+        for ln in m.group(1).splitlines():
+            if ":" in ln: k,v=ln.split(":",1); fm[k.strip().lower()]=v.strip().strip('"')
+        t=t[m.end():]
+    n=int(p.stem.split("-")[1]); dm=_r2.search(r"Week of ([A-Z][a-z]+ \d{1,2}, \d{4})",t)
+    date=dm.group(1) if dm else ""
+    heads=_r2.findall(r"^## (.+)$",t,_r2.M)
+    return dict(n=n,stem=p.stem,md=t,sent=fm.get("sent","").lower()=="true" or fm.get("status","").lower()=="sent",date=date,
+        iso=_dt.datetime.strptime(date,"%B %d, %Y").date().isoformat() if date else "",
+        headline=fm.get("headline") or (heads[0].split(". ",1)[-1] if heads else f"Issue #{n}"),count=len(heads))
+ALL_ISSUES=sorted((_issue(p) for p in (P/"issues").glob("issue-*.md")),key=lambda i:i["n"])
+SENT=[i for i in ALL_ISSUES if i["sent"]]
+CUR=SENT[-1] if SENT else None
+if CUR:
+    _body=_md.markdown(CUR["md"],extensions=["extra","nl2br"])
+    _body=_r2.sub(r"<h1>.*?</h1>","",_body,count=1,flags=_r2.S)
+    _d=f"Issue #{CUR['n']} of Peptide Plainly"+(f", week of {CUR['date']}" if CUR['date'] else "")+f": {CUR['count']} new peptide studies, explained plainly. New issue every Friday."
+    _eb="This week's issue · Issue #"+str(CUR["n"])+(" · "+CUR["date"] if CUR["date"] else "")
+    pages["newsletter.html"]=("This week's issue: Peptide Plainly newsletter",_d[:155],
+     f'''<article class="issue"><p class="eyebrow">{_eb}</p><h1>This week's issue</h1>{_body}
+<div class="nl-cta"><h2>Get next Friday's issue in your inbox</h2><p>Free, five minutes, every Friday.</p><p><a class="btn" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-newsletter-page" rel="noopener">Get next Friday's issue</a></p></div></article>''',
+     [ORG,{"@type":"Article","headline":f"Peptide Plainly Issue #{CUR['n']}","url":BASE+"/newsletter.html","datePublished":CUR["iso"],"author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}}])
+    HOME_ISSUE=f'<a class="row-link" href="newsletter.html"><span class="issue-n">#{CUR["n"]}</span><span><strong>{html.escape(CUR["headline"])}</strong><br><span class="fine">{CUR["date"]} · {CUR["count"]} studies</span></span></a>'
+else:
+    HOME_ISSUE='<p>The first issue lands Friday. <a href="#signup">Get it in your inbox</a>.</p>'
 pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Peptide Plainly","What are peptides? A plain-English beginner's guide: approved medicines vs research-only compounds, how to read a study, and how to pick a quality source.",f'''<article class="issue">
 <p class="eyebrow">Beginner's guide</p><h1>Peptides 101</h1><p class="lead">Welcome! If peptide videos have left you more confused than when you started, you're in the right place. Here's everything you need, in about five minutes.</p>
 <h2>What is a peptide?</h2><p>A peptide is a short chain of <strong>amino acids</strong>, the same building blocks that make up proteins. Long chains are called proteins and short ones are called peptides. Your body makes thousands of them, and many act as messengers. <strong>Insulin</strong>, for example, is a peptide hormone that helps control blood sugar.</p>
@@ -52,7 +88,7 @@ pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Pept
 <li><strong>Know the study type.</strong> Human trials, animal studies and lab work each tell you something different.</li>
 <li><strong>Transparent sellers.</strong> Real contact details, clear policies, and honest disclosure of affiliate links.</li>
 <li><strong>For prescription drugs,</strong> go through a licensed prescriber and pharmacy.</li></ul>
-<h2>Where to go next</h2><p>Read our plain-English <a href="peptides/index.html">guides to popular peptides</a>, or browse the <a href="index.html#archive">newsletter archive</a>.</p>{DISC}</article>''')
+<h2>Where to go next</h2><p>Read our plain-English <a href="peptides/index.html">guides to popular peptides</a>, or read <a href="newsletter.html">this week&#39;s issue</a>.</p>{DISC}</article>''')
 G=[("Abstract","A short summary at the top of a research paper."),("Amino acid","A building block of proteins and peptides. There are 20 standard ones."),("Animal study","Research done in animals, often mice or rats. Results often don't carry over to humans."),("Bias","Anything that systematically skews a study's results away from the truth."),("Case report","A description of one patient or a few patients. Useful for ideas, weak as evidence."),("Clinical trial","A study that tests a treatment in people."),("Cohort study","An observational study that follows groups of people over time. It can show links but not cause and effect."),("Confidence interval (CI)","The range the true effect probably falls in. Narrow is more precise."),("Control group","Participants who don't get the treatment, used for comparison."),("Double-blind","Neither participants nor researchers know who got the real treatment."),("FDA","U.S. Food and Drug Administration, which approves medicines in the U.S."),("GLP-1","A natural gut hormone (glucagon-like peptide-1) involved in appetite and blood sugar. Semaglutide mimics it."),("GLP-1 receptor agonist","A drug that activates the GLP-1 receptor, such as semaglutide."),("Hazard ratio (HR)","Compares how often an event happens in two groups. Below 1 means less often in the treatment group."),("In vitro","Done in cells or tissue in a lab, not in a living body."),("Meta-analysis","A study that statistically combines the results of many earlier studies."),("Observational study","Researchers watch what happens without assigning treatments."),("Peptide","A short chain of amino acids."),("Pilot study","A small, early study to test whether a bigger one is feasible."),("Placebo","An inactive dummy treatment used for comparison."),("PMID","PubMed ID, a unique number for each paper on PubMed."),("PubMed","A free database of medical research run by the U.S. National Library of Medicine."),("Randomized controlled trial (RCT)","Participants are randomly assigned to a treatment or a control. The gold standard for testing treatments."),("Research chemical","A compound sold for lab research, not approved for human use."),("Retrospective study","Looks back at existing records rather than following people forward."),("Systematic review","A structured review of all studies on a question, following a set method."),("WADA","World Anti-Doping Agency, which maintains the list of substances banned in sport.")]
 pages["glossary.html"]=("Peptide research glossary: plain-English definitions | Peptide Plainly","Plain-English definitions of peptide and research terms: RCT, meta-analysis, placebo, hazard ratio, GLP-1, PMID and more.",'<article class="issue"><p class="eyebrow">Reference</p><h1>Glossary</h1><p class="lead">Research terms, translated into plain English.</p><dl class="gloss">'+"".join(f'<dt id="{t.split()[0].lower()}">{t}</dt><dd>{d}</dd>' for t,d in G)+'</dl><p>Ready to use them? Try <a href="peptides-101.html">Peptides 101</a>.</p>'+DISC+'</article>')
 PEP={
@@ -177,8 +213,8 @@ pages["index.html"]=("Peptide Plainly: peptides explained plainly | retatrutide,
 <section class="rules" aria-label="How we work"><div><span class="rule-n">01</span><h3>Real results</h3><p>The biggest numbers from the actual trials, front and center.</p></div><div><span class="rule-n">02</span><h3>Every goal covered</h3><p>Weight loss, recovery, skin, growth hormone, longevity, focus.</p></div><div><span class="rule-n">03</span><h3>Sourced, so you can trust it</h3><p>Every claim links to the study or FDA label behind it.</p></div></section>
 <section class="wide"><div class="sec-head"><h2>The hottest peptides right now</h2><a href="peptides/index.html">Compare all {len(PEP)} →</a></div><div class="cards">{HOMECARDS}</div></section>
 <section class="wide two"><a class="tile" href="why-peptide-info-is-confusing.html"><h3>Tired of conflicting videos?</h3><p>Why advice clashes, and how to find the answer fast.</p></a><a class="tile" href="peptides-101.html"><h3>New here? Peptides 101</h3><p>Everything a beginner needs, in five minutes.</p></a><a class="tile" href="glossary.html"><h3>Glossary</h3><p>RCT, meta-analysis, placebo and the rest, in plain English.</p></a></section>
-<section id="archive"><h2>Newsletter archive</h2>
-<a class="row-link" href="issues/issue-001.html"><span class="issue-n">#1</span><span><strong>BPC-157's first human evidence, tirzepatide vs. semaglutide, and more</strong><br><span class="fine">October 16, 2026 · 5 studies</span></span></a></section>{DISC}''')
+<section id="this-week"><h2>This week's issue</h2>
+{HOME_ISSUE}</section>{DISC}''')
 from urllib.parse import quote as _q
 ADV_EMAIL="teganjmcnealy@gmail.com"
 ADV_BODY="Hi Peptide Plainly team,\n\nBrand:\nWebsite:\nProduct to promote:\nPlacement interest (site, newsletter, or both):\nPreferred dates:\n\nThanks!"
@@ -215,9 +251,15 @@ import datetime;LASTMOD=datetime.date.today().isoformat()
 <p class="lead">Peptides, plainly. No BS. This link doesn't go anywhere, but everything good is one click away.</p>
 <div class="hero-cta"><a class="btn" href="/peptides/">Browse all {len(PEP)} peptide guides</a><a class="btn ghost" href="#signup">Get the Friday email</a></div>
 <h2>Popular guides</h2><ul>{"".join(f'<li><a href="/peptides/{s}.html">{PEP[s][0]}</a></li>' for s in list(PEP)[:6])}</ul>
-<h2>Or start here</h2><ul><li><a href="/peptides-101.html">Peptides 101</a>, everything a beginner needs in five minutes</li><li><a href="/glossary.html">Glossary</a></li><li><a href="/index.html#archive">Newsletter archive</a></li><li><a href="/">Home</a></li></ul></article>''',root="/",robots="noindex"))
-ISSUES=sorted(p.relative_to(P).as_posix() for p in (P/"issues").glob("issue-*.html"))
-urls=list(pages)+["about.html"]+ISSUES
+<h2>Or start here</h2><ul><li><a href="/peptides-101.html">Peptides 101</a>, everything a beginner needs in five minutes</li><li><a href="/glossary.html">Glossary</a></li><li><a href="/newsletter.html">This week&#39;s issue</a></li><li><a href="/">Home</a></li></ul></article>''',root="/",robots="noindex"))
+# Every sent issue URL is a tiny noindex redirect stub to /newsletter.html (so old links never 404).
+# Issue HTML for unsent or deleted .md files is removed so nothing goes live early.
+_stub='<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Peptide Plainly newsletter</title><meta name="robots" content="noindex"><link rel="canonical" href="'+BASE+'/newsletter.html"><meta http-equiv="refresh" content="0; url=../newsletter.html"></head><body><p>This issue has moved. <a href="../newsletter.html">Read this week&#39;s issue</a>.</p></body></html>\n'
+_sent={i["stem"] for i in SENT}
+for h in (P/"issues").glob("issue-*.html"):
+    if h.stem not in _sent: h.unlink()
+for st in _sent: (P/"issues"/f"{st}.html").write_text(_stub)
+urls=list(pages)+["about.html"]
 (P/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n".replace("/index.html","/") for u in urls)+"</urlset>\n")
 (P/"robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 ab=(P/"about_body.html").read_text()
@@ -226,5 +268,5 @@ ab=(P/"about_body.html").read_text()
 LL=["# Peptide Plainly","","> Friendly, plain-English explanations of peptide research, plus a free newsletter every Friday. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.","","## Start here",f"- [Peptides 101]({BASE}/peptides-101.html): what peptides are, approved vs research-only, reading studies",f"- [Why is peptide info so confusing?]({BASE}/why-peptide-info-is-confusing.html)",f"- [Glossary]({BASE}/glossary.html)","","## Peptide guides (why people are excited, quick facts, dosing & timing, evidence, FAQ)"]
 LL[LL.index("## Start here"):LL.index("## Start here")]=["## Featured: the GLP-1 weight-loss guides","Our most popular guides. Retatrutide is the hottest one right now."]+[f"- [{glp1cmp.TITLE}]({BASE}/glp1-comparison.html): {glp1cmp.DESC}"]+[f"- [{GLP1_TITLE[s]}]({BASE}/peptides/{s}.html): {X[s]['badge'][1]}. {PEP[s][1]}" for s in GLP1]+[""]
 for slug,(name,desc,*_) in PEP.items(): LL.append(f"- [{X[slug]['h1']}]({BASE}/peptides/{slug}.html): {X[slug]['badge'][1]}. {desc}")
-LL+=["","## Newsletter (free, every Friday)"]+[f"- [Issue #{int(i.split('-')[1][:3])}]({BASE}/{i})" for i in ISSUES]+["- Subscribe: https://peptideplainly.beehiiv.com/subscribe","",f"## About\n- [About & medical disclaimer]({BASE}/about.html)",f"- [Advertise with us]({BASE}/advertise.html): sponsor the guides or the Friday newsletter (lab-tested vendors only, always labeled Sponsored)"]
+LL+=["","## Newsletter (free, every Friday)"]+([f"- [This week's issue]({BASE}/newsletter.html): Issue #{CUR['n']}, {CUR['date']}"] if CUR else [])+["- Subscribe: https://peptideplainly.beehiiv.com/subscribe","",f"## About\n- [About & medical disclaimer]({BASE}/about.html)",f"- [Advertise with us]({BASE}/advertise.html): sponsor the guides or the Friday newsletter (lab-tested vendors only, always labeled Sponsored)"]
 (P/"llms.txt").write_text("\n".join(LL)+"\n")

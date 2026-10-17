@@ -1,3 +1,7 @@
+---
+sent: true
+headline: BPC-157's first human evidence, tirzepatide vs. semaglutide, and more
+---
 # Peptide Plainly — Issue #1
 *Week of October 16, 2026 · Five new peptide studies, in plain language*
 
