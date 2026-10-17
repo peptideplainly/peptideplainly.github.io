@@ -10,13 +10,15 @@ ORG={'@type':'Organization','@id':BASE+'/#org','name':'Peptide Plainly','url':BA
 def ld(objs): return ''.join('<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org',**o},ensure_ascii=False)+'</script>' for o in objs)
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700&display=swap">'
 LOGO='<svg class="logo" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><circle cx="9" cy="20" r="6" fill="#0f766e"/><circle cx="20" cy="20" r="6" fill="#e8b04b"/><circle cx="31" cy="20" r="6" fill="#c2410c"/></svg>'
-def page(path,title,desc,body,schema=()):
-    root="../"*path.count("/")
+def page(path,title,desc,body,schema=(),root=None,robots=""):
+    """Shared layout for every page: header nav (incl. Advertise), signup band, footer, GoatCounter.
+    root: link prefix; pass "/" for pages served at arbitrary URLs (404.html)."""
+    root="../"*path.count("/") if root is None else root
     cur=path
     nav="".join(f'<a href="{root}{h}"'+(' aria-current="page"' if h==cur else '')+f'>{t}</a>' for h,t in NAV)
     url=f"{BASE}/{path}".replace("/index.html","/")
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">
+<title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image">
 {FONTS}<link rel="stylesheet" href="{root}style.css?v=6">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
@@ -175,13 +177,19 @@ pages["index.html"]=(t,d,b,[ORG,{"@type":"WebSite","name":"Peptide Plainly","url
 for path,v in pages.items():
     (P/path).parent.mkdir(exist_ok=True); (P/path).write_text(page(path,*v))
 import datetime;LASTMOD=datetime.date.today().isoformat()
-urls=list(pages)+["about.html","issues/issue-001.html"]
+(P/"404.html").write_text(page("404.html","Page not found | Peptide Plainly","That page doesn't exist, but the peptide guides do. Find your peptide or get the free Friday newsletter.",f'''<article class="issue"><p class="eyebrow">404</p><h1>That page took a rest day.</h1>
+<p class="lead">Peptides, plainly. No BS. This link doesn't go anywhere, but everything good is one click away.</p>
+<div class="hero-cta"><a class="btn" href="/peptides/">Browse all {len(PEP)} peptide guides</a><a class="btn ghost" href="#signup">Get the Friday email</a></div>
+<h2>Popular guides</h2><ul>{"".join(f'<li><a href="/peptides/{s}.html">{PEP[s][0]}</a></li>' for s in list(PEP)[:6])}</ul>
+<h2>Or start here</h2><ul><li><a href="/peptides-101.html">Peptides 101</a>, everything a beginner needs in five minutes</li><li><a href="/glossary.html">Glossary</a></li><li><a href="/index.html#archive">Newsletter archive</a></li><li><a href="/">Home</a></li></ul></article>''',root="/",robots="noindex"))
+ISSUES=sorted(p.relative_to(P).as_posix() for p in (P/"issues").glob("issue-*.html"))
+urls=list(pages)+["about.html"]+ISSUES
 (P/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n".replace("/index.html","/") for u in urls)+"</urlset>\n")
 (P/"robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 ab=(P/"about_body.html").read_text()
 (P/"about.html").write_text(page("about.html","About Peptide Plainly & medical disclaimer","About Peptide Plainly: how we summarize peptide research from PubMed, plus our full medical disclaimer.",ab))
 
-LL=["# Peptide Plainly","","> Friendly, plain-English explanations of peptide research, plus a free weekly newsletter. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.","","## Start here",f"- [Peptides 101]({BASE}/peptides-101.html): what peptides are, approved vs research-only, reading studies",f"- [Why is peptide info so confusing?]({BASE}/why-peptide-info-is-confusing.html)",f"- [Glossary]({BASE}/glossary.html)","","## Peptide guides (why people are excited, quick facts, dosing & timing, evidence, FAQ)"]
+LL=["# Peptide Plainly","","> Friendly, plain-English explanations of peptide research, plus a free newsletter every Friday. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.","","## Start here",f"- [Peptides 101]({BASE}/peptides-101.html): what peptides are, approved vs research-only, reading studies",f"- [Why is peptide info so confusing?]({BASE}/why-peptide-info-is-confusing.html)",f"- [Glossary]({BASE}/glossary.html)","","## Peptide guides (why people are excited, quick facts, dosing & timing, evidence, FAQ)"]
 for slug,(name,desc,*_) in PEP.items(): LL.append(f"- [{X[slug]['h1']}]({BASE}/peptides/{slug}.html): {X[slug]['badge'][1]}. {desc}")
-LL+=["","## Newsletter",f"- [Issue #1]({BASE}/issues/issue-001.html)","- Subscribe: https://peptideplainly.beehiiv.com/subscribe","",f"## About\n- [About & medical disclaimer]({BASE}/about.html)"]
+LL+=["","## Newsletter (free, every Friday)"]+[f"- [Issue #{int(i.split('-')[1][:3])}]({BASE}/{i})" for i in ISSUES]+["- Subscribe: https://peptideplainly.beehiiv.com/subscribe","",f"## About\n- [About & medical disclaimer]({BASE}/about.html)",f"- [Advertise with us]({BASE}/advertise.html): sponsor the guides or the Friday newsletter (lab-tested vendors only, always labeled Sponsored)"]
 (P/"llms.txt").write_text("\n".join(LL)+"\n")

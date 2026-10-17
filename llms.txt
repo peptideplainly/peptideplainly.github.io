@@ -1,6 +1,6 @@
 # Peptide Plainly
 
-> Friendly, plain-English explanations of peptide research, plus a free weekly newsletter. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.
+> Friendly, plain-English explanations of peptide research, plus a free newsletter every Friday. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.
 
 ## Start here
 - [Peptides 101](https://peptideplainly.com/peptides-101.html): what peptides are, approved vs research-only, reading studies
@@ -22,9 +22,10 @@
 - [Semax: the nasal brain peptide, benefits & research](https://peptideplainly.com/peptides/semax.html): Research purposes only. What is Semax? Plain-English guide to the nasal brain peptide: the research on BDNF and stroke recovery, status, and FAQs.
 - [PT-141 (bremelanotide, Vyleesi): benefits, results & how to take it](https://peptideplainly.com/peptides/pt-141.html): FDA-approved (as Vyleesi). What is PT-141 (bremelanotide, Vyleesi)? Plain-English guide: FDA label use and dosing, trial results, side effects, and how 'research PT-141' differs.
 
-## Newsletter
+## Newsletter (free, every Friday)
 - [Issue #1](https://peptideplainly.com/issues/issue-001.html)
 - Subscribe: https://peptideplainly.beehiiv.com/subscribe
 
 ## About
 - [About & medical disclaimer](https://peptideplainly.com/about.html)
+- [Advertise with us](https://peptideplainly.com/advertise.html): sponsor the guides or the Friday newsletter (lab-tested vendors only, always labeled Sponsored)
