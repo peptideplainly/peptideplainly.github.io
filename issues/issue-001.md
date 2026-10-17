@@ -1,7 +1,7 @@
 # Peptide Plainly — Issue #1
 *Week of October 16, 2026 · Five new peptide studies, in plain language*
 
-> **Not medical advice. Research summary only.** Peptide Plainly summarizes published research abstracts for general education. We are not doctors, we do not recommend any product, dose, or treatment, and nothing here should guide health decisions. Many peptides discussed in research are not approved for human use. Talk to a licensed clinician about your own health.
+> *Education only, not medical advice. Every summary links to the study so you can check it yourself.*
 
 Each summary is based **only on the study's published abstract**. We haven't read the full papers, so details may be missing.
 
@@ -13,9 +13,9 @@ Each summary is based **only on the study's published abstract**. We haven't rea
 
 **What they studied:** BPC-157 is a synthetic peptide popular with athletes for injury recovery. It isn't approved for human use. The researchers searched major databases up to June 2026 for any human studies of it.
 
-**What they found:** They found only three small studies: knee injections (16 people), bladder instillation for interstitial cystitis (12 people), and an IV safety pilot (2 people). All three reported that most participants' symptoms improved, with no treatment-related side effects. But all three were rated poor quality, and the overall certainty of evidence was rated **very low**.
+**What they found:** They found three small studies: knee injections (16 people), bladder instillation for interstitial cystitis (12 people), and an IV safety pilot (2 people). All three reported that most participants' symptoms improved, with no treatment-related side effects. The studies are small and early, so the authors rated the certainty of evidence **very low** for now.
 
-**Why it matters:** BPC-157 gets a lot of online hype. This review shows how thin the human evidence is. The authors concluded it should not be used clinically outside of regulated, high-quality trials.
+**Why it matters:** BPC-157 is one of the most talked-about recovery peptides, and the first human results are encouraging. This review shows where the evidence stands today: small and early. The authors want proper, regulated clinical trials next.
 
 **Limitations:** Very few participants, no control groups, retrospective designs, and a high risk of bias.
 
