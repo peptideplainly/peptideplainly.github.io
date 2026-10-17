@@ -2,7 +2,7 @@
 import pathlib,html
 P=pathlib.Path(__file__).parent; BASE="https://peptideplainly.com"  # placeholder domain
 NAV=[("peptides/index.html","Peptide guides"),("peptides-101.html","Peptides 101"),("glossary.html","Glossary"),("about.html","About")]
-EMBED='<div class="bh-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="a82b15dd-c14b-4719-8c4a-a19f32016cdc"></script></div><p class="fine sub-fallback">Form not loading? <a href="https://peptideplainly.beehiiv.com/subscribe" rel="noopener">Subscribe here</a>.</p>'
+EMBED='<div class="bh-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="a82b15dd-c14b-4719-8c4a-a19f32016cdc"></script></div><p class="fine sub-fallback">Form not loading? <a href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Subscribe here</a>.</p>'
 ATTR='<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
 def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>, PMID {i}'
 import json
@@ -18,9 +18,9 @@ def page(path,title,desc,body,schema=()):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/preview.png"><meta name="twitter:card" content="summary_large_image">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=5">{ld(schema)}</head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=5">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" rel="noopener">Get the email</a></nav></div></header>
+<header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the email</a></nav></div></header>
 <main id="main">{body}</main>
 <section class="cta-band" id="signup"><div class="cta-in"><p class="kicker">Every Friday · free</p><h2>The week's biggest peptide news. Five minutes. Free.</h2><p>New results, new compounds, explained plainly every Friday.</p>
 {EMBED}</div></section>
@@ -148,7 +148,7 @@ pages["why-peptide-info-is-confusing.html"]=("Why is peptide info so confusing? 
 <h2>3. Dose numbers get copied without sources</h2><p>For approved drugs, the official dose schedule is on the FDA label, and we link it. For research-only peptides there is no established human dose, so numbers online usually trace back to animal studies or personal anecdotes.</p>
 <h2>4. Money shapes the message</h2><p>Some "educators" also sell products or earn affiliate commissions. That doesn't make them wrong, but it's worth knowing.</p>
 <h2>5. The science really is still moving</h2><p>Regulations and evidence change, and in 2026 they changed for several peptides. We date-stamp our pages and link official sources.</p>
-<h2>How to get clear answers</h2><ul><li>Start with our <a href="peptides-101.html">Peptides 101</a> guide.</li><li>Check the "Why people are excited" box and the source link on every claim.</li><li>Bring your questions to a clinician you trust.</li><li>Get the <a href="https://peptideplainly.beehiiv.com/subscribe">weekly newsletter</a> for new research, explained plainly.</li></ul>{DISC}</article>''',[ORG,{"@type":"Article","headline":"Why is peptide info so confusing?","url":BASE+"/why-peptide-info-is-confusing.html","datePublished":"2026-10-16","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}}])
+<h2>How to get clear answers</h2><ul><li>Start with our <a href="peptides-101.html">Peptides 101</a> guide.</li><li>Check the "Why people are excited" box and the source link on every claim.</li><li>Bring your questions to a clinician you trust.</li><li>Get the <a href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta">weekly newsletter</a> for new research, explained plainly.</li></ul>{DISC}</article>''',[ORG,{"@type":"Article","headline":"Why is peptide info so confusing?","url":BASE+"/why-peptide-info-is-confusing.html","datePublished":"2026-10-16","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}}])
 pages["index.html"]=("Peptide Plainly: peptides explained plainly | retatrutide, tirzepatide, BPC-157 & more","The real results behind today's hottest peptides, from weight loss to recovery, skin and longevity. Sourced, plain-English guides plus a free weekly email.",f'''
 <section class="hero"><div class="hero-txt"><p class="kicker">Peptides, plainly. No BS.</p>
 <h1>Lose the weight. Heal faster. Glow up. <span class="hl">Know what actually works.</span></h1>
