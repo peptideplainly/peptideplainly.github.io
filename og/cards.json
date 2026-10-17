@@ -1,0 +1,155 @@
+{
+ "peptides/semaglutide.html": {
+  "card": "semaglutide",
+  "kicker": "Weight & metabolism",
+  "title": "Semaglutide",
+  "sub": "The GLP-1 that started it all. Big weight loss, heart protection too.",
+  "badge": "approved",
+  "badge_t": "FDA-approved",
+  "hot": false
+ },
+ "peptides/tirzepatide.html": {
+  "card": "tirzepatide",
+  "kicker": "Weight & metabolism",
+  "title": "Tirzepatide",
+  "sub": "Two receptors, one weekly shot. Beat semaglutide head-to-head.",
+  "badge": "approved",
+  "badge_t": "FDA-approved",
+  "hot": false
+ },
+ "peptides/retatrutide.html": {
+  "card": "retatrutide",
+  "kicker": "Weight & metabolism",
+  "title": "Retatrutide",
+  "sub": "Three receptors. Up to −25% average weight in Phase 3.",
+  "badge": "research",
+  "badge_t": "Research purposes only (investigational)",
+  "hot": true
+ },
+ "peptides/orforglipron.html": {
+  "card": "orforglipron",
+  "kicker": "Weight & metabolism",
+  "title": "Orforglipron (Foundayo)",
+  "sub": "The new daily weight-loss pill. No needles, no food timing.",
+  "badge": "approved",
+  "badge_t": "FDA-approved",
+  "hot": false
+ },
+ "peptides/bpc-157.html": {
+  "card": "bpc-157",
+  "kicker": "Healing & recovery",
+  "title": "BPC-157",
+  "sub": "The recovery peptide the gym world can't stop talking about.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/tb-500.html": {
+  "card": "tb-500",
+  "kicker": "Healing & recovery",
+  "title": "TB-500 (thymosin beta-4)",
+  "sub": "Built on thymosin beta-4, the body's own repair protein.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/ghk-cu.html": {
+  "card": "ghk-cu",
+  "kicker": "Skin",
+  "title": "GHK-Cu (copper peptide)",
+  "sub": "The copper peptide in your favorite serums. Collagen support.",
+  "badge": "research",
+  "badge_t": "Research purposes only (injectable)",
+  "hot": false
+ },
+ "peptides/collagen-peptides.html": {
+  "card": "collagen-peptides",
+  "kicker": "Skin",
+  "title": "Collagen peptides",
+  "sub": "Real trial results for skin. Just a scoop a day.",
+  "badge": "supplement",
+  "badge_t": "Dietary supplement",
+  "hot": false
+ },
+ "peptides/tesamorelin.html": {
+  "card": "tesamorelin",
+  "kicker": "Growth hormone",
+  "title": "Tesamorelin (Egrifta)",
+  "sub": "FDA-approved GHRH that targets deep belly fat.",
+  "badge": "approved",
+  "badge_t": "FDA-approved (HIV lipodystrophy only)",
+  "hot": false
+ },
+ "peptides/cjc-1295-ipamorelin.html": {
+  "card": "cjc-1295-ipamorelin",
+  "kicker": "Growth hormone",
+  "title": "CJC-1295 & ipamorelin",
+  "sub": "The famous GH stack. CJC-1295 raised GH up to 10× in studies.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/mots-c.html": {
+  "card": "mots-c",
+  "kicker": "Longevity",
+  "title": "MOTS-c",
+  "sub": "Mitochondrial peptide nicknamed \"exercise in a vial.\"",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/semax.html": {
+  "card": "semax",
+  "kicker": "Brain & focus",
+  "title": "Semax",
+  "sub": "Nasal-spray peptide studied for brain recovery and BDNF.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/pt-141.html": {
+  "card": "pt-141",
+  "kicker": "Sexual health",
+  "title": "PT-141 (bremelanotide, Vyleesi)",
+  "sub": "FDA-approved, as-needed. Works on desire in the brain.",
+  "badge": "approved",
+  "badge_t": "FDA-approved (as Vyleesi)",
+  "hot": false
+ },
+ "glp1-comparison.html": {
+  "card": "glp1-comparison",
+  "kicker": "Spotlight · weight loss",
+  "title": "Semaglutide vs tirzepatide vs retatrutide vs orforglipron",
+  "sub": "The big four GLP-1s, side by side.",
+  "badge": "",
+  "badge_t": "",
+  "hot": false
+ },
+ "peptides/retatrutide-side-effects.html": {
+  "card": "retatrutide-side-effects",
+  "kicker": "New JAMA study · Oct 2026",
+  "title": "Retatrutide side effects: what 13,589 users reported",
+  "sub": "Appetite, fatigue, energy, nausea, insomnia, heart rate.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": true
+ },
+ "glp1-units-calculator.html": {
+  "card": "glp1-units-calculator",
+  "kicker": "Free tool · math only",
+  "title": "Semaglutide & tirzepatide: mg → mL → units",
+  "sub": "Your vial, your prescribed dose, the exact math.",
+  "badge": "",
+  "badge_t": "",
+  "hot": false
+ },
+ "how-to-tell-if-a-peptide-source-is-legit.html": {
+  "card": "legit-source",
+  "kicker": "Buyer's guide",
+  "title": "How to tell if a peptide source is legit",
+  "sub": "COAs, HPLC purity, mass spec and red flags.",
+  "badge": "",
+  "badge_t": "",
+  "hot": false
+ }
+}

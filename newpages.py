@@ -171,3 +171,16 @@ def link_in(pages):
         v=list(pages[k]); assert a in v[2],(k,a); v[2]=v[2].replace(a,b,1); pages[k]=tuple(v)
     sub("peptides/index.html",'<section class="wide">\n<div class="chips"','<section class="wide"><h2>Tools &amp; buyer guides</h2></section>'+TILES.replace("{R}","../").replace(f'../{SE}',SE.split("/")[1])+'<section class="wide">\n<div class="chips"')
     sub("index.html",'<section id="this-week">','<section class="wide"><div class="sec-head"><h2>Trending tools &amp; guides</h2></div></section>'+TILES.replace("{R}","")+'<section id="this-week">')
+CARDS={SE:dict(card="retatrutide-side-effects",kicker="New JAMA study · Oct 2026",title="Retatrutide side effects: what 13,589 users reported",sub="Appetite, fatigue, energy, nausea, insomnia, heart rate.",badge="research",badge_t="Research purposes only",hot=True),
+ CALC:dict(card="glp1-units-calculator",kicker="Free tool · math only",title="Semaglutide & tirzepatide: mg → mL → units",sub="Your vial, your prescribed dose, the exact math.",badge="",badge_t="",hot=False),
+ LEGIT:dict(card="legit-source",kicker="Buyer's guide",title="How to tell if a peptide source is legit",sub="COAs, HPLC purity, mass spec and red flags.",badge="",badge_t="",hot=False)}
+def next_links(slug):
+    L=[]
+    if slug in ("semaglutide","tirzepatide"): L.append((CALC,"mg → mL → units calculator","Convert your prescribed dose using your own vial's strength.","calc"))
+    if slug in ("semaglutide","tirzepatide","retatrutide","orforglipron"): L.append((SE,"Retatrutide side effects","What 13,589 users reported online, from the new JAMA study.","reta-se"))
+    L.append((LEGIT,"Is your source legit?","Read a COA, verify third-party testing, spot the red flags.","legit"))
+    li="".join(f'<li><a href="{"" if u.startswith("peptides/") else "../"}{u.split("/")[-1] if u.startswith("peptides/") else u}" data-goatcounter-click="next-{slug}-{tag}"><strong>{t}</strong><span>{d}</span></a></li>' for u,t,d,tag in L)
+    return f'<nav class="next-up" aria-label="Keep going"><h2>Keep going</h2><ul>{li}<li><a href="{SUB}" data-goatcounter-click="next-{slug}-signup" rel="noopener"><strong>Get the Friday email</strong><span>The week\'s biggest peptide news, free, in five minutes.</span></a></li></ul></nav>'
+def link_guides(pages,slugs):
+    for s in slugs:
+        k=f"peptides/{s}.html"; v=list(pages[k]); a='<h2 id="faq">'; assert a in v[2]; v[2]=v[2].replace(a,next_links(s)+a,1); pages[k]=tuple(v)
