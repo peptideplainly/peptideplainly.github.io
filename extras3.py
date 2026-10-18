@@ -179,3 +179,50 @@ QH3={"bpc-157-tb-500-stack":("What is the BPC-157 + TB-500 stack?","Are BPC-157 
 "cagrilintide":("What are cagrilintide and CagriSema?","Is CagriSema FDA-approved?"),
 "elamipretide":("What is SS-31 (elamipretide)?","Is SS-31 FDA-approved?"),
 "epitalon":("What is Epitalon?","Is Epitalon FDA-approved?")}
+
+# ===== Bean tone update (Oct 18, 4:35 PM): one-line safety, bold headlines, less regulatory copy =====
+def line(risks, status="Not FDA-approved; sold for research only."):
+    return f'<p class="safety-line"><strong>{status}</strong> Known risks: {risks}. <a href="{LEGIT}">Choose a tested source.</a></p>'
+NODOSE='<h2 id="dosing">Dosage</h2><p>There\'s <strong>no established human dose</strong>, so we don\'t list one.</p>'
+ONE={
+"melanotan-2":line(f'new and darkening moles ({pm(24334249,"case report, 2014")}), melanoma in a 20-year-old who also used sunbeds ({pm(24355990,"single case, 2014")}; a review says a link isn\'t proven, {pm(28266027,"2017")}), priapism ({pm(33460908,"case, 2021")}) and kidney infarction ({pm(31953620,"case, 2020")})'),
+"epitalon":line(f'unknown: long-term safety data are inadequate, per a 2026 review ({pm(42884164,"Int J Mol Sci")})'),
+"selank":line(f'unknown: it\'s poorly studied and acts on GABA systems ({pm(34396551,"J Clin Pharmacol, 2021")})'),
+"kpv":line('unknown: there are no published human trials'),
+"kisspeptin":line(f'unknown outside short research infusions; none were reported in the 2022 women\'s trial ({pm(36287566,"JAMA Netw Open")})'),
+"cagrilintide":line(f'gastrointestinal side effects in 79.6% vs 39.9% on placebo in REDEFINE 1 ({pm(40544433,"NEJM, 2025")}); online "research" versions aren\'t the trial drug',status="Investigational, not FDA-approved."),
+"bpc-157-tb-500-stack":line(f'unknown: no human safety data on the combination; banned in sport (<a href="https://www.wada-ama.org/en/prohibited-list" rel="noopener">WADA</a>)'),
+}
+ONELINE=set(ONE)-{"cagrilintide"}  # pages where the footer research NOTE is dropped (the line covers it)
+ONELINE|={"cagrilintide"}
+X3["melanotan-2"]["dosing"]=ONE["melanotan-2"]+NODOSE.replace("<p>There","<p>The tiny 1990s studies dosed under medical supervision. There")
+for k in ["epitalon","selank","kpv","kisspeptin","bpc-157-tb-500-stack"]: X3[k]["dosing"]=ONE[k]+NODOSE
+X3["cagrilintide"]["dosing"]=ONE["cagrilintide"]+'<h2 id="dosing">Dosage</h2><p>No approved dose yet. The trials tested cagrilintide 2.4 mg plus semaglutide 2.4 mg once weekly, the strength Novo submitted to the FDA.</p>'
+X3["elamipretide"]["dosing"]=f'<p class="safety-line"><strong>Most common side effects:</strong> injection-site reactions; eosinophil increases were also seen (<a href="{FORZ}" rel="noopener">FDA label</a>). Online "SS-31" isn\'t Forzinity. <a href="{LEGIT}">Choose a tested source.</a></p>'+FORZ_DOSE
+H1S={"melanotan-2":"Melanotan II (MT2): the viral tan jab, and what studies really show",
+"epitalon":"Epitalon: the telomere peptide behind the longevity buzz",
+"selank":"Selank: the calm-and-focus nasal peptide everyone's talking about",
+"kpv":"KPV: the 3-amino-acid peptide taking on gut inflammation",
+"kisspeptin":"Kisspeptin: the hormone that lit up desire circuits in trials",
+"cagrilintide":"CagriSema: the amylin + semaglutide shot behind −20.4% in Phase 3",
+"elamipretide":"SS-31 (elamipretide): the mitochondria peptide that won FDA approval",
+"bpc-157-tb-500-stack":"BPC-157 + TB-500: the Wolverine stack, put to the test"}
+for k,h in H1S.items(): X3[k]["h1"]=h
+for k in X3:
+    X3[k]["quick"]=[q.replace(" See the safety box.","") for q in X3[k]["quick"]]
+X3["melanotan-2"]["quick"][-1]="<strong>Known risks:</strong> mole changes and rare serious events in case reports."
+for k,r in {"epitalon":"unknown long-term safety.","selank":"poorly studied in the West.","kpv":"unknown human safety.","kisspeptin":"only short research-clinic infusions tested.","bpc-157-tb-500-stack":"no human safety data on the combination."}.items():
+    X3[k]["quick"]=[("<strong>Known risks:</strong> "+r) if q.startswith("<strong>Watch out for:</strong>") else q for q in X3[k]["quick"]]
+# Shorter, less regulatory status paragraphs
+def _setreg(k,txt): p=list(PEP3[k]); p[3]=txt; PEP3[k]=tuple(p)
+_setreg("melanotan-2",f'<strong>Not FDA-approved</strong> ({pm(28266027,"Int J Dermatol, 2017")}). Its cousin afamelanotide (Melanotan I) is: it\'s Scenesse, an implant for the rare light-sensitivity condition EPP (<a href="{SCEN}" rel="noopener">FDA approval, 2019</a>).')
+_vote=f'In July 2026 an FDA advisory committee voted to recommend allowing it in pharmacy compounding (<a href="{PCAC_VOTES}" rel="noopener">vote report</a>). The vote is non-binding.'
+_setreg("epitalon",f'<strong>Not FDA-approved.</strong> {_vote}')
+_setreg("kpv",f'<strong>Not FDA-approved.</strong> {_vote}')
+_setreg("selank",'<strong>Not FDA-approved.</strong> Sold online as a research peptide and supplement.')
+_setreg("kisspeptin",'<strong>Not FDA-approved.</strong> The human trials used research-clinic infusions.')
+_setreg("cagrilintide",f'<strong>Investigational, not FDA-approved.</strong> Novo Nordisk submitted CagriSema to the FDA on Dec 18, 2025 (<a href="{NOVO_NDA}" rel="noopener">Novo Nordisk</a>); no decision has been announced.')
+_setreg("bpc-157-tb-500-stack",f'<strong>Neither is FDA-approved.</strong> In July 2026 an FDA advisory committee voted to recommend allowing both in pharmacy compounding (<a href="{PCAC_VOTES}" rel="noopener">vote report</a>). The vote is non-binding.')
+for k in ["epitalon","kpv"]:
+    X3[k]["faq"]=[(q,(f"No. An FDA advisory committee voted in July 2026 to recommend allowing it in compounding, but that vote is non-binding." if q.endswith("FDA-approved?") else a)) for q,a in X3[k]["faq"]]
+X3["melanotan-2"]["faq"]=[(q,("It's not FDA-approved. Its cousin afamelanotide is approved as Scenesse for the rare condition EPP." if q=="Is Melanotan II legal?" else a)) for q,a in X3["melanotan-2"]["faq"]]

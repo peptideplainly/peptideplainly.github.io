@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18 — Bean tone pass on batch 2 + MT2
+- Safety/legal boxes replaced with one sourced line + "Choose a tested source" link (MT2 keeps its risk citations inline).
+- Bolder H1s; shorter status paragraphs (regulatory detail trimmed); duplicate research footer note dropped on these pages.
+
 ## 2026-10-18 — Advertise page: bookable packages
 - 4 founding-rate package cards with Stripe "Book this slot" buttons (GoatCounter book-<slug>), struck-through regular prices, founding banner.
 - Sponsor terms section; 6-step book-and-pay flow; tightened vendor welcome. Regular-price Stripe links kept in advertise.py (not rendered). No sponsor placements built.

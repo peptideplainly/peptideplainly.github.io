@@ -22,7 +22,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{html.escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/{og}">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=14">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=15">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>
@@ -191,7 +191,7 @@ for slug,(name,desc,what,reg,ev,myths) in PEP.items():
 <h2>{QH.get(slug,(f"What is {low}?",))[0]}</h2><p>{INTRO.get(slug,what)}</p><h2>{QH.get(slug,(0,f"Is {low} FDA-approved?"))[1]}</h2><p>{reg}</p>
 {x["dosing"]}
 <h2 id="evidence">What the research shows</h2><ul>{ev}</ul><p class="fine">New to these terms? See the <a href="../glossary.html">glossary</a>.</p>
-<h2 id="faq">{short} FAQ</h2>{faqh}{NOTE if bk=="research" else ""}{DISC}
+<h2 id="faq">{short} FAQ</h2>{faqh}{NOTE if bk=="research" and slug not in _e3.ONELINE else ""}{DISC}
 {"" if slug in GLP1 else (f'<nav class="related" aria-label="Related guides"><h2>Same category</h2><ul>{rel}</ul></nav>' if rel else '')}
 <p class="fine">All guides: {others} · <a href="../peptides-101.html">Peptides 101</a> · <a href="../why-peptide-info-is-confusing.html">Why is peptide info so confusing?</a></p></article>''',schema)
 chips='<button type="button" class="chip" aria-pressed="true" data-f="all">All</button>'+"".join(f'<button type="button" class="chip" aria-pressed="false" data-f="{c}">{icon(c)}{l}</button>' for c,l in CATS.items())

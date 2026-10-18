@@ -127,3 +127,5 @@ main>.atf-signup{width:calc(100% - 32px)}
 .pkg h3{margin:0 0 .3em}.pkg-price{margin:0;font-size:1.5rem}.pkg-price s{color:var(--muted);font-size:1rem;margin-left:.3em}
 .pkg-note{margin:.2em 0 .6em;color:var(--muted);font-size:.9rem}.pkg ul{padding-left:1.2em;margin:0 0 1em;flex:1}.pkg li{margin:.3em 0;overflow-wrap:anywhere}
 .pkg .pkg-btn{text-align:center;align-self:stretch}
+
+.safety-line{border-left:4px solid var(--warm);background:var(--card);padding:10px 14px;border-radius:8px;font-size:.95rem;margin:1.2em 0}
