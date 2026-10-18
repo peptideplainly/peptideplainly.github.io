@@ -75,7 +75,7 @@ X2={
  ("What is the Foundayo dose schedule?","Per the label it starts at 0.8 mg daily and steps up at least every 30 days: 2.5 mg, 5.5 mg, then optionally 9, 14.5 or 17.2 mg. Your prescriber sets your dose."),
  ("Is orforglipron a peptide?","No. It's a small-molecule drug that acts on the GLP-1 receptor, the same target as semaglutide."),
  ("How much weight do people lose on orforglipron?","In ATTAIN-1, average weight change at 72 weeks was −7.5% to −11.2% depending on dose, vs −2.1% on placebo.")]),
-"tesamorelin":dict(badge=("approved","FDA-approved (HIV lipodystrophy only)"),
+"tesamorelin":dict(badge=("approved","FDA-approved (as Egrifta)"),
  h1="Tesamorelin (Egrifta): what it's approved for, label dosing & evidence",
  quick=["<strong>What it is:</strong> a GHRH analog that raises your own growth hormone.","<strong>Status:</strong> FDA-approved for excess belly fat in adults with HIV lipodystrophy. Everything else is off-label.","<strong>How it's taken:</strong> a daily injection under the skin of the belly.","<strong>Evidence:</strong> solid in its approved group (412-person RCT). Little for other uses.","<strong>For athletes:</strong> banned by WADA."],
  dosing=f'''<h2 id="dosing">Tesamorelin dosing: what the FDA label says</h2>{PRESC}

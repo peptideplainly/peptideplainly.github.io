@@ -130,8 +130,7 @@ b.addEventListener("click",function(){{if(navigator.share){{navigator.share({{ti
 
 # ---- callouts + signup strip ----
 def calc_callout(kind,R,tag):
-    if kind=="vial": txt="is the converter for semaglutide and tirzepatide vials. Plug in your own vial label and see the math."
-    else: txt="converts your prescribed semaglutide or tirzepatide dose from mg to mL to U-100 syringe units, using your own vial's strength."
+    txt="turns any vial's mg + water into mg/mL, mL and U-100 units. Plug in your own numbers. Math only."
     return f'<div class="calc-callout"><p><strong>🧮 Free tool:</strong> our <a href="{R}{CALC}" data-goatcounter-click="calc-callout-{tag}">peptide reconstitution calculator</a> {txt}</p></div>'
 def strip(tag):
     return f'<div class="atf-signup"><p><strong>The Friday email.</strong> The week\'s biggest peptide news in five minutes. Free.</p><a class="btn" href="{SUB}" data-goatcounter-click="signup-atf-{tag}" rel="noopener">Get it free</a></div>'

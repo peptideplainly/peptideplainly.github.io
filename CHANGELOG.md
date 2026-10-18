@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18 — Batch 3b: sitewide pages
+- About rewritten (live guide count, sponsor policy, one short disclaimer). Peptides 101: bold H1, lighter intro and research-only copy with a legit-source link.
+- Calculator callouts now describe the general reconstitution calculator. Tesamorelin badge: "FDA-approved (as Egrifta)".
+- Advertise packages/terms, signup and share blocks, and Katz wording untouched.
+
 ## 2026-10-18 — Batch 3a: sitewide tone pass on guides
 - Bold H1s on all older guides; general-audience framing for tesamorelin, PT-141, Semax (indication kept as one short line, trial populations named).
 - Research-only guides (BPC-157, TB-500, MOTS-c, Semax, CJC-1295/ipamorelin, injectable GHK-Cu): one sourced risk line + "Choose a tested source"; short no-dose section; regulatory paragraphs trimmed.

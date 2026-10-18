@@ -68,13 +68,13 @@ if CUR:
 else:
     HOME_ISSUE='<p>The first issue lands Friday. <a href="#signup">Get it in your inbox</a>.</p>'
 pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Peptide Plainly","What are peptides? A plain-English beginner's guide: approved medicines vs research-only compounds, how to read a study, and how to pick a quality source.",f'''<article class="issue">
-<p class="eyebrow">Beginner's guide</p><h1>Peptides 101</h1><p class="lead">Welcome! If peptide videos have left you more confused than when you started, you're in the right place. Here's everything you need, in about five minutes.</p>
+<p class="eyebrow">Beginner's guide</p><h1>Peptides 101: everything a beginner needs, in 5 minutes</h1><p class="lead">Heard about retatrutide, BPC-157 or GHK-Cu and want the real story? Start here. In five minutes you'll know what peptides are, which ones are approved, and how to read the hype.</p>
 <h2>What is a peptide?</h2><p>A peptide is a short chain of <strong>amino acids</strong>, the same building blocks that make up proteins. Long chains are called proteins and short ones are called peptides. Your body makes thousands of them, and many act as messengers. <strong>Insulin</strong>, for example, is a peptide hormone that helps control blood sugar.</p>
-<p>"Peptides" is a huge, loose category. It covers prescription medicines, ingredients in skin creams, food supplements like collagen, and experimental compounds that have never been properly tested in people. The word alone tells you nothing about whether something is safe or works.</p>
+<p>"Peptides" is a huge, loose category. It covers prescription medicines, ingredients in skin creams, food supplements like collagen, and buzzy research compounds still early in testing. That's why every guide here carries a clear badge.</p>
 <h2>Approved medicines vs. "research-only" compounds</h2>
 <ul><li><strong>Approved drugs</strong> (for example semaglutide and tirzepatide) have passed large clinical trials. Regulators like the U.S. FDA reviewed the data, and they're made under strict quality controls. They're prescribed by clinicians.</li>
 <li><strong>Dietary supplements</strong> (for example collagen peptides) are sold as foods. In the U.S. the <a href="https://www.fda.gov/food/information-consumers-using-dietary-supplements/questions-and-answers-dietary-supplements">FDA does not approve supplements before they are marketed</a>.</li>
-<li><strong><span class="badge research">Research purposes only</span></strong> compounds (for example BPC-157 and TB-500) aren't FDA-approved medicines. Product quality can vary, and the human evidence is usually early and limited. Some, including BPC-157 and TB-500, are banned in sport under the <a href="https://www.wada-ama.org/en/prohibited-list">WADA Prohibited List</a>.</li></ul>
+<li><strong><span class="badge research">Research purposes only</span></strong> compounds (for example BPC-157 and TB-500) are the exciting frontier: not FDA-approved, with early human evidence, so a tested source matters (<a href="how-to-tell-if-a-peptide-source-is-legit.html">here's how to check</a>). Some, including BPC-157 and TB-500, are banned in sport (<a href="https://www.wada-ama.org/en/prohibited-list">WADA</a>).</li></ul>
 <h2>How to read a study (the quick version)</h2>
 <ol><li><strong>Who was studied?</strong> Cells in a dish → animals → people. Lab and animal results often don't hold up in humans.</li>
 <li><strong>How many?</strong> 12 people is a pilot. Thousands is much more convincing.</li>
@@ -293,7 +293,7 @@ urls=list(pages)+["about.html"]
 INDEXNOW_KEY="9a85cb3b2d8f745f25610a7da0dbad98"
 (P/f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
 (P/"robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
-ab=(P/"about_body.html").read_text()
+ab=(P/"about_body.html").read_text().replace("{N}",str(len(PEP)))
 (P/"about.html").write_text(page("about.html","About Peptide Plainly & medical disclaimer","About Peptide Plainly: how we summarize peptide research from PubMed, plus our full medical disclaimer.",ab,seo.about_schema(BASE,ORG)))
 
 LL=["# Peptide Plainly","","> Friendly, plain-English explanations of peptide research, plus a free newsletter every Friday. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.","","## Start here",f"- [Peptides 101]({BASE}/peptides-101.html): what peptides are, approved vs research-only, reading studies",f"- [Why is peptide info so confusing?]({BASE}/why-peptide-info-is-confusing.html)",f"- [Glossary]({BASE}/glossary.html)","","## Peptide guides (why people are excited, quick facts, dosing & timing, evidence, FAQ)"]
