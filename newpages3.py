@@ -44,7 +44,7 @@ def guide(BASE,ORG,DISC):
 <li><strong>Pen or vial.</strong> The FDA says compounders sell semaglutide in "multiple-dose vials and prefilled syringes," often in different concentrations (<a href="{FDA_ERR}" rel="noopener">FDA</a>). Brand semaglutide injections are pens only. For tirzepatide, Lilly-made vials exist, so the label is what counts.</li>
 <li><strong>Extra ingredients.</strong> Vitamin B12, B6, L-carnitine or NAD on the label? The FDA says some compounders add these to semaglutide, and the safety and effectiveness of those combinations "has not been established" (<a href="{FDA_ERR}" rel="noopener">FDA</a>). The brand drugs don't contain them.</li>
 <li><strong>"Semaglutide sodium" or "semaglutide acetate."</strong> These salt forms are different active ingredients from the approved drugs, and the FDA says it isn't aware of any lawful basis for compounding with them (<a href="{FDA_C}" rel="noopener">FDA</a>).</li>
-<li><strong>Doses in units or mL instead of a preset pen dose?</strong> That's the vial life. Use our <a href="{CALC}">mg → mL → units calculator</a> to check the math on your prescribed dose.</li></ul>
+<li><strong>Doses in units or mL instead of a preset pen dose?</strong> That's the vial life. Use our <a href="{CALC}">peptide reconstitution calculator</a> to check the math on your prescribed dose.</li></ul>
 <h2>Step 2: check the NDC number</h2>
 <p>The National Drug Code (NDC) is the FDA's three-segment ID number for a drug product, printed on the box or label (<a href="{FDA_NDC}" rel="noopener">FDA</a>).</p><ul>
 <li><strong>Look it up</strong> in the FDA's <a href="{NDCQ}" rel="noopener">NDC Directory</a> and check that the product name and company match what's on your box.</li>
@@ -69,7 +69,7 @@ def guide(BASE,ORG,DISC):
 <nav class="next-up" aria-label="Keep going"><h2>Keep going</h2><ul>
 <li><a href="peptides/semaglutide.html" data-goatcounter-click="next-cb-sema"><strong>Semaglutide guide</strong><span>Ozempic, Wegovy and Rybelsus: the trials, plainly.</span></a></li>
 <li><a href="peptides/tirzepatide.html" data-goatcounter-click="next-cb-tirz"><strong>Tirzepatide guide</strong><span>Mounjaro and Zepbound: the dual agonist explained.</span></a></li>
-<li><a href="{CALC}" data-goatcounter-click="next-cb-calc"><strong>mg → mL → units calculator</strong><span>The vial math for your prescribed dose.</span></a></li>
+<li><a href="{CALC}" data-goatcounter-click="next-cb-calc"><strong>Peptide reconstitution calculator</strong><span>The vial math for your prescribed dose.</span></a></li>
 <li><a href="semaglutide-vs-tirzepatide.html" data-goatcounter-click="next-cb-vs"><strong>Semaglutide vs tirzepatide</strong><span>Who won the head-to-head, and where retatrutide fits.</span></a></li>
 <li><a href="{SUB}" data-goatcounter-click="next-cb-signup" rel="noopener"><strong>Get the Friday email</strong><span>The week's biggest peptide news, free, in five minutes.</span></a></li></ul></nav>
 {signup("signup-cb")}

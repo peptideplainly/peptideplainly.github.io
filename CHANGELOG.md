@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18 (broad push, batch 1)
+- New guide: /peptides/melanotan-2.html (Dorr 1996, Wessells 1998/2000, mouse appetite study 2022, case reports and reviews for risks; MHRA FOI; Scenesse label). Safety & legal box with legit-source link. No human dosing.
+- Calculator generalized: /peptide-reconstitution-calculator.html (vial mg + water mL + amount in mcg/mg -> concentration, mL, U-100 units; math only, no presets). Old /glp1-units-calculator.html is a meta-refresh + canonical redirect stub (not in sitemap). Linked from every guide's Keep going block; share block kept.
+- Home: retatrutide hero card (TRIUMPH-1 −25.0%, treatment-regimen; investigational, Lilly plans FDA submission Q1 2027).
+
 ## 2026-10-18 (traffic push 3)
 - semaglutide-vs-tirzepatide.html: new "Where does retatrutide fit?" section (phase 2 NEJM 2023, TRIUMPH-1 NEJM, TRIUMPH-2 Lancet; estimand labelled per trial; not head-to-head; investigational, Lilly plans FDA submission Q1 2027). Title/description/JSON-LD/OG card now cover all three.
 - New: /compounded-vs-brand-semaglutide-tirzepatide.html (FDA compounding Q&A, FDA GLP-1 concerns page, FDA dosing-errors alert, NDC Directory, DailyMed packaging; Katz et al., Obes Sci Pract 2026 photo-review study). Linked from semaglutide and tirzepatide guides and the calculator.

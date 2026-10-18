@@ -22,13 +22,13 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{html.escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/{og}">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=11">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=12">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>
 <section class="cta-band" id="signup"><div class="cta-in"><p class="kicker">Every Friday · free</p><h2>The week's biggest peptide news. Five minutes. Free.</h2><p>New results, new compounds, explained plainly every Friday.</p>
 {EMBED}</div></section>
-<footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}newsletter.html">This week&#39;s issue</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}glp1-units-calculator.html">Units calculator</a> · <a href="{root}how-to-tell-if-a-peptide-source-is-legit.html">Is your source legit?</a> · <a href="{root}about.html">About &amp; disclaimer</a> · <a href="{root}advertise.html">Advertise</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
+<footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}newsletter.html">This week&#39;s issue</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}peptide-reconstitution-calculator.html">Peptide calculator</a> · <a href="{root}how-to-tell-if-a-peptide-source-is-legit.html">Is your source legit?</a> · <a href="{root}about.html">About &amp; disclaimer</a> · <a href="{root}advertise.html">Advertise</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
 DISC='<p class="disclaimer"><strong>Not medical advice.</strong> Education only. We don\'t sell anything or tell you what to take. Label doses are there so you can follow along with your prescriber. Talk to a licensed clinician about your health.</p>'
 pages={}
 # ---- Newsletter: only the newest SENT issue is published, at /newsletter.html ----
@@ -140,7 +140,9 @@ from extras import X
 from extras2 import PEP2,X2
 from design import META,CATS,icon
 from tone import EXCITE,INTRO,NOTE,BOTTOM,DESC,H1,QUICKFIX,FAQFIX
-PEP.update(PEP2); X.update(X2); PEP={k:PEP[k] for k in META}
+from extras3 import PEP3,X3,META3,EXCITE3,TITLES3
+META.update(META3); EXCITE.update(EXCITE3)
+PEP.update(PEP2); PEP.update(PEP3); X.update(X2); X.update(X3); PEP={k:PEP[k] for k in META}
 for k,d in DESC.items(): PEP[k]=(PEP[k][0],d)+PEP[k][2:]
 for k in X:
     X[k]['h1']=H1.get(k,X[k]['h1']); X[k].pop('str'+'aight',None)
@@ -239,7 +241,7 @@ pages["advertise.html"]=("Advertise with Peptide Plainly: sponsor guides & newsl
 <p><a class="btn" href="{ADV_MAILTO}" data-goatcounter-click="advertise-contact-bottom">Email us about sponsoring</a></p>
 <p class="fine">Email not opening? Write to us at <strong>{ADV_EMAIL}</strong> with the subject "Sponsoring Peptide Plainly".</p></article>''',[ORG,{"@type":"WebPage","name":"Advertise with Peptide Plainly","url":BASE+"/advertise.html","description":"Sponsor Peptide Plainly's peptide guides and Friday newsletter.","publisher":{"@id":BASE+"/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in ADV_FAQ]}])
 import glp1cmp
-import seo; seo.apply(pages,BASE,ORG,G)
+import seo; seo.TITLE_FIX.update(TITLES3); seo.apply(pages,BASE,ORG,G)
 import newpages; newpages.add(pages,BASE,ORG,DISC,NOTE,X); newpages.link_in(pages); newpages.link_guides(pages,PEP)
 t,d,b=pages["index.html"]
 pages["index.html"]=(t,d,b,[ORG,{"@type":"WebSite","name":"Peptide Plainly","url":BASE+"/","description":d,"publisher":{"@id":BASE+"/#org"}}])
@@ -251,6 +253,7 @@ import newpages2; newpages2.add(pages,BASE,ORG,DISC,NOTE,X,glp1cmp.ROWS); newpag
 ATF_SIGNUP=[("index.html","home"),("peptides/semaglutide.html","semaglutide"),("peptides/retatrutide.html","retatrutide")]
 newpages2.signup_atf(pages,ATF_SIGNUP)
 import newpages3; newpages3.add(pages,BASE,ORG,DISC); newpages3.wire(pages)
+import extras3; extras3.wire3(pages)
 seo.check(pages)
 # ---- OG cards: manifest for scripts/og.py; wire og:image only where the PNG exists ----
 CARDS={}
@@ -279,6 +282,7 @@ _sent={i["stem"] for i in SENT}
 for h in (P/"issues").glob("issue-*.html"):
     if h.stem not in _sent: h.unlink()
 for st in _sent: (P/"issues"/f"{st}.html").write_text(_stub)
+(P/newpages.OLD_CALC).write_text(newpages.OLD_CALC_HTML)
 urls=list(pages)+["about.html"]
 (P/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n".replace("/index.html","/") for u in urls)+"</urlset>\n")
 # IndexNow key file (served at /<key>.txt). Ping with: python3 scripts/indexnow.py  (needs Tegan OK)

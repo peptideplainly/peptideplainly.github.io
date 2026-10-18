@@ -58,7 +58,7 @@ def vs(BASE,ORG,DISC,ROWS):
 <tr><th scope="row">Most common side effects</th><td>Nausea and diarrhea, typically transient and mild to moderate</td><td>Gastrointestinal, mostly mild to moderate, mainly during dose escalation</td></tr></tbody></table></div>
 {RETA}<h2>How they work</h2><ul><li><strong>Semaglutide</strong> (Ozempic, Wegovy, Rybelsus) activates <strong>one</strong> hormone receptor: GLP-1.</li><li><strong>Tirzepatide</strong> (Mounjaro, Zepbound) activates <strong>two</strong>: GIP and GLP-1.</li><li><strong>Retatrutide</strong> (investigational, Lilly) activates <strong>three</strong>: GIP, GLP-1 and glucagon.</li></ul>
 <h2>Label dosing for weight management</h2><ul><li><strong>{wl}</strong></li><li><strong>{zl}</strong></li></ul><p class="fine">Copied from the FDA labels on DailyMed via our <a href="glp1-comparison.html">GLP-1 comparison</a>. Your prescriber sets your dose.</p>
-<div class="calc-callout"><p><strong>Got a vial and a dose in mg?</strong> Our free <a href="{CALC}" data-goatcounter-click="calc-callout-vs">mg → mL → units calculator</a> shows the math from your own vial label.</p></div>
+<div class="calc-callout"><p><strong>Got a vial and a dose in mg?</strong> Our free <a href="{CALC}" data-goatcounter-click="calc-callout-vs">peptide reconstitution calculator</a> shows the math from your own vial label.</p></div>
 <h2>Go deeper</h2><ul><li><a href="peptides/semaglutide.html">Semaglutide guide</a>: STEP 1, SELECT heart results, label dosing, FAQs.</li><li><a href="peptides/tirzepatide.html">Tirzepatide guide</a>: SURMOUNT trials, label dosing, FAQs.</li><li><a href="peptides/retatrutide.html">Retatrutide guide</a>, its <a href="peptides/retatrutide-fda-approval-status.html">release date &amp; FDA status</a> and <a href="peptides/retatrutide-side-effects.html">what users report online</a>.</li><li><a href="glp1-comparison.html">All four GLP-1s side by side</a>, including orforglipron, the daily pill.</li><li><a href="{LEGIT}">How to tell if a source is legit</a>.</li></ul>
 {signup("signup-vs")}
 <h2 id="faq">Semaglutide vs tirzepatide FAQ</h2>{faqh(VS_FAQ).replace("our four-way GLP-1 comparison",'our <a href="glp1-comparison.html">four-way GLP-1 comparison</a>')}{DISC}</article>'''
@@ -114,8 +114,8 @@ def release(BASE,ORG,DISC,NOTE,badge):
     return (t,d,body,schema)
 
 # ---- 2) Calculator share block ----
-SHARE_URL="https://peptideplainly.com/glp1-units-calculator.html"
-SHARE_TXT="Free semaglutide & tirzepatide calculator: mg to mL to syringe units, with the math shown"
+SHARE_URL="https://peptideplainly.com/peptide-reconstitution-calculator.html"
+SHARE_TXT="Free peptide reconstitution calculator: vial mg + water mL to concentration, mL and syringe units, with the math shown"
 from urllib.parse import quote
 SHARE=f'''<section class="share" aria-label="Share this calculator"><h2>Share this calculator</h2><p>Know someone mixing up mg, mL and units? Send them the math.</p>
 <div class="share-row"><button type="button" class="btn" id="share-copy" data-goatcounter-click="share-calc-copy">Copy link</button>
@@ -132,7 +132,7 @@ b.addEventListener("click",function(){{if(navigator.share){{navigator.share({{ti
 def calc_callout(kind,R,tag):
     if kind=="vial": txt="is the converter for semaglutide and tirzepatide vials. Plug in your own vial label and see the math."
     else: txt="converts your prescribed semaglutide or tirzepatide dose from mg to mL to U-100 syringe units, using your own vial's strength."
-    return f'<div class="calc-callout"><p><strong>🧮 Free tool:</strong> our <a href="{R}{CALC}" data-goatcounter-click="calc-callout-{tag}">mg → mL → units calculator</a> {txt}</p></div>'
+    return f'<div class="calc-callout"><p><strong>🧮 Free tool:</strong> our <a href="{R}{CALC}" data-goatcounter-click="calc-callout-{tag}">peptide reconstitution calculator</a> {txt}</p></div>'
 def strip(tag):
     return f'<div class="atf-signup"><p><strong>The Friday email.</strong> The week\'s biggest peptide news in five minutes. Free.</p><a class="btn" href="{SUB}" data-goatcounter-click="signup-atf-{tag}" rel="noopener">Get it free</a></div>'
 

@@ -116,6 +116,15 @@
   "badge_t": "FDA-approved (as Vyleesi)",
   "hot": false
  },
+ "peptides/melanotan-2.html": {
+  "card": "melanotan-2",
+  "kicker": "Skin",
+  "title": "Melanotan II (MT2)",
+  "sub": "The viral tanning peptide. Pigment, libido and appetite effects in studies.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
  "glp1-comparison.html": {
   "card": "glp1-comparison",
   "kicker": "Spotlight · weight loss",
@@ -134,11 +143,11 @@
   "badge_t": "Research purposes only",
   "hot": true
  },
- "glp1-units-calculator.html": {
-  "card": "glp1-units-calculator",
+ "peptide-reconstitution-calculator.html": {
+  "card": "peptide-calculator",
   "kicker": "Free tool · math only",
-  "title": "Semaglutide & tirzepatide: mg → mL → units",
-  "sub": "Your vial, your prescribed dose, the exact math.",
+  "title": "Peptide reconstitution calculator",
+  "sub": "Vial mg + water mL → concentration, mL, units.",
   "badge": "",
   "badge_t": "",
   "hot": false

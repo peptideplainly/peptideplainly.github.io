@@ -9,7 +9,7 @@ FDA_GLP1="https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-una
 BESAFE="https://www.fda.gov/consumers/consumer-updates/how-buy-medicines-safely-online-pharmacy"
 ISO="https://www.iso.org/ISO-IEC-17025-testing-and-calibration-laboratories.html"
 def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>, PMID {i}'
-SE="peptides/retatrutide-side-effects.html"; CALC="glp1-units-calculator.html"; LEGIT="how-to-tell-if-a-peptide-source-is-legit.html"
+SE="peptides/retatrutide-side-effects.html"; CALC="peptide-reconstitution-calculator.html"; OLD_CALC="glp1-units-calculator.html"; LEGIT="how-to-tell-if-a-peptide-source-is-legit.html"
 def strip(a): return html.unescape(re.sub('<[^>]+>','',a))
 def faqld(F): return {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":strip(a)}} for q,a in F]}
 def faqh(F): return "".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in F)
@@ -69,49 +69,52 @@ def side_effects(BASE,ORG,DISC,NOTE,badge):
     return (t,d,body,schema)
 
 # ---- b) Semaglutide / tirzepatide mg -> mL -> units calculator ----
-CALC_FAQ=[("How many units is 1 mL on an insulin syringe?","On a U-100 insulin syringe, 1 mL is 100 units, so 0.1 mL is 10 units and 0.01 mL is 1 unit. 'Units' on the syringe are a measure of volume, not of drug."),
-("How do I convert mg to units?","Divide your prescribed dose in mg by your vial's concentration in mg per mL to get mL. Multiply mL by 100 to get units on a U-100 syringe. The concentration is the number that changes everything, so take it from your own vial label or pharmacy."),
-("Why does the same dose come out to different units?","Because concentrations vary. FDA notes that compounded semaglutide can come in different concentrations, even from the same compounder, so the same mg dose can be a different number of units."),
-("Does this calculator tell me what dose to take?","No. It only converts the dose your prescriber gave you. It never suggests a dose. Always follow your prescriber and pharmacist and double-check with them.")]
+CALC_FAQ=[("How do I calculate peptide concentration after reconstitution?","Divide the mg in the vial by the mL of water added. A 10 mg vial with 2 mL added is 5 mg/mL, which is 5,000 mcg per mL. That number drives everything else."),
+("How many units is 1 mL on an insulin syringe?","On a U-100 insulin syringe, 1 mL is 100 units, so 0.1 mL is 10 units and 0.01 mL is 1 unit. 'Units' on the syringe are a measure of volume, not of drug."),
+("How do I convert mcg to units?","Convert mcg to mg (divide by 1,000), divide by the concentration in mg per mL to get mL, then multiply by 100 for U-100 syringe units. The calculator shows every step."),
+("Why does the same amount come out to different units?","Because concentration changes with how much water goes in. The same amount is fewer units in a stronger vial and more units in a weaker one. FDA notes that compounded semaglutide can come in different concentrations, even from the same compounder."),
+("Does this calculator tell me what dose to take?","No. It only does the math on the numbers you enter. It never suggests a dose, and it has no presets. For prescription drugs, follow your prescriber and pharmacist and double-check with them.")]
 CALCJS=r'''<script>(function(){var f=document.getElementById("calc"),o=document.getElementById("calc-out"),mode=f.querySelectorAll("input[name=mode]");
 function num(id){var v=document.getElementById(id).value.trim().replace(",",".");if(v==="")return NaN;var n=Number(v);return n>0&&isFinite(n)?n:NaN}
-function r(x,d){return Number(x.toFixed(d)).toString()}
+function r(x,d){return Number(x.toFixed(d)).toLocaleString("en-US",{maximumFractionDigits:d})}
 function sync(){var m=f.querySelector("input[name=mode]:checked").value;document.getElementById("m-conc").hidden=m!=="conc";document.getElementById("m-mix").hidden=m!=="mix";}
-function go(e){if(e)e.preventDefault();var m=f.querySelector("input[name=mode]:checked").value,c,steps=[],dose=num("dose");
-if(m==="conc"){c=num("conc");if(isNaN(c)){return say("Enter your vial's concentration in mg per mL (it's on the vial or pharmacy label).")}steps.push("Concentration = <b>"+r(c,4)+" mg/mL</b> (from your vial label)")}
-else{var t=num("total"),w=num("water");if(isNaN(t)||isNaN(w)){return say("Enter the total mg in the vial and the mL of liquid added.")}c=t/w;steps.push("Concentration = "+r(t,4)+" mg ÷ "+r(w,4)+" mL = <b>"+r(c,4)+" mg/mL</b>")}
-if(isNaN(dose)){return say("Enter the dose in mg that your prescriber gave you.",steps)}
-var ml=dose/c,u=ml*100;steps.push("Volume = "+r(dose,4)+" mg ÷ "+r(c,4)+" mg/mL = <b>"+r(ml,4)+" mL</b>");steps.push("U-100 units = "+r(ml,4)+" mL × 100 = <b>"+r(u,2)+" units</b>");
-var warn="";if(u>100)warn='<p class="calc-warn">That\'s more than one full U-100 syringe (100 units = 1 mL). Stop and check the numbers with your pharmacist.</p>';else if(u<1)warn='<p class="calc-warn">That\'s under 1 unit, too small to measure accurately on a U-100 syringe. Check with your pharmacist.</p>';
-o.innerHTML='<p class="calc-big"><span>'+r(ml,4)+' mL</span><span>'+r(u,2)+' units</span></p><p class="fine">on a U-100 insulin syringe</p><ol class="calc-steps"><li>'+steps.join("</li><li>")+"</li></ol>"+warn+'<p class="calc-check"><strong>Always follow your prescriber and pharmacist; double-check with them</strong> before you draw anything up.</p>'}
-function say(t,s){o.innerHTML=(s&&s.length?'<ol class="calc-steps"><li>'+s.join("</li><li>")+"</li></ol>":"")+'<p>'+t+"</p>"}
-mode.forEach(function(x){x.addEventListener("change",function(){sync();go()})});f.addEventListener("input",function(){go()});f.addEventListener("submit",go);sync()})();</script>'''
+function go(e){if(e)e.preventDefault();var m=f.querySelector("input[name=mode]:checked").value,c,steps=[],amt=num("dose"),unit=document.getElementById("unit").value;
+if(m==="conc"){c=num("conc");if(isNaN(c)){return say("Enter the concentration in mg per mL from your vial or pharmacy label.")}steps.push("Concentration = <b>"+r(c,4)+" mg/mL</b> = "+r(c*1000,2)+" mcg/mL (from your label)")}
+else{var t=num("total"),w=num("water");if(isNaN(t)||isNaN(w)){return say("Enter the mg in the vial and the mL of water added.")}c=t/w;steps.push("Concentration = "+r(t,4)+" mg ÷ "+r(w,4)+" mL = <b>"+r(c,4)+" mg/mL</b> = "+r(c*1000,2)+" mcg/mL")}
+if(isNaN(amt)){return say("Enter the amount you want to measure, in mcg or mg.",steps,c)}
+var mg=unit==="mcg"?amt/1000:amt;if(unit==="mcg")steps.push(r(amt,3)+" mcg ÷ 1,000 = <b>"+r(mg,5)+" mg</b>");
+var ml=mg/c,u=ml*100;steps.push("Volume = "+r(mg,5)+" mg ÷ "+r(c,4)+" mg/mL = <b>"+r(ml,4)+" mL</b>");steps.push("U-100 units = "+r(ml,4)+" mL × 100 = <b>"+r(u,2)+" units</b>");
+var warn="";if(u>100)warn='<p class="calc-warn">That\'s more than one full U-100 syringe (100 units = 1 mL). Double-check your numbers.</p>';else if(u<1)warn='<p class="calc-warn">That\'s under 1 unit, too small to measure accurately on a U-100 syringe. Double-check your numbers.</p>';
+o.innerHTML='<p class="calc-big"><span>'+r(c,4)+' mg/mL</span><span>'+r(ml,4)+' mL</span><span>'+r(u,2)+' units</span></p><p class="fine">concentration · volume · on a U-100 insulin syringe</p><ol class="calc-steps"><li>'+steps.join("</li><li>")+"</li></ol>"+warn+'<p class="calc-check"><strong>Math only.</strong> This calculator never suggests a dose. For prescription drugs, follow your prescriber and pharmacist and double-check with them.</p>'}
+function say(t,s,c){o.innerHTML=(c?'<p class="calc-big"><span>'+r(c,4)+' mg/mL</span></p>':'')+(s&&s.length?'<ol class="calc-steps"><li>'+s.join("</li><li>")+"</li></ol>":"")+'<p>'+t+"</p>"}
+mode.forEach(function(x){x.addEventListener("change",function(){sync();go()})});f.addEventListener("input",function(){go()});f.addEventListener("change",function(){go()});f.addEventListener("submit",go);sync()})();</script>'''
 def calculator(BASE,ORG,DISC):
     url=f"{BASE}/{CALC}"
-    body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / Units calculator</p>
-<p class="kicker">Free tool · math only</p><h1>Semaglutide &amp; tirzepatide calculator: mg to mL to units</h1>
-<p class="lead">Got a vial and a dose in mg, but your syringe says "units"? Plug in your own numbers and see the exact math, step by step. No guessing, no mix-ups.</p>
-<form id="calc" class="calc" novalidate><fieldset><legend>1. Your vial's strength</legend>
-<label class="calc-opt"><input type="radio" name="mode" value="conc" checked> My label shows mg per mL</label>
-<label class="calc-opt"><input type="radio" name="mode" value="mix"> I know the total mg and how much liquid was added</label>
-<div id="m-conc"><label for="conc">Concentration (mg per mL)</label><input id="conc" inputmode="decimal" autocomplete="off" placeholder="from your vial label"></div>
-<div id="m-mix" hidden><label for="total">Total mg in the vial</label><input id="total" inputmode="decimal" autocomplete="off" placeholder="from your vial label"><label for="water">mL of liquid added</label><input id="water" inputmode="decimal" autocomplete="off" placeholder="from your pharmacy instructions"></div></fieldset>
-<fieldset><legend>2. Your prescribed dose</legend><label for="dose">Dose in mg (from your prescriber)</label><input id="dose" inputmode="decimal" autocomplete="off" placeholder="from your prescription"></fieldset>
+    body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / Peptide calculator</p>
+<p class="kicker">Free tool · math only</p><h1>Peptide reconstitution calculator: mg, mcg, mL &amp; units</h1>
+<p class="lead">Any vial, any peptide. Enter the mg in the vial, the water added and the amount you want to measure. Get the concentration, the mL and the U-100 syringe units instantly, with every step of the math shown.</p>
+<form id="calc" class="calc" novalidate><fieldset><legend>1. Your vial</legend>
+<label class="calc-opt"><input type="radio" name="mode" value="mix" checked> I know the mg in the vial and the water added</label>
+<label class="calc-opt"><input type="radio" name="mode" value="conc"> My label already shows mg per mL</label>
+<div id="m-mix"><label for="total">Peptide in the vial (mg)</label><input id="total" inputmode="decimal" autocomplete="off" placeholder="from your vial label"><label for="water">Water added (mL)</label><input id="water" inputmode="decimal" autocomplete="off" placeholder="the mL you added"></div>
+<div id="m-conc" hidden><label for="conc">Concentration (mg per mL)</label><input id="conc" inputmode="decimal" autocomplete="off" placeholder="from your vial label"></div></fieldset>
+<fieldset><legend>2. Amount to measure</legend><label for="dose">Amount</label><div class="calc-amt"><input id="dose" inputmode="decimal" autocomplete="off" placeholder="your number"><select id="unit" aria-label="Amount unit"><option value="mcg">mcg</option><option value="mg">mg</option></select></div></fieldset>
 <button class="btn" type="submit" data-goatcounter-click="calc-convert">Show my math</button></form>
-<div id="calc-out" class="calc-out" aria-live="polite"><p>Your result and the full math will show here.</p></div>
-<p class="calc-check"><strong>Always follow your prescriber and pharmacist; double-check with them.</strong> This tool does math only. It never suggests a dose, and it's for <strong>U-100 insulin syringes only</strong> (100 units = 1 mL).</p>
-<h2>The math, plainly</h2><ol><li><strong>Concentration</strong> (mg/mL) = total mg in the vial ÷ mL of liquid in it. If your label already says mg/mL, use that.</li><li><strong>mL to draw</strong> = your prescribed dose in mg ÷ concentration in mg/mL.</li><li><strong>Units on a U-100 syringe</strong> = mL × 100.</li></ol>
-<p>That's it. Three steps, and the concentration is the one that matters most: the same mg dose is a different number of units in a different-strength vial.</p>
-<h2>Why people mix these up</h2><p>Milligrams (mg) measure the drug. Milliliters (mL) and syringe "units" measure liquid. The FDA has <a href="{FDA_ERR}" rel="noopener">received reports of dosing errors</a> with compounded semaglutide where people confused mg, mL and units, including patients told to draw 5 units (0.05 mL) on a U-100 syringe who drew 50 units instead. FDA says compounded concentrations can vary, even from one compounder, and that patients should talk with their prescriber or compounder about how to measure their dose. The FDA-approved pens (Ozempic, Wegovy) are dosed in mg and come prefilled.</p>
-<p>New to these drugs? Read the <a href="peptides/semaglutide.html">semaglutide guide</a> and the <a href="peptides/tirzepatide.html">tirzepatide guide</a> for label dosing straight from the FDA, or <a href="glp1-comparison.html">compare all four GLP-1s</a>. Buying from a pharmacy you don't know? See <a href="{LEGIT}">how to tell if a source is legit</a>.</p>
+<div id="calc-out" class="calc-out" aria-live="polite"><p>Your concentration, volume and units will show here.</p></div>
+<p class="calc-check"><strong>Math only. This tool never suggests a dose</strong>, and it has no presets: every number comes from you. It's for <strong>U-100 insulin syringes only</strong> (100 units = 1 mL). On a prescription? Follow your prescriber and pharmacist and double-check with them.</p>
+<h2>The math, plainly</h2><ol><li><strong>Concentration</strong> (mg/mL) = mg in the vial ÷ mL of water added. Multiply by 1,000 for mcg/mL. If your label already says mg/mL, use that.</li><li><strong>mL to measure</strong> = amount in mg ÷ concentration. (Amount in mcg? Divide by 1,000 first.)</li><li><strong>Units on a U-100 syringe</strong> = mL × 100.</li></ol>
+<p>Three steps. Concentration is the one that changes everything: add more water and the same amount becomes more units.</p>
+<h2>Why people mix these up</h2><p>Milligrams (mg) and micrograms (mcg) measure the peptide. Milliliters (mL) and syringe "units" measure liquid. The FDA has <a href="{FDA_ERR}" rel="noopener">received reports of dosing errors</a> with compounded semaglutide where people confused mg, mL and units, including patients told to draw 5 units (0.05 mL) on a U-100 syringe who drew 50 units instead. FDA says compounded concentrations can vary, even from one compounder.</p>
+<p>On a GLP-1? Read the <a href="peptides/semaglutide.html">semaglutide guide</a> and the <a href="peptides/tirzepatide.html">tirzepatide guide</a> for label dosing straight from the FDA. Exploring other peptides? Browse <a href="peptides/index.html">all our peptide guides</a>, and see <a href="{LEGIT}">how to tell if a source is legit</a>.</p>
 {signup("signup-calc")}
-<h2 id="faq">Units calculator FAQ</h2>{faqh(CALC_FAQ)}
+<h2 id="faq">Peptide calculator FAQ</h2>{faqh(CALC_FAQ)}
 <p class="fine">Sources: <a href="{FDA_ERR}" rel="noopener">FDA alert on compounded semaglutide dosing errors</a>; <a href="{FDA_GLP1}" rel="noopener">FDA's concerns with unapproved GLP-1 drugs</a>.</p>{DISC}</article>{CALCJS}'''
-    t="Semaglutide & tirzepatide units calculator: mg to mL to units"
-    d="Convert your semaglutide or tirzepatide dose from mg to mL to U-100 syringe units, using your own vial's strength. Math shown. Follow your prescriber."
-    schema=[ORG,{"@type":"WebApplication","name":"Semaglutide & tirzepatide mg to mL to units calculator","url":url,"description":d,"applicationCategory":"HealthApplication","operatingSystem":"Any","isAccessibleForFree":True,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":BASE+"/#org"}},
-        faqld(CALC_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("Units calculator",url)])]
+    t="Peptide reconstitution calculator: mg, mcg, mL & U-100 units"
+    d="Free peptide calculator: enter vial mg, water mL and your amount in mcg or mg to get concentration, mL and U-100 syringe units. Math shown. No presets."
+    schema=[ORG,{"@type":"WebApplication","name":"Peptide reconstitution calculator","alternateName":["Peptide calculator","Reconstitution calculator","Semaglutide & tirzepatide units calculator"],"url":url,"description":d,"applicationCategory":"HealthApplication","operatingSystem":"Any","isAccessibleForFree":True,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":BASE+"/#org"}},
+        faqld(CALC_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("Peptide calculator",url)])]
     return (t,d,body,schema)
+OLD_CALC_HTML='<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Peptide reconstitution calculator | Peptide Plainly</title><link rel="canonical" href="https://peptideplainly.com/peptide-reconstitution-calculator.html"><meta http-equiv="refresh" content="0; url=peptide-reconstitution-calculator.html"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><p>The calculator has moved: <a href="peptide-reconstitution-calculator.html">open the peptide reconstitution calculator</a>.</p></body></html>\n'
 
 # ---- c) How to tell if a peptide source is legit ----
 LEGIT_FAQ=[("What is a COA for peptides?","A certificate of analysis: a lab report for one specific batch. A useful one names the compound, the batch or lot number, the testing lab, the test date, and results like HPLC purity and a mass-spec identity check."),
@@ -163,20 +166,20 @@ def add(pages,BASE,ORG,DISC,NOTE,X):
     pages[CALC]=calculator(BASE,ORG,DISC)
     pages[LEGIT]=legit(BASE,ORG,DISC)
 LLMS=[("Retatrutide side effects: what 13,589 users reported online",SE,"Penn's JAMA Network Open study (Oct 14, 2026) of self-reported symptoms in Reddit posts. Research purposes only."),
-      ("Semaglutide & tirzepatide units calculator",CALC,"Math-only mg to mL to U-100 syringe units converter from your own vial concentration. No dose suggestions."),
+      ("Peptide reconstitution calculator",CALC,"Math-only peptide calculator: vial mg + water mL + your amount in mcg or mg gives concentration, mL and U-100 syringe units. No presets, no dose suggestions."),
       ("How to tell if a peptide source is legit",LEGIT,"COAs, HPLC purity, mass spec identity, third-party testing and red flags.")]
-TILES=f'<section class="wide two" aria-label="Tools and buyer guides"><a class="tile" href="{{R}}{SE}"><h3>🔥 Retatrutide side effects</h3><p>What 13,589 users reported online, from the new JAMA study.</p></a><a class="tile" href="{{R}}{CALC}"><h3>mg → mL → units calculator</h3><p>Semaglutide &amp; tirzepatide math from your own vial label.</p></a><a class="tile" href="{{R}}{LEGIT}"><h3>Is your source legit?</h3><p>Read a COA in two minutes and spot the red flags.</p></a></section>'
+TILES=f'<section class="wide two" aria-label="Tools and buyer guides"><a class="tile" href="{{R}}{SE}"><h3>🔥 Retatrutide side effects</h3><p>What 13,589 users reported online, from the new JAMA study.</p></a><a class="tile" href="{{R}}{CALC}"><h3>Peptide reconstitution calculator</h3><p>Any vial: concentration, mL and U-100 units, math shown.</p></a><a class="tile" href="{{R}}{LEGIT}"><h3>Is your source legit?</h3><p>Read a COA in two minutes and spot the red flags.</p></a></section>'
 def link_in(pages):
     def sub(k,a,b):
         v=list(pages[k]); assert a in v[2],(k,a); v[2]=v[2].replace(a,b,1); pages[k]=tuple(v)
     sub("peptides/index.html",'<section class="wide">\n<div class="chips"','<section class="wide"><h2>Tools &amp; buyer guides</h2></section>'+TILES.replace("{R}","../").replace(f'../{SE}',SE.split("/")[1])+'<section class="wide">\n<div class="chips"')
     sub("index.html",'<section id="this-week">','<section class="wide"><div class="sec-head"><h2>Trending tools &amp; guides</h2></div></section>'+TILES.replace("{R}","")+'<section id="this-week">')
 CARDS={SE:dict(card="retatrutide-side-effects",kicker="New JAMA study · Oct 2026",title="Retatrutide side effects: what 13,589 users reported",sub="Appetite, fatigue, energy, nausea, insomnia, heart rate.",badge="research",badge_t="Research purposes only",hot=True),
- CALC:dict(card="glp1-units-calculator",kicker="Free tool · math only",title="Semaglutide & tirzepatide: mg → mL → units",sub="Your vial, your prescribed dose, the exact math.",badge="",badge_t="",hot=False),
+ CALC:dict(card="peptide-calculator",kicker="Free tool · math only",title="Peptide reconstitution calculator",sub="Vial mg + water mL → concentration, mL, units.",badge="",badge_t="",hot=False),
  LEGIT:dict(card="legit-source",kicker="Buyer's guide",title="How to tell if a peptide source is legit",sub="COAs, HPLC purity, mass spec and red flags.",badge="",badge_t="",hot=False)}
 def next_links(slug):
     L=[]
-    if slug in ("semaglutide","tirzepatide"): L.append((CALC,"mg → mL → units calculator","Convert your prescribed dose using your own vial's strength.","calc"))
+    L.append((CALC,"Peptide reconstitution calculator","Vial mg + water mL → concentration, mL and U-100 units. Math only.","calc"))
     if slug in ("semaglutide","tirzepatide","retatrutide","orforglipron"): L.append((SE,"Retatrutide side effects","What 13,589 users reported online, from the new JAMA study.","reta-se"))
     L.append((LEGIT,"Is your source legit?","Read a COA, verify third-party testing, spot the red flags.","legit"))
     li="".join(f'<li><a href="{"" if u.startswith("peptides/") else "../"}{u.split("/")[-1] if u.startswith("peptides/") else u}" data-goatcounter-click="next-{slug}-{tag}"><strong>{t}</strong><span>{d}</span></a></li>' for u,t,d,tag in L)
