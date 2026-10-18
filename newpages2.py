@@ -16,13 +16,24 @@ VS_FAQ=[("Which is better for weight loss, semaglutide or tirzepatide?","In the 
 ("How much weight do people lose on tirzepatide?","In SURMOUNT-1, average weight change at 72 weeks was −15.0% on 5 mg, −19.5% on 10 mg and −20.9% on 15 mg, vs −3.1% on placebo."),
 ("What's the difference between how they work?","Semaglutide activates one hormone receptor, GLP-1. Tirzepatide activates two, GIP and GLP-1."),
 ("Are the side effects different?","In all three trials the most common side effects were gastrointestinal, mostly mild to moderate and mainly during dose escalation (SURMOUNT) or transient (STEP 1)."),
-("What about retatrutide and orforglipron?","See our four-way GLP-1 comparison for all the big names side by side.")]
+("Is retatrutide better than tirzepatide?","Nobody knows yet. Retatrutide's published trials (TRIUMPH-1: −25.0% on 12 mg at 80 weeks, counting dropouts) posted bigger average numbers than tirzepatide's SURMOUNT-1 (−20.9% on 15 mg at 72 weeks), but they were different trials and there's no head-to-head. Retatrutide is still investigational, with no approval date announced."),
+("What about orforglipron?","See our four-way GLP-1 comparison for all the big names side by side, including the orforglipron pill.")]
+RETA_SEC=f'''<h2 id="retatrutide">Where does retatrutide fit?</h2>
+<p><span class="badge research">Research purposes only</span> Retatrutide is Lilly's triple agonist and the name everyone's searching next to these two. It has posted the biggest average weight-loss numbers of the three in its own trials. But it has <strong>never been tested head-to-head</strong> against semaglutide or tirzepatide, so the numbers below come from different trials with different people, lengths and dose arms. Compare loosely.</p>
+<div class="table-wrap"><table class="compare"><caption class="sr">Retatrutide published trial results</caption><thead><tr><th scope="col">Retatrutide trial</th><th scope="col">Who &amp; how long</th><th scope="col">Average weight change</th><th scope="col">Counts dropouts?</th></tr></thead><tbody>
+<tr><th scope="row">Phase 2<br>{pm(37366315,"NEJM 2023")}</th><td>338 adults with obesity (or overweight plus a weight-related condition), 48 weeks</td><td><strong>−24.2%</strong> (12 mg arm) vs −2.1% on placebo</td><td>Not stated in the abstract (least-squares means)</td></tr>
+<tr><th scope="row">TRIUMPH-1<br>{pm(42814954,"NEJM 2026")}</th><td>2,339 adults with obesity, no diabetes, 80 weeks</td><td>−17.6% (4 mg), −23.7% (9 mg), <strong>−25.0%</strong> (12 mg) vs −3.9% on placebo</td><td>Yes (treatment-regimen estimand, intention-to-treat)</td></tr>
+<tr><th scope="row">TRIUMPH-2<br>{pm(42810372,"Lancet 2026")}</th><td>1,152 adults with obesity and type 2 diabetes, 80 weeks</td><td>−11.9% (4 mg), −16.8% (9 mg), <strong>−18.8%</strong> (12 mg) vs −5.1% on placebo</td><td>Yes (treatment-regimen estimand)</td></tr></tbody></table></div>
+<p class="fine">Dose labels are the trial arm names, not dosing advice. There is no approved human dose of retatrutide.</p>
+<ul><li><strong>Status:</strong> retatrutide is still investigational and not FDA-approved, and no approval date has been announced.</li><li><strong>Filing:</strong> in July 2026, Lilly said it plans to submit retatrutide to the FDA in Q1 2027 (<a href="{LILLY_T23}" rel="noopener">Lilly, July 23, 2026</a>).</li><li><strong>Side effects:</strong> in TRIUMPH-1 the most common adverse events were gastrointestinal.</li></ul>
+<p>Track it: <a href="peptides/retatrutide-fda-approval-status.html">retatrutide release date &amp; FDA status</a> · <a href="peptides/retatrutide-side-effects.html">what users report online</a> · <a href="peptides/retatrutide.html">full retatrutide guide</a>. Want orforglipron too? <a href="glp1-comparison.html">All four GLP-1s side by side</a>.</p>'''
 def vs(BASE,ORG,DISC,ROWS):
+    RETA=RETA_SEC
     url=f"{BASE}/{VS}"; wl=ROWS[0][7]; zl=ROWS[1][7]
-    body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / Semaglutide vs tirzepatide</p>
-<p class="kicker">Head-to-head · weight loss</p><h1>Semaglutide vs tirzepatide: the head-to-head numbers</h1>
-<p><span class="badge approved">FDA-approved</span> <span class="badge approved">FDA-approved</span> <span class="fine">Both drugs. Checked against the trial abstracts Oct 17, 2026</span></p>
-<p class="lead">Wegovy or Zepbound? Ozempic or Mounjaro? These two are the biggest names in weight loss, and they've actually gone toe to toe in a randomized trial. Here's who won, by how much, and what the landmark trials showed for each.</p>
+    body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / Semaglutide vs tirzepatide vs retatrutide</p>
+<p class="kicker">Head-to-head · weight loss</p><h1>Semaglutide vs tirzepatide vs retatrutide: the numbers</h1>
+<p><span class="badge approved">Semaglutide: FDA-approved</span> <span class="badge approved">Tirzepatide: FDA-approved</span> <span class="badge research">Retatrutide: Research purposes only</span> <span class="fine">Checked against the published trials Oct 18, 2026</span></p>
+<p class="lead">Wegovy or Zepbound? Ozempic or Mounjaro? These two are the biggest names in weight loss, and they've actually gone toe to toe in a randomized trial. Here's who won, by how much, what the landmark trials showed for each, and where the triple-agonist retatrutide fits in.</p>
 <aside class="excite" aria-label="The verdict"><p class="kicker">The verdict</p><p class="sa">Tirzepatide won the head-to-head.</p><ul>
 <li><strong>−20.2% vs −13.7%</strong> average weight change at 72 weeks, tirzepatide vs semaglutide (SURMOUNT-5, 751 adults).</li>
 <li><strong>−18.4 cm vs −13.0 cm</strong> off the waist.</li>
@@ -32,6 +43,7 @@ def vs(BASE,ORG,DISC,ROWS):
 <div class="table-wrap"><table class="compare"><caption class="sr">SURMOUNT-5 results at 72 weeks</caption><thead><tr><th scope="col">At 72 weeks</th><th scope="col">Tirzepatide</th><th scope="col">Semaglutide</th></tr></thead><tbody>
 <tr><th scope="row">Average weight change</th><td><strong>−20.2%</strong></td><td>−13.7%</td></tr>
 <tr><th scope="row">Average waist change</th><td><strong>−18.4 cm</strong></td><td>−13.0 cm</td></tr>
+<tr><th scope="row">Counts dropouts?</th><td colspan="2">Not stated in the abstract (least-squares means)</td></tr>
 <tr><th scope="row">Most common side effects</th><td colspan="2">Gastrointestinal in both groups, mostly mild to moderate, mainly during dose escalation</td></tr></tbody></table></div>
 <h2>The landmark trial for each drug</h2>
 <p>Each drug also has its own big placebo-controlled trial. These weren't head-to-head, and the people, doses and lengths differ, so compare them loosely.</p>
@@ -41,20 +53,21 @@ def vs(BASE,ORG,DISC,ROWS):
 <tr><th scope="row">Length &amp; doses</th><td>68 weeks, 2.4 mg weekly vs placebo, plus lifestyle intervention</td><td>72 weeks, 5, 10 or 15 mg weekly vs placebo</td></tr>
 <tr><th scope="row">Average weight change</th><td><strong>−14.9%</strong> (−15.3 kg) vs −2.4% on placebo</td><td><strong>−15.0%</strong> (5 mg), <strong>−19.5%</strong> (10 mg), <strong>−20.9%</strong> (15 mg) vs −3.1% on placebo</td></tr>
 <tr><th scope="row">Big-loss club</th><td>50.5% lost 15% or more (vs 4.9% on placebo)</td><td>50% (10 mg) and 57% (15 mg) lost 20% or more (vs 3% on placebo)</td></tr>
+<tr><th scope="row">Counts dropouts?</th><td>Yes (primary estimand: effect regardless of stopping treatment)</td><td>Yes (treatment-regimen estimand, intention-to-treat)</td></tr>
 <tr><th scope="row">Stopped for side effects</th><td>4.5% stopped for GI events (vs 0.8% on placebo)</td><td>4.3%, 7.1% and 6.2% stopped for adverse events (vs 2.6% on placebo)</td></tr>
 <tr><th scope="row">Most common side effects</th><td>Nausea and diarrhea, typically transient and mild to moderate</td><td>Gastrointestinal, mostly mild to moderate, mainly during dose escalation</td></tr></tbody></table></div>
-<h2>How they work</h2><ul><li><strong>Semaglutide</strong> (Ozempic, Wegovy, Rybelsus) activates <strong>one</strong> hormone receptor: GLP-1.</li><li><strong>Tirzepatide</strong> (Mounjaro, Zepbound) activates <strong>two</strong>: GIP and GLP-1.</li></ul>
+{RETA}<h2>How they work</h2><ul><li><strong>Semaglutide</strong> (Ozempic, Wegovy, Rybelsus) activates <strong>one</strong> hormone receptor: GLP-1.</li><li><strong>Tirzepatide</strong> (Mounjaro, Zepbound) activates <strong>two</strong>: GIP and GLP-1.</li><li><strong>Retatrutide</strong> (investigational, Lilly) activates <strong>three</strong>: GIP, GLP-1 and glucagon.</li></ul>
 <h2>Label dosing for weight management</h2><ul><li><strong>{wl}</strong></li><li><strong>{zl}</strong></li></ul><p class="fine">Copied from the FDA labels on DailyMed via our <a href="glp1-comparison.html">GLP-1 comparison</a>. Your prescriber sets your dose.</p>
 <div class="calc-callout"><p><strong>Got a vial and a dose in mg?</strong> Our free <a href="{CALC}" data-goatcounter-click="calc-callout-vs">mg → mL → units calculator</a> shows the math from your own vial label.</p></div>
-<h2>Go deeper</h2><ul><li><a href="peptides/semaglutide.html">Semaglutide guide</a>: STEP 1, SELECT heart results, label dosing, FAQs.</li><li><a href="peptides/tirzepatide.html">Tirzepatide guide</a>: SURMOUNT trials, label dosing, FAQs.</li><li><a href="glp1-comparison.html">All four GLP-1s side by side</a>, including retatrutide and orforglipron.</li><li><a href="{LEGIT}">How to tell if a source is legit</a>.</li></ul>
+<h2>Go deeper</h2><ul><li><a href="peptides/semaglutide.html">Semaglutide guide</a>: STEP 1, SELECT heart results, label dosing, FAQs.</li><li><a href="peptides/tirzepatide.html">Tirzepatide guide</a>: SURMOUNT trials, label dosing, FAQs.</li><li><a href="peptides/retatrutide.html">Retatrutide guide</a>, its <a href="peptides/retatrutide-fda-approval-status.html">release date &amp; FDA status</a> and <a href="peptides/retatrutide-side-effects.html">what users report online</a>.</li><li><a href="glp1-comparison.html">All four GLP-1s side by side</a>, including orforglipron, the daily pill.</li><li><a href="{LEGIT}">How to tell if a source is legit</a>.</li></ul>
 {signup("signup-vs")}
 <h2 id="faq">Semaglutide vs tirzepatide FAQ</h2>{faqh(VS_FAQ).replace("our four-way GLP-1 comparison",'our <a href="glp1-comparison.html">four-way GLP-1 comparison</a>')}{DISC}</article>'''
-    t="Semaglutide vs tirzepatide: head-to-head weight-loss results"
-    d="Semaglutide vs tirzepatide: SURMOUNT-5 head-to-head results (−20.2% vs −13.7%), plus STEP 1 and SURMOUNT-1 numbers, how they work and label dosing."
-    schema=[ORG,{"@type":"MedicalWebPage","name":"Semaglutide vs tirzepatide: the head-to-head numbers","description":d,"url":url,"inLanguage":"en","lastReviewed":"2026-10-17","publisher":{"@id":BASE+"/#org"},"about":[{"@type":"Drug","name":"Semaglutide"},{"@type":"Drug","name":"Tirzepatide"}],
-        "citation":[{"@type":"ScholarlyArticle","name":"Tirzepatide as Compared with Semaglutide for the Treatment of Obesity","sameAs":"https://doi.org/10.1056/NEJMoa2416394"},{"@type":"ScholarlyArticle","name":"Once-Weekly Semaglutide in Adults with Overweight or Obesity","sameAs":"https://doi.org/10.1056/NEJMoa2032183"},{"@type":"ScholarlyArticle","name":"Tirzepatide Once Weekly for the Treatment of Obesity","sameAs":"https://doi.org/10.1056/NEJMoa2206038"}]},
-        {"@type":"Article","headline":"Semaglutide vs tirzepatide: the head-to-head numbers","description":d,"url":url,"datePublished":"2026-10-17","dateModified":"2026-10-17","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}},
-        faqld(VS_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("Semaglutide vs tirzepatide",url)])]
+    t="Semaglutide vs tirzepatide vs retatrutide: weight-loss results"
+    d="Semaglutide vs tirzepatide head-to-head (SURMOUNT-5: −20.2% vs −13.7%), plus where retatrutide fits from its NEJM and Lancet trials. Label dosing only."
+    schema=[ORG,{"@type":"MedicalWebPage","name":"Semaglutide vs tirzepatide vs retatrutide: the numbers","description":d,"url":url,"inLanguage":"en","lastReviewed":"2026-10-18","publisher":{"@id":BASE+"/#org"},"about":[{"@type":"Drug","name":"Semaglutide"},{"@type":"Drug","name":"Tirzepatide"},{"@type":"Drug","name":"Retatrutide"}],
+        "citation":[{"@type":"ScholarlyArticle","name":"Tirzepatide as Compared with Semaglutide for the Treatment of Obesity","sameAs":"https://doi.org/10.1056/NEJMoa2416394"},{"@type":"ScholarlyArticle","name":"Once-Weekly Semaglutide in Adults with Overweight or Obesity","sameAs":"https://doi.org/10.1056/NEJMoa2032183"},{"@type":"ScholarlyArticle","name":"Tirzepatide Once Weekly for the Treatment of Obesity","sameAs":"https://doi.org/10.1056/NEJMoa2206038"},{"@type":"ScholarlyArticle","name":"Retatrutide, a Triple Hormone Receptor Agonist, for Treatment of Obesity","sameAs":"https://doi.org/10.1056/NEJMoa2604169"},{"@type":"ScholarlyArticle","name":"Triple-Hormone-Receptor Agonist Retatrutide for Obesity - A Phase 2 Trial","sameAs":"https://doi.org/10.1056/NEJMoa2301972"},{"@type":"ScholarlyArticle","name":"Retatrutide in adults with obesity and type 2 diabetes (TRIUMPH-2): a double-blind, parallel-group, randomised, placebo-controlled, phase 3 trial","sameAs":"https://doi.org/10.1016/S0140-6736(26)01861-1"}]},
+        {"@type":"Article","headline":"Semaglutide vs tirzepatide vs retatrutide: the numbers","description":d,"url":url,"datePublished":"2026-10-17","dateModified":"2026-10-18","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}},
+        faqld(VS_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("Semaglutide vs tirzepatide vs retatrutide",url)])]
     return (t,d,body,schema)
 
 # ---- b) Retatrutide release date & FDA approval status ----
@@ -152,7 +165,7 @@ def wire(pages):
 def signup_atf(pages,targets):
     for k,tag in targets:
         v=list(pages[k]); v[2]=strip(tag)+v[2]; pages[k]=tuple(v)
-LLMS=[("Semaglutide vs tirzepatide: head-to-head numbers",VS,"SURMOUNT-5 (−20.2% vs −13.7% at 72 weeks), STEP 1 and SURMOUNT-1 results, mechanisms and label dosing."),
+LLMS=[("Semaglutide vs tirzepatide vs retatrutide: the numbers",VS,"SURMOUNT-5 head-to-head (−20.2% vs −13.7% at 72 weeks), STEP 1 and SURMOUNT-1, plus retatrutide's published phase 2, TRIUMPH-1 and TRIUMPH-2 results (not head-to-head; retatrutide is investigational)."),
       ("Retatrutide release date & FDA approval status",REL,"Not FDA-approved. Lilly plans to submit in Q1 2027. TRIUMPH phase 3 timeline and the biologic classification dispute.")]
-CARDS={VS:dict(card="semaglutide-vs-tirzepatide",kicker="Head-to-head · weight loss",title="Semaglutide vs tirzepatide",sub="SURMOUNT-5: −20.2% vs −13.7% at 72 weeks.",badge="approved",badge_t="Both FDA-approved",hot=False),
+CARDS={VS:dict(card="semaglutide-vs-tirzepatide",kicker="Head-to-head · weight loss",title="Semaglutide vs tirzepatide vs retatrutide",sub="SURMOUNT-5: −20.2% vs −13.7%. Plus where retatrutide fits.",badge="",badge_t="",hot=True),
  REL:dict(card="retatrutide-fda-status",kicker="Status tracker · Oct 2026",title="Retatrutide release date & FDA status",sub="Lilly plans to submit in Q1 2027. Every readout so far.",badge="research",badge_t="Research purposes only",hot=True)}

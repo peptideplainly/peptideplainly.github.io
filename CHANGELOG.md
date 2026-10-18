@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18 (traffic push 3)
+- semaglutide-vs-tirzepatide.html: new "Where does retatrutide fit?" section (phase 2 NEJM 2023, TRIUMPH-1 NEJM, TRIUMPH-2 Lancet; estimand labelled per trial; not head-to-head; investigational, Lilly plans FDA submission Q1 2027). Title/description/JSON-LD/OG card now cover all three.
+- New: /compounded-vs-brand-semaglutide-tirzepatide.html (FDA compounding Q&A, FDA GLP-1 concerns page, FDA dosing-errors alert, NDC Directory, DailyMed packaging; Katz et al., Obes Sci Pract 2026 photo-review study). Linked from semaglutide and tirzepatide guides and the calculator.
+
 ## 2026-10-17 (traffic push 2)
 - New: /semaglutide-vs-tirzepatide.html (SURMOUNT-5, STEP 1, SURMOUNT-1 from PubMed abstracts) and /peptides/retatrutide-fda-approval-status.html (TRIUMPH timeline from Lilly releases, ClinicalTrials.gov, NEJM/Lancet; FDA Oct 2 2026 classification letter).
 - Calculator: share block (navigator.share + clipboard fallback, X and Reddit intents, GoatCounter events); calculator callouts on all GLP-1 pages and the home page.

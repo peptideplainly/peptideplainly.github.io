@@ -155,11 +155,11 @@
  "semaglutide-vs-tirzepatide.html": {
   "card": "semaglutide-vs-tirzepatide",
   "kicker": "Head-to-head · weight loss",
-  "title": "Semaglutide vs tirzepatide",
-  "sub": "SURMOUNT-5: −20.2% vs −13.7% at 72 weeks.",
-  "badge": "approved",
-  "badge_t": "Both FDA-approved",
-  "hot": false
+  "title": "Semaglutide vs tirzepatide vs retatrutide",
+  "sub": "SURMOUNT-5: −20.2% vs −13.7%. Plus where retatrutide fits.",
+  "badge": "",
+  "badge_t": "",
+  "hot": true
  },
  "peptides/retatrutide-fda-approval-status.html": {
   "card": "retatrutide-fda-status",
@@ -168,6 +168,15 @@
   "sub": "Lilly plans to submit in Q1 2027. Every readout so far.",
   "badge": "research",
   "badge_t": "Research purposes only",
+  "hot": true
+ },
+ "compounded-vs-brand-semaglutide-tirzepatide.html": {
+  "card": "compounded-vs-brand",
+  "kicker": "Beginner's guide · GLP-1s",
+  "title": "Compounded or brand-name? How to tell",
+  "sub": "Label, pen vs vial, NDC. Two minutes, total clarity.",
+  "badge": "",
+  "badge_t": "",
   "hot": true
  }
 }
