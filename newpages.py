@@ -29,7 +29,7 @@ def side_effects(BASE,ORG,DISC,NOTE,badge):
     rows="".join(f'<tr><th scope="row">{n}</th><td>{c:,}</td><td>{p}%</td></tr>' for n,c,p in TOP)
     cite=f'<a href="{JAMA}" rel="noopener">Sehgal et al., JAMA Network Open, Oct 14, 2026</a>'
     body=f'''<article class="guide cat-weight"><p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Peptide guides</a> / <a href="retatrutide.html">Retatrutide</a> / Side effects</p>
-<p class="kicker">New study · Oct 14, 2026</p><h1>Retatrutide side effects: what 13,589 people said online</h1>
+<p class="kicker">New study · Oct 14, 2026</p><h1>Retatrutide side effects: what 13,589 users actually reported online</h1>
 <p><span class="badge {bk}">{bt}</span> <span class="fine">Checked against the published paper Oct 17, 2026</span></p>
 <p class="lead">Retatrutide is the triple-agonist shot everyone's watching, and thousands of people are already posting about it. A University of Pennsylvania team just ran those posts through AI and published the first systematic look at what users say they feel. Here's what they found.</p>
 <aside class="excite" aria-label="The headline numbers"><p class="kicker">The headline numbers</p><ul>

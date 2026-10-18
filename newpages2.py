@@ -31,7 +31,7 @@ def vs(BASE,ORG,DISC,ROWS):
     RETA=RETA_SEC
     url=f"{BASE}/{VS}"; wl=ROWS[0][7]; zl=ROWS[1][7]
     body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / Semaglutide vs tirzepatide vs retatrutide</p>
-<p class="kicker">Head-to-head · weight loss</p><h1>Semaglutide vs tirzepatide vs retatrutide: the numbers</h1>
+<p class="kicker">Head-to-head · weight loss</p><h1>Semaglutide vs tirzepatide: who won the head-to-head, and where retatrutide fits</h1>
 <p><span class="badge approved">Semaglutide: FDA-approved</span> <span class="badge approved">Tirzepatide: FDA-approved</span> <span class="badge research">Retatrutide: investigational, not approved</span> <span class="fine">Checked against the published trials Oct 18, 2026</span></p>
 <p class="lead">Wegovy or Zepbound? Ozempic or Mounjaro? These two are the biggest names in weight loss, and they've actually gone toe to toe in a randomized trial. Here's who won, by how much, what the landmark trials showed for each, and where the triple-agonist retatrutide fits in.</p>
 <aside class="excite" aria-label="The verdict"><p class="kicker">The verdict</p><p class="sa">Tirzepatide won the head-to-head.</p><ul>
@@ -89,7 +89,7 @@ def release(BASE,ORG,DISC,NOTE,badge):
     body=f'''<article class="guide cat-weight"><p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Peptide guides</a> / <a href="retatrutide.html">Retatrutide</a> / FDA status</p>
 <p class="kicker">Status tracker · updated Oct 17, 2026</p><h1>Retatrutide release date &amp; FDA approval status</h1>
 <p><span class="badge {bk}">{bt}</span> <span class="fine">Not FDA-approved</span></p>
-<p class="lead">Retatrutide has now won phase 3 trial after phase 3 trial, with average weight loss up to −25.0% in its published TRIUMPH-1 results. So when can people actually get it? Here's exactly where it stands, with every date sourced.</p>
+<p class="lead">Retatrutide has racked up phase 3 win after phase 3 win, with average weight loss up to −25.0% in its published TRIUMPH-1 results. So when can you actually get it? Here's exactly where it stands, with every date sourced.</p>
 <aside class="excite" aria-label="Where it stands"><p class="kicker">Where it stands right now</p><ul>
 <li><strong>Not FDA-approved.</strong> Lilly says retatrutide is investigational and can't be legally sold or marketed for human use.</li>
 <li><strong>Filing:</strong> Lilly says it plans to submit to the FDA for U.S. approval in <strong>Q1 2027</strong>.</li>

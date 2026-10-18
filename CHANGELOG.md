@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-18 — Batch 3c: remaining pages
+- Light punch-up: Glossary, Why-so-confusing, Semaglutide vs tirzepatide, Compounded vs brand (lead only; Katz wording untouched), Retatrutide side effects and FDA status. Investigational wording and not-head-to-head caveats kept. Sent newsletter issue untouched.
+
 ## 2026-10-18 — Bean verified fact fixes
 - Advertise: small "Pay regular rate" link under each package (contact email unchanged).
 - Stack rat-study wording; KPV "lab-grown human gut cells"; kisspeptin hero (secondary result, IV kisspeptin-54) + kisspeptin-10 FDA safety-risk listing and Oct 2024 11–0 advisory vote; Epitalon cell/mouse details; CagriSema compounding links, 2,108-on-CagriSema count, dosage note; MT2 melanoma FAQ wording.
