@@ -29,7 +29,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
 <section class="cta-band" id="signup"><div class="cta-in"><p class="kicker">Every Friday · free</p><h2>The week's biggest peptide news. Five minutes. Free.</h2><p>New results, new compounds, explained plainly every Friday.</p>
 {EMBED}</div></section>
 <footer><div class="foot-in"><p class="brand-foot">Peptide <b>Plainly</b></p><p><a href="{root}peptides/index.html">All guides</a> · <a href="{root}peptides-101.html">Peptides 101</a> · <a href="{root}glossary.html">Glossary</a> · <a href="{root}newsletter.html">This week&#39;s issue</a> · <a href="{root}why-peptide-info-is-confusing.html">Why so confusing?</a> · <a href="{root}peptide-reconstitution-calculator.html">Peptide calculator</a> · <a href="{root}how-to-tell-if-a-peptide-source-is-legit.html">Is your source legit?</a> · <a href="{root}about.html">About &amp; disclaimer</a> · <a href="{root}advertise.html">Advertise</a></p><p class="fine">Not medical advice. Education only. Sources linked on every claim. © 2026 Peptide Plainly</p></div></footer>{ATTR}</body></html>'''
-DISC='<p class="disclaimer"><strong>Not medical advice.</strong> Education only. We don\'t sell anything or tell you what to take. Label doses are there so you can follow along with your prescriber. Talk to a licensed clinician about your health.</p>'
+DISC='<p class="disclaimer"><strong>Not medical advice.</strong> Education only. Talk to a licensed clinician about your health.</p>'
 pages={}
 # ---- Newsletter: only the newest SENT issue is published, at /newsletter.html ----
 # An issue is published only if issues/issue-NNN.md starts with front matter containing `sent: true`:
@@ -149,6 +149,7 @@ for k in X:
     fx=QUICKFIX.get(k,{}); X[k]['quick']=[next((v for lab,v in fx.items() if q.startswith(f'<strong>{lab}:')),q) for q in X[k]['quick']]
     X[k]['faq']=[(q,FAQFIX.get((k,q),a)) for q,a in X[k]['faq']]
 for k,b in BOTTOM.items(): X[k]['quick']=[q for q in X[k]['quick'] if 'Bottom line' not in q]+[b]
+import tone3; tone3.apply(PEP,X,EXCITE,INTRO); NOTE=''
 LOWER={"Semaglutide","Tirzepatide","Retatrutide","Orforglipron","Tesamorelin"}
 QH={"collagen-peptides":("What are collagen peptides?","Are collagen peptides FDA-approved?"),"cjc-1295-ipamorelin":("What are CJC-1295 and ipamorelin?","Are CJC-1295 and ipamorelin FDA-approved?")}
 import extras3 as _e3; QH.update(_e3.QH3)
@@ -191,7 +192,7 @@ for slug,(name,desc,what,reg,ev,myths) in PEP.items():
 <h2>{QH.get(slug,(f"What is {low}?",))[0]}</h2><p>{INTRO.get(slug,what)}</p><h2>{QH.get(slug,(0,f"Is {low} FDA-approved?"))[1]}</h2><p>{reg}</p>
 {x["dosing"]}
 <h2 id="evidence">What the research shows</h2><ul>{ev}</ul><p class="fine">New to these terms? See the <a href="../glossary.html">glossary</a>.</p>
-<h2 id="faq">{short} FAQ</h2>{faqh}{NOTE if bk=="research" and slug not in _e3.ONELINE else ""}{DISC}
+<h2 id="faq">{short} FAQ</h2>{faqh}{DISC}
 {"" if slug in GLP1 else (f'<nav class="related" aria-label="Related guides"><h2>Same category</h2><ul>{rel}</ul></nav>' if rel else '')}
 <p class="fine">All guides: {others} · <a href="../peptides-101.html">Peptides 101</a> · <a href="../why-peptide-info-is-confusing.html">Why is peptide info so confusing?</a></p></article>''',schema)
 chips='<button type="button" class="chip" aria-pressed="true" data-f="all">All</button>'+"".join(f'<button type="button" class="chip" aria-pressed="false" data-f="{c}">{icon(c)}{l}</button>' for c,l in CATS.items())

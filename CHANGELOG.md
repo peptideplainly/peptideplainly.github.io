@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18 — Batch 3a: sitewide tone pass on guides
+- Bold H1s on all older guides; general-audience framing for tesamorelin, PT-141, Semax (indication kept as one short line, trial populations named).
+- Research-only guides (BPC-157, TB-500, MOTS-c, Semax, CJC-1295/ipamorelin, injectable GHK-Cu): one sourced risk line + "Choose a tested source"; short no-dose section; regulatory paragraphs trimmed.
+- One short disclaimer per page (footer), duplicate research note removed; label-dosing preamble shortened.
+
 ## 2026-10-18 — Bean tone pass on batch 2 + MT2
 - Safety/legal boxes replaced with one sourced line + "Choose a tested source" link (MT2 keeps its risk citations inline).
 - Bolder H1s; shorter status paragraphs (regulatory detail trimmed); duplicate research footer note dropped on these pages.

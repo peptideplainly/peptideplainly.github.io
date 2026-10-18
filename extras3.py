@@ -186,12 +186,12 @@ def line(risks, status="Not FDA-approved; sold for research only."):
 NODOSE='<h2 id="dosing">Dosage</h2><p>There\'s <strong>no established human dose</strong>, so we don\'t list one.</p>'
 ONE={
 "melanotan-2":line(f'new and darkening moles ({pm(24334249,"case report, 2014")}), melanoma in a 20-year-old who also used sunbeds ({pm(24355990,"single case, 2014")}; a review says a link isn\'t proven, {pm(28266027,"2017")}), priapism ({pm(33460908,"case, 2021")}) and kidney infarction ({pm(31953620,"case, 2020")})'),
-"epitalon":line(f'unknown: long-term safety data are inadequate, per a 2026 review ({pm(42884164,"Int J Mol Sci")})'),
-"selank":line(f'unknown: it\'s poorly studied and acts on GABA systems ({pm(34396551,"J Clin Pharmacol, 2021")})'),
-"kpv":line('unknown: there are no published human trials'),
+"epitalon":line(f'not well studied; long-term safety data are inadequate, per a 2026 review ({pm(42884164,"Int J Mol Sci")})'),
+"selank":line(f'poorly studied, and it acts on GABA systems ({pm(34396551,"J Clin Pharmacol, 2021")})'),
+"kpv":line('not well studied; there are no published human trials'),
 "kisspeptin":line(f'unknown outside short research infusions; none were reported in the 2022 women\'s trial ({pm(36287566,"JAMA Netw Open")})'),
 "cagrilintide":line(f'gastrointestinal side effects in 79.6% vs 39.9% on placebo in REDEFINE 1 ({pm(40544433,"NEJM, 2025")}); online "research" versions aren\'t the trial drug',status="Investigational, not FDA-approved."),
-"bpc-157-tb-500-stack":line(f'unknown: no human safety data on the combination; banned in sport (<a href="https://www.wada-ama.org/en/prohibited-list" rel="noopener">WADA</a>)'),
+"bpc-157-tb-500-stack":line(f'not well studied; no human safety data on the combination; banned in sport (<a href="https://www.wada-ama.org/en/prohibited-list" rel="noopener">WADA</a>)'),
 }
 ONELINE=set(ONE)-{"cagrilintide"}  # pages where the footer research NOTE is dropped (the line covers it)
 ONELINE|={"cagrilintide"}
