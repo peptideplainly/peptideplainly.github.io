@@ -125,6 +125,69 @@
   "badge_t": "Research purposes only",
   "hot": false
  },
+ "peptides/epitalon.html": {
+  "card": "epitalon",
+  "kicker": "Longevity",
+  "title": "Epitalon (epithalon)",
+  "sub": "The telomere peptide. Longer telomeres in cells, longer max lifespan in mice.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/selank.html": {
+  "card": "selank",
+  "kicker": "Brain & focus",
+  "title": "Selank",
+  "sub": "Semax's calming cousin. Anti-anxiety results in small studies.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/kpv.html": {
+  "card": "kpv",
+  "kicker": "Healing & recovery",
+  "title": "KPV",
+  "sub": "Tiny tripeptide, big gut buzz. Calmed colitis in mice.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/kisspeptin.html": {
+  "card": "kisspeptin",
+  "kicker": "Sexual health",
+  "title": "Kisspeptin",
+  "sub": "The libido hormone. Randomized trials in men and women.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
+ "peptides/cagrilintide.html": {
+  "card": "cagrilintide",
+  "kicker": "Weight & metabolism",
+  "title": "Cagrilintide & CagriSema",
+  "sub": "Amylin + semaglutide. −20.4% in Phase 3, FDA decision pending.",
+  "badge": "research",
+  "badge_t": "Investigational: not FDA-approved",
+  "hot": false
+ },
+ "peptides/elamipretide.html": {
+  "card": "elamipretide",
+  "kicker": "Longevity",
+  "title": "SS-31 (elamipretide, Forzinity)",
+  "sub": "SS-31 grew up: FDA-approved, with anti-frailty results in old mice.",
+  "badge": "approved",
+  "badge_t": "FDA-approved (as Forzinity)",
+  "hot": false
+ },
+ "peptides/bpc-157-tb-500-stack.html": {
+  "card": "bpc-157-tb-500-stack",
+  "kicker": "Healing & recovery",
+  "title": "BPC-157 + TB-500 stack",
+  "sub": "The famous recovery combo, and the first study to test it.",
+  "badge": "research",
+  "badge_t": "Research purposes only",
+  "hot": false
+ },
  "glp1-comparison.html": {
   "card": "glp1-comparison",
   "kicker": "Spotlight · weight loss",

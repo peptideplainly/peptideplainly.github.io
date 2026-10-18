@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18 — Batch 2 guides
+- New guides: Epitalon, Selank, KPV, Kisspeptin, Cagrilintide & CagriSema, SS-31 (elamipretide, Forzinity), BPC-157 + TB-500 stack.
+- FDA status confirmed: elamipretide approved as Forzinity (NDA 215244, Sept 19, 2025, accelerated approval, Barth syndrome ≥30 kg; label dosing copied). CagriSema investigational (NDA submitted Dec 18, 2025). Others: no FDA approval in Drugs@FDA.
+- Safety & legal box + legit-source link on every research-only page. No human doses for research-only compounds.
+- OG cards for all 7.
+
 ## 2026-10-18 (Bean's batch 1 fact fixes)
 - MT2: single-case melanoma wording; Scenesse approval cited to FDA approval letter (Oct 8, 2019); appetite bullet/FAQ narrowed (one small trial, one mouse study, injected into the brain); tiny-pilot tanning FAQ; PMID 28266027 for not-approved; "label doses" footer line removed on research-only pages.
 - Old calculator URL: meta refresh + JS location.replace + canonical (kept permanently; pinned X post).

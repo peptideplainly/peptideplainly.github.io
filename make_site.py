@@ -151,6 +151,7 @@ for k in X:
 for k,b in BOTTOM.items(): X[k]['quick']=[q for q in X[k]['quick'] if 'Bottom line' not in q]+[b]
 LOWER={"Semaglutide","Tirzepatide","Retatrutide","Orforglipron","Tesamorelin"}
 QH={"collagen-peptides":("What are collagen peptides?","Are collagen peptides FDA-approved?"),"cjc-1295-ipamorelin":("What are CJC-1295 and ipamorelin?","Are CJC-1295 and ipamorelin FDA-approved?")}
+import extras3 as _e3; QH.update(_e3.QH3)
 GLP1=["semaglutide","tirzepatide","retatrutide","orforglipron"]
 GLP1_DESC={'semaglutide': 'What is semaglutide (Ozempic, Wegovy, Rybelsus)? How it works, STEP 1 and SELECT results, FDA label dosing, side effects and FAQs.', 'tirzepatide': 'What is tirzepatide (Mounjaro, Zepbound)? How it works, how it beat semaglutide in SURMOUNT-5, FDA label dosing, side effects and FAQs.', 'retatrutide': "What is retatrutide? Lilly's triple-agonist shot hit up to −25% average weight change in TRIUMPH-1. Results, side effects, FDA status and FAQs.", 'orforglipron': "What is orforglipron (Foundayo)? Lilly's FDA-approved daily GLP-1 pill: how it works, ATTAIN-1 results, label dosing, side effects and FAQs."}
 GLP1_TITLE={'semaglutide': 'What is semaglutide? Ozempic & Wegovy results, dosing', 'tirzepatide': 'What is tirzepatide? Mounjaro & Zepbound results, dosing', 'retatrutide': 'What is retatrutide? Results, side effects & status', 'orforglipron': 'What is orforglipron (Foundayo)? The GLP-1 pill explained'}
