@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18 — Advertise page: bookable packages
+- 4 founding-rate package cards with Stripe "Book this slot" buttons (GoatCounter book-<slug>), struck-through regular prices, founding banner.
+- Sponsor terms section; 6-step book-and-pay flow; tightened vendor welcome. Regular-price Stripe links kept in advertise.py (not rendered). No sponsor placements built.
+
 ## 2026-10-18 — Batch 2 guides
 - New guides: Epitalon, Selank, KPV, Kisspeptin, Cagrilintide & CagriSema, SS-31 (elamipretide, Forzinity), BPC-157 + TB-500 stack.
 - FDA status confirmed: elamipretide approved as Forzinity (NDA 215244, Sept 19, 2025, accelerated approval, Barth syndrome ≥30 kg; label dosing copied). CagriSema investigational (NDA submitted Dec 18, 2025). Others: no FDA approval in Drugs@FDA.
