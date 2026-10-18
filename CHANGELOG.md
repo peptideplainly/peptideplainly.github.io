@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18 (Bean's batch 1 fact fixes)
+- MT2: single-case melanoma wording; Scenesse approval cited to FDA approval letter (Oct 8, 2019); appetite bullet/FAQ narrowed (one small trial, one mouse study, injected into the brain); tiny-pilot tanning FAQ; PMID 28266027 for not-approved; "label doses" footer line removed on research-only pages.
+- Old calculator URL: meta refresh + JS location.replace + canonical (kept permanently; pinned X post).
+- Home calculator tile blurb; retatrutide hero cites Lilly May 21, 2026 release; retatrutide badge now "Investigational: not approved; only available in Lilly clinical trials" (Lilly).
+
 ## 2026-10-18 (broad push, batch 1)
 - New guide: /peptides/melanotan-2.html (Dorr 1996, Wessells 1998/2000, mouse appetite study 2022, case reports and reviews for risks; MHRA FOI; Scenesse label). Safety & legal box with legit-source link. No human dosing.
 - Calculator generalized: /peptide-reconstitution-calculator.html (vial mg + water mL + amount in mcg/mg -> concentration, mL, U-100 units; math only, no presets). Old /glp1-units-calculator.html is a meta-refresh + canonical redirect stub (not in sitemap). Linked from every guide's Keep going block; share block kept.

@@ -23,7 +23,7 @@
   "title": "Retatrutide",
   "sub": "Three receptors. Up to −25% average weight in Phase 3.",
   "badge": "research",
-  "badge_t": "Research purposes only (investigational)",
+  "badge_t": "Investigational: not approved; only available in Lilly clinical trials",
   "hot": true
  },
  "peptides/orforglipron.html": {
@@ -140,7 +140,7 @@
   "title": "Retatrutide side effects: what 13,589 users reported",
   "sub": "Appetite, fatigue, energy, nausea, insomnia, heart rate.",
   "badge": "research",
-  "badge_t": "Research purposes only",
+  "badge_t": "Investigational · not approved",
   "hot": true
  },
  "peptide-reconstitution-calculator.html": {
@@ -176,7 +176,7 @@
   "title": "Retatrutide release date & FDA status",
   "sub": "Lilly plans to submit in Q1 2027. Every readout so far.",
   "badge": "research",
-  "badge_t": "Research purposes only",
+  "badge_t": "Investigational · not approved",
   "hot": true
  },
  "compounded-vs-brand-semaglutide-tirzepatide.html": {
