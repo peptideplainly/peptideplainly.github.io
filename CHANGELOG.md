@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18 — Bean verified fact fixes
+- Advertise: small "Pay regular rate" link under each package (contact email unchanged).
+- Stack rat-study wording; KPV "lab-grown human gut cells"; kisspeptin hero (secondary result, IV kisspeptin-54) + kisspeptin-10 FDA safety-risk listing and Oct 2024 11–0 advisory vote; Epitalon cell/mouse details; CagriSema compounding links, 2,108-on-CagriSema count, dosage note; MT2 melanoma FAQ wording.
+- July 2026 vote now cites the FDA meeting page alongside the vote report; Selank 2014 citation notes design details not reported in English.
+
 ## 2026-10-18 — Batch 3b: sitewide pages
 - About rewritten (live guide count, sponsor policy, one short disclaimer). Peptides 101: bold H1, lighter intro and research-only copy with a legit-source link.
 - Calculator callouts now describe the general reconstitution calculator. Tesamorelin badge: "FDA-approved (as Egrifta)".

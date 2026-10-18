@@ -1,5 +1,5 @@
-"""Advertise page packages. Founding rates are shown; regular-price links are kept here for later and NOT rendered."""
-# Regular-price Stripe links (for after the founding period; not shown on the page):
+"""Advertise page packages. Founding rates lead; regular-price links render as a small 'Pay regular rate' link under each card."""
+# Regular-price Stripe links (small 'Pay regular rate' link under each card):
 REGULAR_LINKS={
  "newsletter-feature":("$150","https://buy.stripe.com/cNifZg5jqgmH0CI4EAafS00"),
  "newsletter-month":("$500","https://buy.stripe.com/3cI7sKh28dav99e7QMafS02"),
@@ -31,7 +31,8 @@ def cards():
         n=f'<p class="pkg-note">{note}</p>' if note else '<p class="pkg-note">Founding rate</p>'
         feat=' pkg-feat' if slug=="founding-partner-bundle" else ''
         out.append(f'<div class="pkg{feat}" id="{slug}"><h3>{name}</h3><p class="pkg-price"><strong>{price}</strong> <s aria-label="regular price {reg}">{reg}</s></p>{n}<ul>{li}</ul>'
-                   f'<a class="btn pkg-btn" href="{url}" rel="noopener" data-goatcounter-click="book-{slug}">Book this slot</a></div>')
+                   f'<a class="btn pkg-btn" href="{url}" rel="noopener" data-goatcounter-click="book-{slug}">Book this slot</a>'
+                   f'<p class="pkg-reg"><a href="{REGULAR_LINKS[slug][1]}" rel="noopener" data-goatcounter-click="book-{slug}-regular">Pay regular rate ({REGULAR_LINKS[slug][0]})</a></p></div>')
     return f'<p class="pkg-banner" role="note">🎉 {BANNER}</p><div class="pkgs">{"".join(out)}</div>'
 TERMS=["Sponsor content is always labeled \"Sponsored\".","Sponsors get no editorial control over our guides or newsletter coverage.","No dosing claims in sponsor copy.","We review your copy before anything goes live.","We confirm your booking within 1 business day of payment."]
 def terms(): return '<h2 id="terms">Sponsor terms</h2><ul class="terms">'+"".join(f"<li>{t}</li>" for t in TERMS)+'</ul>'
@@ -44,4 +45,5 @@ CSS=""".pkg-banner{background:var(--sun);color:var(--ink);border:2px solid var(-
 .pkg h3{margin:0 0 .3em}.pkg-price{margin:0;font-size:1.5rem}.pkg-price s{color:var(--muted);font-size:1rem;margin-left:.3em}
 .pkg-note{margin:.2em 0 .6em;color:var(--muted);font-size:.9rem}.pkg ul{padding-left:1.2em;margin:0 0 1em;flex:1}.pkg li{margin:.3em 0;overflow-wrap:anywhere}
 .pkg .pkg-btn{text-align:center;align-self:stretch}
+.pkg-reg{margin:.6em 0 0;text-align:center;font-size:.85rem}.pkg-reg a{color:var(--muted)}
 """

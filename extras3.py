@@ -226,3 +226,43 @@ _setreg("bpc-157-tb-500-stack",f'<strong>Neither is FDA-approved.</strong> In Ju
 for k in ["epitalon","kpv"]:
     X3[k]["faq"]=[(q,(f"No. An FDA advisory committee voted in July 2026 to recommend allowing it in compounding, but that vote is non-binding." if q.endswith("FDA-approved?") else a)) for q,a in X3[k]["faq"]]
 X3["melanotan-2"]["faq"]=[(q,("It's not FDA-approved. Its cousin afamelanotide is approved as Scenesse for the rare condition EPP." if q=="Is Melanotan II legal?" else a)) for q,a in X3["melanotan-2"]["faq"]]
+
+# ===== Bean verified fact fixes (Oct 18, 4:44 PM) =====
+FDA_RISK="https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks"
+PCAC_OCT24="https://www.fda.gov/media/185412/download"
+PCAC_JUL26="https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026"
+def _sub(d,k,old,new):
+    assert old in d[k], (k,old[:40]); d[k]=d[k].replace(old,new)
+def _pep(k,i,old,new):
+    p=list(PEP3[k]); assert old in p[i],(k,old[:40]); p[i]=p[i].replace(old,new); PEP3[k]=tuple(p)
+def _ex(k,old,new):
+    h,b,c=EXCITE3[k]; b=[new if x==old else x for x in b]; assert new in b,(k,old[:40]); EXCITE3[k]=(h,b,c)
+# 2) stack
+STACK_RAT=f"In a 2026 study of 32 rats, TB-500 significantly improved tendon strength and structure. BPC-157 showed smaller gains that weren't statistically significant. Adding them together gave no extra benefit ({pm(42542926,'Jt Dis Relat Surg, 2026')})."
+h,b,c=EXCITE3["bpc-157-tb-500-stack"]; EXCITE3["bpc-157-tb-500-stack"]=(h,[STACK_RAT]+[x for x in b if "tendon" not in x],c)
+_pep("bpc-157-tb-500-stack",4,"32 rats after Achilles tendon repair, 8 per group. TB-500 alone made the strongest tendons; both peptides improved tendon structure. The <strong>combination did not add any benefit</strong> over either peptide alone.",
+     "32 rats after Achilles tendon repair, 8 per group. TB-500 significantly improved tendon strength and structure. BPC-157 showed smaller gains that weren't statistically significant. <strong>Adding them together gave no extra benefit.</strong>")
+# 3) KPV
+_ex("kpv","Blocked inflammation pathways in human gut cells at <strong>nanomolar</strong> amounts.",f"Blocked inflammation pathways in lab-grown human gut cells at <strong>nanomolar</strong> amounts ({pm(18061177,'Gastroenterology, 2008')}).")
+# 4) kisspeptin
+_ex("kisspeptin","Up to <strong>56% more penile tumescence</strong> vs placebo in men with low desire.",f"Up to <strong>56% more penile tumescence</strong> vs placebo in a 32-man trial (a secondary result, during a 75-minute IV infusion of kisspeptin-54, not the kisspeptin-10 sold online) ({pm(36735255,'JAMA Netw Open, 2023')}).")
+_pep("kisspeptin",3,"The human trials used research-clinic infusions.",f'The human trials used research-clinic infusions. FDA lists kisspeptin-10 among bulk compounding substances that may present significant safety risks (<a href="{FDA_RISK}" rel="noopener">FDA</a>), and its advisers voted 11–0 against allowing it in compounding in Oct 2024 (<a href="{PCAC_OCT24}" rel="noopener">FDA meeting minutes</a>).')
+_pep("kisspeptin",4,"raised penile tumescence by up to 56% vs placebo, and increased","and, as secondary results during a 75-minute IV infusion of kisspeptin-54, raised penile tumescence by up to 56% vs placebo and increased")
+X3["kisspeptin"]["quick"]=[q.replace("<strong>Headline result:</strong> up to 56% more penile tumescence vs placebo in men with low desire.","<strong>Headline result:</strong> up to 56% more penile tumescence vs placebo in men with low desire (a secondary result, IV kisspeptin-54).") for q in X3["kisspeptin"]["quick"]]
+# 5) epitalon
+_pep("epitalon",4,"through telomerase in some cells and an alternative pathway (ALT) in others","through telomerase in normal cells and an alternative pathway (ALT) in breast cancer cells")
+_pep("epitalon",4,"54 mice per group, treated monthly for life.","54 female mice per group, injected 5 days a month from age 3 months until death.")
+# 6) cagrilintide
+_CAGL=f'<a href="{FDA_GLP1C}" rel="noopener">FDA says cagrilintide can\'t be compounded</a>'
+X3["cagrilintide"]["quick"]=[q.replace("the FDA says cagrilintide can't be compounded.",f"the {_CAGL}.") for q in X3["cagrilintide"]["quick"]]
+X3["cagrilintide"]["faq"]=[(q,(f'No. The <a href="{FDA_GLP1C}" rel="noopener">FDA says cagrilintide can\'t be compounded</a> under federal law.' if q=="Can cagrilintide be compounded?" else a)) for q,a in X3["cagrilintide"]["faq"]]
+_ex("cagrilintide","<strong>−20.4%</strong> average weight at 68 weeks in REDEFINE 1 (3,417 adults).",f"<strong>−20.4%</strong> average weight at 68 weeks in REDEFINE 1 (3,417 adults; 2,108 on CagriSema) ({pm(40544433,'NEJM, 2025')}).")
+_sub(X3["cagrilintide"],"dosing","the strength Novo submitted to the FDA.</p>","the strength Novo submitted to the FDA. This is Novo's fixed-dose trial product, not a guide for \"research\" cagrilintide.</p>")
+# 7) MT2 FAQ
+X3["melanotan-2"]["faq"]=[(q,a.replace("melanomas in users","a few melanoma cases (a causal link isn't proven)")) for q,a in X3["melanotan-2"]["faq"]]
+assert any("causal link" in a for q,a in X3["melanotan-2"]["faq"])
+# Optional: FDA meeting page alongside the vote report (FDA's page links the archived broadcasts with the tallies)
+for k in ["epitalon","kpv","bpc-157-tb-500-stack"]:
+    _pep(k,3,'(<a href="'+PCAC_VOTES+'" rel="noopener">vote report</a>)','(<a href="'+PCAC_JUL26+'" rel="noopener">FDA meeting page</a>; <a href="'+PCAC_VOTES+'" rel="noopener">vote report</a>)')
+# Optional: Selank 2014 heading
+_pep("selank",4,'({pm(25176261,"Russian study, 2014")})'.replace('{pm(25176261,"Russian study, 2014")}',pm(25176261,"Russian study, 2014")),'('+pm(25176261,"Russian study, 2014; design details not reported in English")+')')
