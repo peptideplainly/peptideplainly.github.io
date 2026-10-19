@@ -1,6 +1,7 @@
 """Traffic push 2 (Oct 17, 2026): semaglutide vs tirzepatide, retatrutide release date / FDA status,
 calculator share block, calculator callouts, above-the-fold signup strip. Figures copied from the linked sources, checked Oct 17, 2026."""
 import html,re
+import sidefx
 from newpages import SUB,CALC,SE,LEGIT,faqld,faqh,crumbs,signup
 def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="noopener">{label}</a>'
 VS="semaglutide-vs-tirzepatide.html"; REL="peptides/retatrutide-fda-approval-status.html"
@@ -56,7 +57,7 @@ def vs(BASE,ORG,DISC,ROWS):
 <tr><th scope="row">Counts dropouts?</th><td>Yes (primary estimand: effect regardless of stopping treatment)</td><td>Yes (treatment-regimen estimand, intention-to-treat)</td></tr>
 <tr><th scope="row">Stopped for side effects</th><td>4.5% stopped for GI events (vs 0.8% on placebo)</td><td>4.3%, 7.1% and 6.2% stopped for adverse events (vs 2.6% on placebo)</td></tr>
 <tr><th scope="row">Most common side effects</th><td>Nausea and diarrhea, typically transient and mild to moderate</td><td>Gastrointestinal, mostly mild to moderate, mainly during dose escalation</td></tr></tbody></table></div>
-{RETA}<h2>How they work</h2><ul><li><strong>Semaglutide</strong> (Ozempic, Wegovy, Rybelsus) activates <strong>one</strong> hormone receptor: GLP-1.</li><li><strong>Tirzepatide</strong> (Mounjaro, Zepbound) activates <strong>two</strong>: GIP and GLP-1.</li><li><strong>Retatrutide</strong> (investigational, Lilly) activates <strong>three</strong>: GIP, GLP-1 and glucagon.</li></ul>
+{sidefx.section()}{RETA}<h2>How they work</h2><ul><li><strong>Semaglutide</strong> (Ozempic, Wegovy, Rybelsus) activates <strong>one</strong> hormone receptor: GLP-1.</li><li><strong>Tirzepatide</strong> (Mounjaro, Zepbound) activates <strong>two</strong>: GIP and GLP-1.</li><li><strong>Retatrutide</strong> (investigational, Lilly) activates <strong>three</strong>: GIP, GLP-1 and glucagon.</li></ul>
 <h2>Label dosing for weight management</h2><ul><li><strong>{wl}</strong></li><li><strong>{zl}</strong></li></ul><p class="fine">Copied from the FDA labels on DailyMed via our <a href="glp1-comparison.html">GLP-1 comparison</a>. Your prescriber sets your dose.</p>
 <div class="calc-callout"><p><strong>Got a vial and a dose in mg?</strong> Our free <a href="{CALC}" data-goatcounter-click="calc-callout-vs">peptide reconstitution calculator</a> shows the math from your own vial label.</p></div>
 <h2>Go deeper</h2><ul><li><a href="peptides/semaglutide.html">Semaglutide guide</a>: STEP 1, SELECT heart results, label dosing, FAQs.</li><li><a href="peptides/tirzepatide.html">Tirzepatide guide</a>: SURMOUNT trials, label dosing, FAQs.</li><li><a href="peptides/retatrutide.html">Retatrutide guide</a>, its <a href="peptides/retatrutide-fda-approval-status.html">release date &amp; FDA status</a> and <a href="peptides/retatrutide-side-effects.html">what users report online</a>.</li><li><a href="glp1-comparison.html">All four GLP-1s side by side</a>, including orforglipron, the daily pill.</li><li><a href="{LEGIT}">How to tell if a source is legit</a>.</li></ul>

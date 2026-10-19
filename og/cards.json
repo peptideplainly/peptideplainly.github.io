@@ -250,5 +250,14 @@
   "badge": "",
   "badge_t": "",
   "hot": true
+ },
+ "fda-approved-peptides-list.html": {
+  "card": "fda-approved-peptides",
+  "kicker": "Status check · FDA",
+  "title": "FDA-approved peptides: the real list",
+  "sub": "Approved, compoundable or research-only? Every row sourced.",
+  "badge": "",
+  "badge_t": "",
+  "hot": true
  }
 }
