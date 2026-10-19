@@ -55,7 +55,7 @@ FAQ=[
 ("Is BPC-157 FDA-approved?",f'No. BPC-157 is not an approved drug and is sold for research only. It\'s also not on FDA\'s list of bulk substances compounders can use while under review ({a(CAT,"FDA")}). A July 2026 advisory committee vote in its favor is a recommendation, not an approval.'),
 ("Which GLP-1s are FDA-approved?",f'Semaglutide (Ozempic, Wegovy, Rybelsus), tirzepatide (Mounjaro, Zepbound), liraglutide (Victoza, Saxenda) and dulaglutide (Trulicity), per Drugs@FDA. Orforglipron (Foundayo) is approved too, but it\'s a small molecule, not a peptide. Retatrutide is still investigational.'),
 ("Can a pharmacy compound peptides like BPC-157 or TB-500?",f'Not under current FDA policy. Neither is on FDA\'s category 1 list, and FDA lists both as nominated, then withdrawn, with safety concerns ({a(SAFE,"FDA")}). The PCAC voted for them in July 2026, but FDA hasn\'t acted on that vote.'),
-("What is the FDA's interim peptide compounding policy?",f'A notice titled "Interim Access Policy for Compounding Using Certain Peptides" (RIN 0910-ZD94) reached White House review on Oct 14, 2026 ({a(RIN,"reginfo.gov")}). It isn\'t published or in effect, and its details aren\'t public yet.'),
+("What is the FDA's interim peptide compounding policy?",f'A notice titled "Interim Access Policy for Compounding Using Certain Peptides" (RIN 0910-ZD94) reached White House review on Oct 14, 2026 ({a(RIN,"OIRA EO 12866 review entry, reginfo.gov")}). It hasn\'t appeared in the Unified Agenda or the Federal Register, isn\'t in effect, and its details aren\'t public yet.'),
 ]
 def share():
     s=newpages2.SHARE.replace(newpages2.SHARE_URL,URL)
@@ -79,7 +79,7 @@ def page(BASE,ORG,DISC):
 <p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: not well studied in people; FDA cites immunogenicity, impurity and limited-safety-data concerns for several of these ({a(SAFE,"FDA")}). <a href="how-to-tell-if-a-peptide-source-is-legit.html">Choose a tested source</a>.</p>
 <h2 id="whats-next">What could change next</h2>
 <ul><li><strong>The July 2026 PCAC votes.</strong> FDA's compounding advisory committee voted to recommend BPC-157, KPV, TB-500, MOTS-c, Semax and epitalon for the 503A list ({a(PCAC_JUL26,"FDA meeting page")}; {a(PCAC_VOTES,"vote report")}). The votes are advice. FDA hasn't added any of them yet.</li>
-<li><strong>An interim access policy.</strong> FDA sent "Interim Access Policy for Compounding Using Certain Peptides" (RIN 0910-ZD94) to White House review on Oct 14, 2026 ({a(RIN,"reginfo.gov")}). It isn't published or in effect, and which peptides it covers isn't public.</li>
+<li><strong>An interim access policy.</strong> FDA sent "Interim Access Policy for Compounding Using Certain Peptides" (RIN 0910-ZD94) to White House review on Oct 14, 2026 ({a(RIN,"OIRA EO 12866 review entry, reginfo.gov")}). It hasn't appeared in the Unified Agenda or the Federal Register, isn't in effect, and which peptides it covers isn't public.</li>
 <li><strong>Injectable GHK-Cu.</strong> FDA says it plans to take GHK-Cu to the PCAC by the end of February 2027 ({a(CAT,"FDA 503A list")}).</li>
 <li><strong>Retatrutide.</strong> Lilly plans to submit to FDA in Q1 2027. Track it on our <a href="peptides/retatrutide-fda-approval-status.html">retatrutide FDA status page</a>.</li></ul>
 <nav class="next-up" aria-label="Keep going"><h2>Keep going</h2><ul>
