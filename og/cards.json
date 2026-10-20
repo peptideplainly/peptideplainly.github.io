@@ -259,5 +259,23 @@
   "badge": "",
   "badge_t": "",
   "hot": true
+ },
+ "nsw-peptide-emergency-department-surge.html": {
+  "card": "nsw-peptide-surge",
+  "kicker": "News · Australia",
+  "title": "Peptide ER visits: 5 a month to 217",
+  "sub": "NSW Health data: retatrutide mentioned in 833 of 1,180.",
+  "badge": "",
+  "badge_t": "",
+  "hot": true
+ },
+ "bpc-157-compounding-fda-interim-policy.html": {
+  "card": "bpc-157-policy",
+  "kicker": "News · FDA",
+  "title": "Is BPC-157 about to be compoundable?",
+  "sub": "The interim peptide policy, plainly. Not in effect yet.",
+  "badge": "",
+  "badge_t": "",
+  "hot": true
  }
 }

@@ -258,6 +258,7 @@ ATF_SIGNUP=[("index.html","home"),("peptides/semaglutide.html","semaglutide"),("
 newpages2.signup_atf(pages,ATF_SIGNUP)
 import newpages3; newpages3.add(pages,BASE,ORG,DISC); newpages3.wire(pages)
 import fdalist; fdalist.add(pages,BASE,ORG,DISC); fdalist.wire(pages)
+import news4; news4.add(pages,BASE,ORG,DISC); news4.wire(pages)
 import extras3; extras3.wire3(pages)
 seo.check(pages)
 # ---- OG cards: manifest for scripts/og.py; wire og:image only where the PNG exists ----
@@ -265,7 +266,7 @@ CARDS={}
 for _s in PEP:
     _bk,_bt=X[_s]["badge"]; CARDS[f"peptides/{_s}.html"]=dict(card=_s,kicker=CATS[META[_s][0]],title=PEP[_s][0],sub=EXCITE[_s][2],badge=_bk,badge_t=_bt,hot=_s=="retatrutide")
 CARDS["glp1-comparison.html"]=dict(card="glp1-comparison",kicker="Spotlight · weight loss",title="Semaglutide vs tirzepatide vs retatrutide vs orforglipron",sub="The big four GLP-1s, side by side.",badge="",badge_t="",hot=False)
-CARDS.update(newpages.CARDS); CARDS.update(newpages2.CARDS); CARDS.update(newpages3.CARDS); CARDS.update(fdalist.CARDS)
+CARDS.update(newpages.CARDS); CARDS.update(newpages2.CARDS); CARDS.update(newpages3.CARDS); CARDS.update(fdalist.CARDS); CARDS.update(news4.CARDS)
 (P/"og").mkdir(exist_ok=True); (P/"og"/"cards.json").write_text(json.dumps(CARDS,ensure_ascii=False,indent=1))
 for _p,_c in CARDS.items():
     if (P/"og"/f"{_c['card']}.png").exists(): OG_IMG[_p]=f"og/{_c['card']}.png"
@@ -300,6 +301,6 @@ ab=(P/"about_body.html").read_text().replace("{N}",str(len(PEP)))
 LL=["# Peptide Plainly","","> Friendly, plain-English explanations of peptide research, plus a free newsletter every Friday. Every claim links to PubMed or official FDA/WADA sources. Education only, not medical advice. We never give doses for research-only peptides; for FDA-approved drugs we summarize the official label and note that the prescriber sets the dose.","","## Start here",f"- [Peptides 101]({BASE}/peptides-101.html): what peptides are, approved vs research-only, reading studies",f"- [Why is peptide info so confusing?]({BASE}/why-peptide-info-is-confusing.html)",f"- [Glossary]({BASE}/glossary.html)","","## Peptide guides (why people are excited, quick facts, dosing & timing, evidence, FAQ)"]
 LL[LL.index("## Start here"):LL.index("## Start here")]=["## Featured: the GLP-1 weight-loss guides","Our most popular guides. Retatrutide is the hottest one right now."]+[f"- [{glp1cmp.TITLE}]({BASE}/glp1-comparison.html): {glp1cmp.DESC}"]+[f"- [{GLP1_TITLE[s]}]({BASE}/peptides/{s}.html): {X[s]['badge'][1]}. {PEP[s][1]}" for s in GLP1]+[""]
 for slug,(name,desc,*_) in PEP.items(): LL.append(f"- [{X[slug]['h1']}]({BASE}/peptides/{slug}.html): {X[slug]['badge'][1]}. {desc}")
-LL+=["","## Tools & buyer guides"]+[f"- [{t}]({BASE}/{u}): {d}" for t,u,d in newpages.LLMS+newpages2.LLMS+newpages3.LLMS+fdalist.LLMS]
+LL+=["","## Tools & buyer guides"]+[f"- [{t}]({BASE}/{u}): {d}" for t,u,d in newpages.LLMS+newpages2.LLMS+newpages3.LLMS+fdalist.LLMS+news4.LLMS]
 LL+=["","## Newsletter (free, every Friday)"]+([f"- [This week's issue]({BASE}/newsletter.html): Issue #{CUR['n']}, {CUR['date']}"] if CUR else [])+["- Subscribe: https://peptideplainly.beehiiv.com/subscribe","",f"## About\n- [About & medical disclaimer]({BASE}/about.html)",f"- [Advertise with us]({BASE}/advertise.html): sponsor the guides or the Friday newsletter (lab-tested vendors only, always labeled Sponsored)"]
 (P/"llms.txt").write_text("\n".join(LL)+"\n")
