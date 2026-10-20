@@ -8,7 +8,7 @@ def pm(i,label): return f'<a href="https://pubmed.ncbi.nlm.nih.gov/{i}/" rel="no
 import json
 ORG={'@type':'Organization','@id':BASE+'/#org','name':'Peptide Plainly','url':BASE+'/','logo':BASE+'/preview.png'}
 def ld(objs): return ''.join('<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org',**o},ensure_ascii=False)+'</script>' for o in objs)
-FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700&display=optional" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700&display=optional"></noscript><link rel="icon" href="/favicon.svg" type="image/svg+xml">'
+FONTS='<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="icon" href="/favicon.svg" type="image/svg+xml">'
 LOGO='<svg class="logo" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><circle cx="9" cy="20" r="6" fill="#0f766e"/><circle cx="20" cy="20" r="6" fill="#e8b04b"/><circle cx="31" cy="20" r="6" fill="#c2410c"/></svg>'
 OG_IMG={}  # path -> og/<card>.png, filled in below for pages whose card exists (render cards: .pwvenv/bin/python scripts/og.py)
 def page(path,title,desc,body,schema=(),root=None,robots=""):
@@ -22,7 +22,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{html.escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/{og}">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=16">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=17">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>

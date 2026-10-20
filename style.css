@@ -1,4 +1,8 @@
-:root{--ink:#1b1f24;--muted:#56606b;--paper:#fbf6ee;--card:#fffdf9;--accent:#0f766e;--accent-d:#0b5a54;--soft:#e3f1ee;--warm:#c2410c;--sun:#e8b04b;--blush:#f3d9c4;--line:#e7dccb;--r:16px;--serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:600 800;font-display:optional;src:url(/fonts/fraunces-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 700;font-display:optional;src:url(/fonts/inter-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Inter Fallback";src:local("Arial");ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia"),local("Times New Roman");ascent-override:84.71%;descent-override:22.09%;line-gap-override:0%;size-adjust:115.45%}
+:root{--ink:#1b1f24;--muted:#56606b;--paper:#fbf6ee;--card:#fffdf9;--accent:#0f766e;--accent-d:#0b5a54;--soft:#e3f1ee;--warm:#c2410c;--sun:#e8b04b;--blush:#f3d9c4;--line:#e7dccb;--r:16px;--serif:"Fraunces","Fraunces Fallback",Georgia,"Times New Roman",serif;--sans:"Inter","Inter Fallback",system-ui,-apple-system,"Segoe UI",sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;font:17px/1.65 var(--sans);color:var(--ink);background:var(--paper);background-image:radial-gradient(#e9dfcf 1px,transparent 1px);background-size:22px 22px}
 a{color:var(--accent-d);text-underline-offset:3px}a:hover{color:var(--warm)}
