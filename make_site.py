@@ -9,6 +9,7 @@ import json
 ORG={'@type':'Organization','@id':BASE+'/#org','name':'Peptide Plainly','url':BASE+'/','logo':BASE+'/preview.png'}
 def ld(objs): return ''.join('<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org',**o},ensure_ascii=False)+'</script>' for o in objs)
 FONTS='<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="icon" href="/favicon.svg" type="image/svg+xml">'
+FONTS="<meta name='impact-site-verification' value='5305c68f-a467-434c-bdbd-1565b8733fc9'>"+FONTS
 LOGO='<svg class="logo" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><circle cx="9" cy="20" r="6" fill="#0f766e"/><circle cx="20" cy="20" r="6" fill="#e8b04b"/><circle cx="31" cy="20" r="6" fill="#c2410c"/></svg>'
 OG_IMG={}  # path -> og/<card>.png, filled in below for pages whose card exists (render cards: .pwvenv/bin/python scripts/og.py)
 def page(path,title,desc,body,schema=(),root=None,robots=""):
