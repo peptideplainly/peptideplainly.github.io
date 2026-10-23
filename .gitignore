@@ -4,3 +4,7 @@ __pycache__/
 *.log
 .env
 feedback.md
+# ops / scratch notes (not site output)
+modmail_semaglutide_draft.md
+reddit_log.md
+social/
