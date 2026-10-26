@@ -136,3 +136,4 @@ main>.atf-signup{width:calc(100% - 32px)}
 .pkg-reg{margin:.6em 0 0;text-align:center;font-size:.85rem}.pkg-reg a{color:var(--muted)}
 
 .sponsor{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;margin:20px 0;background:var(--card);font-size:.92rem;overflow-wrap:anywhere}.sponsor p{margin:0}.sponsor-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.sponsor-body{margin:4px 0 2px!important}.sponsor-disc{font-size:.8rem;color:var(--muted)}
+.g-lead{margin:14px 0 6px;font-size:1.06rem}.g-lead p{margin:0 0 6px}.lead-h{font-family:var(--serif);font-size:1.12rem}

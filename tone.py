@@ -11,14 +11,14 @@ EXCITE={
 "tb-500":("The repair protein athletes swear by.",["Based on <strong>thymosin beta-4</strong>, a natural protein your body uses for cell movement and tissue repair.","In a 96-patient heart-attack trial, patients dosed early showed a benefit (subgroup finding).","Tβ4 eye drops have been in development for corneal and dry-eye conditions."],"Built on thymosin beta-4, the body's own repair protein."),
 "ghk-cu":("The copper peptide behind glowing-skin routines.",["Lab and gene-expression research links GHK-Cu to <strong>skin repair and collagen production</strong>.","Helped ligament healing in a rat model.","Already a staple skincare ingredient: look for \"copper tripeptide-1\"."],"The copper peptide in your favorite serums. Collagen support."),
 "collagen-peptides":("The easiest peptide to start with.",["<strong>26 randomized trials, 1,721 people:</strong> better skin hydration and elasticity vs placebo.","Another meta-analysis of 19 RCTs found benefits for <strong>wrinkles</strong> too.","Just a scoop in your coffee or smoothie."],"Real trial results for skin. Just a scoop a day."),
-"mots-c":("The \"exercise in a vial\" longevity peptide.",["Made by your <strong>mitochondria</strong>, your cells' energy factories.","In mice, it improved how the body handles sugar and fat.","A Phase 2a human trial in prediabetes is now registered (NCT07505745)."],"Mitochondrial peptide nicknamed \"exercise in a vial.\""),
+"mots-c":("The \"exercise in a vial\" longevity peptide.",["Made by your <strong>mitochondria</strong>, your cells' energy factories.","In mice, it improved how the body handles sugar and fat (<a href=\"https://pubmed.ncbi.nlm.nih.gov/25738459/\" rel=\"noopener\">Cell Metab 2015</a>).","A Phase 2a human trial in prediabetes is now registered (NCT07505745)."],"Mitochondrial peptide nicknamed \"exercise in a vial.\""),
 "semax":("The nasal-spray peptide for brain and focus.",["In 110 stroke patients, Semax groups had <strong>higher BDNF</strong>, a brain growth factor, and better daily-function scores.","Lots of lab work on brain gene activity after stroke.","Used for decades in Russian research."],"Nasal-spray peptide studied for brain recovery and BDNF."),
 "pt-141":("Works on desire in the brain, not blood flow.",["FDA-approved as <strong>Vyleesi</strong>.","Improved desire and distress scores vs placebo in two Phase 3 trials with <strong>1,267 women</strong>.","Use it only when you need it, at least 45 minutes before sex."],"FDA-approved, as-needed. Works on desire in the brain."),
 }
 INTRO={
 "bpc-157":"BPC-157 (\"Body Protection Compound-157\") is a 15-amino-acid peptide originally derived from a protein in stomach juice, and it's one of the most popular recovery peptides on the planet.",
 "tb-500":"Thymosin beta-4 (Tβ4) is a natural protein your body uses for cell movement and tissue repair. \"TB-500\" is the name for a synthetic product based on part of Tβ4, a favorite in recovery circles. Clinical trials so far have used Tβ4 itself.",
-"mots-c":"MOTS-c is a short peptide your mitochondria make. Mitochondria are the energy factories in your cells. In mice, MOTS-c changes how the body handles sugar and fat, which is why fans call it \"exercise in a vial.\"",
+"mots-c":"MOTS-c is a short peptide your mitochondria make. Mitochondria are the energy factories in your cells. In mice, MOTS-c changes how the body handles sugar and fat (<a href=\"https://pubmed.ncbi.nlm.nih.gov/25738459/\" rel=\"noopener\">Cell Metab 2015</a>), which is why fans call it \"exercise in a vial.\"",
 }
 NOTE='<p class="fine lownote">Research purposes only. Not FDA-approved for human use, and products vary in quality. Findings above are from the studies cited.</p>'
 BOTTOM={
@@ -26,7 +26,7 @@ BOTTOM={
 "tb-500":"<strong>Why it's popular:</strong> built on the body's own repair protein, a staple in recovery stacks.",
 "ghk-cu":"<strong>Why it's popular:</strong> a skincare favorite for collagen and repair.",
 "collagen-peptides":"<strong>Bottom line:</strong> one of the best-studied peptide supplements for skin.",
-"retatrutide":"<strong>Bottom line:</strong> the biggest weight-loss numbers in obesity trials so far.",
+"retatrutide":"<strong>Bottom line:</strong> a bigger average than tirzepatide's −20.2% in SURMOUNT-5, in a separate trial.",
 "cjc-1295-ipamorelin":"<strong>Why it's popular:</strong> a big, multi-day growth-hormone pulse from a single CJC-1295 shot in studies.",
 "mots-c":"<strong>Why it's popular:</strong> exciting metabolism results in mice, and human trials are starting.",
 "semax":"<strong>Why it's popular:</strong> studied for brain recovery and BDNF, in an easy nasal spray.",
@@ -88,7 +88,7 @@ FAQFIX={
 ("cjc-1295-ipamorelin","Is CJC-1295 FDA-approved?"):"No. It's sold for research purposes only.",
 ("cjc-1295-ipamorelin","Does ipamorelin work?"):"It triggers growth-hormone release and was well tolerated in a 114-patient hospital trial, though that trial didn't speed gut recovery after surgery.",
 ("mots-c","What is the MOTS-c dosage?"):"There's no established human dose because it's research-only. Human trials are just starting.",
-("mots-c","Does MOTS-c work like exercise?"):"In mice it improved how the body handles sugar and fat, which is where the nickname comes from. Human trials will show how much carries over.",
+("mots-c","Does MOTS-c work like exercise?"):"In mice it improved how the body handles sugar and fat (<a href=\"https://pubmed.ncbi.nlm.nih.gov/25738459/\" rel=\"noopener\">Cell Metab 2015</a>), which is where the nickname comes from. Human trials will show how much carries over.",
 ("semax","What is the Semax dosage?"):"There's no FDA-established human dose. The main human study used it in stroke rehab.",
 ("semax","Does Semax improve focus?"):"It raised BDNF, a brain growth factor, in stroke patients. Trials in healthy people haven't been done yet.",
 }

@@ -167,7 +167,7 @@ B2_EXCITE={
 "kpv":("The 3-amino-acid peptide for gut and skin calm.",["Reduced colitis in <strong>two mouse models</strong>.","Blocked inflammation pathways in human gut cells at <strong>nanomolar</strong> amounts.","Calmed inflamed skin cells in the lab."],"Tiny tripeptide, big gut buzz. Calmed colitis in mice."),
 "kisspeptin":("The hormone peptide that lights up the brain's desire circuits.",["Up to <strong>56% more penile tumescence</strong> vs placebo in men with low desire.","Shifted sexual brain processing in <strong>women</strong> with low desire too.","Randomized, placebo-controlled brain-scan trials."],"The libido hormone. Randomized trials in men and women."),
 "cagrilintide":("The amylin booster that pushes semaglutide further.",["<strong>−20.4%</strong> average weight at 68 weeks in REDEFINE 1 (3,417 adults).","73.5% hit an HbA1c of 6.5% or less in REDEFINE 2.","Submitted to the FDA in Dec 2025."],"Amylin + semaglutide. −20.4% in Phase 3, FDA decision pending."),
-"elamipretide":("The mitochondria peptide that made it to FDA approval.",["FDA-approved as <strong>Forzinity</strong> in 2025.","Slowed frailty and boosted heart and muscle function in <strong>old mice</strong>.","Targets cardiolipin inside your cells' energy factories."],"SS-31 grew up: FDA-approved, with anti-frailty results in old mice."),
+"elamipretide":("The mitochondria peptide that made it to FDA approval.",["FDA-approved as <strong>Forzinity</strong> in 2025.","Slowed frailty and partly reversed declines in heart and muscle function in <strong>old mice</strong>.","Targets cardiolipin inside your cells' energy factories."],"SS-31 grew up: FDA-approved, with anti-frailty results in old mice."),
 "bpc-157-tb-500-stack":("The \"Wolverine stack\" the recovery crowd swears by.",["Both peptides improved tendon structure in a <strong>2026 rat study</strong>.","TB-500 alone made the strongest tendons.","Plus BPC-157's 36-study, mostly animal, healing literature."],"The famous recovery combo, and the first study to test it."),
 }
 B2_TITLES={"peptides/epitalon.html":"Epitalon: telomere longevity peptide research & status","peptides/selank.html":"Selank: the calming nasal peptide, research & status",
@@ -198,7 +198,7 @@ ONELINE|={"cagrilintide"}
 X3["melanotan-2"]["dosing"]=ONE["melanotan-2"]+NODOSE.replace("<p>There","<p>The tiny 1990s studies dosed under medical supervision. There")
 for k in ["epitalon","selank","kpv","kisspeptin","bpc-157-tb-500-stack"]: X3[k]["dosing"]=ONE[k]+NODOSE
 X3["cagrilintide"]["dosing"]=ONE["cagrilintide"]+'<h2 id="dosing">Dosage</h2><p>No approved dose yet. The trials tested cagrilintide 2.4 mg plus semaglutide 2.4 mg once weekly, the strength Novo submitted to the FDA.</p>'
-X3["elamipretide"]["dosing"]=f'<p class="safety-line"><strong>Most common side effects:</strong> injection-site reactions; eosinophil increases were also seen (<a href="{FORZ}" rel="noopener">FDA label</a>). Online "SS-31" isn\'t Forzinity. <a href="{LEGIT}">Choose a tested source.</a></p>'+FORZ_DOSE
+X3["elamipretide"]["dosing"]=f'<p class="safety-line"><strong>Most common side effects:</strong> injection-site reactions; eosinophil increases were also seen (<a href="{FORZ}" rel="noopener">FDA label</a>). Online "SS-31" isn\'t Forzinity.</p>'+FORZ_DOSE
 H1S={"melanotan-2":"Melanotan II (MT2): the viral tan jab, and what studies really show",
 "epitalon":"Epitalon: the telomere peptide behind the longevity buzz",
 "selank":"Selank: the calm-and-focus nasal peptide everyone's talking about",
