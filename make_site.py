@@ -159,6 +159,8 @@ GLP1=["semaglutide","tirzepatide","retatrutide","orforglipron"]
 GLP1_DESC={'semaglutide': 'What is semaglutide (Ozempic, Wegovy, Rybelsus)? How it works, STEP 1 and SELECT results, FDA label dosing, side effects and FAQs.', 'tirzepatide': 'What is tirzepatide (Mounjaro, Zepbound)? How it works, how it beat semaglutide in SURMOUNT-5, FDA label dosing, side effects and FAQs.', 'retatrutide': "What is retatrutide? Lilly's triple-agonist shot hit up to −25% average weight change in TRIUMPH-1. Results, side effects, FDA status and FAQs.", 'orforglipron': "What is orforglipron (Foundayo)? Lilly's FDA-approved daily GLP-1 pill: how it works, ATTAIN-1 results, label dosing, side effects and FAQs."}
 GLP1_TITLE={'semaglutide': 'What is semaglutide? Ozempic & Wegovy results, dosing', 'tirzepatide': 'What is tirzepatide? Mounjaro & Zepbound results, dosing', 'retatrutide': 'What is retatrutide? Results, side effects & status', 'orforglipron': 'What is orforglipron (Foundayo)? The GLP-1 pill explained'}
 for k,d in GLP1_DESC.items(): PEP[k]=(PEP[k][0],d)+PEP[k][2:]
+EVH={"approved":"The results: what the trials found","research":"What researchers have found so far","supplement":"The results: what the studies found"}
+GOALCTA={"approved":"Want the full picture?","research":"Curious what else is out there?","supplement":"Want the full picture?"}
 def glp1_spot(R,h="h2"):
     cards=""
     for s in GLP1:
@@ -189,12 +191,12 @@ for slug,(name,desc,what,reg,ev,myths) in PEP.items():
     pages[f"peptides/{slug}.html"]=(GLP1_TITLE.get(slug,x["h1"]+" | Peptide Plainly"),desc,f'''<article class="guide cat-{cat}"><p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Peptide guides</a> / {short}</p>
 <header class="g-head"><span class="pic big">{icon(cat)}</span><div><p class="pcat">{CATS[cat]}</p><h1>{x["h1"]}</h1><p><span class="badge {bk}">{bt}</span> <span class="fine">Checked against official sources Oct 16, 2026</span></p></div></header>
 <aside class="excite" aria-label="Why people are excited"><p class="kicker">Why people are excited</p><p class="sa">{EXCITE[slug][0]}</p><ul>{"".join(f"<li>{h}</li>" for h in EXCITE[slug][1])}</ul></aside>
-<div class="quick"><h2>Quick facts</h2><ul>{"".join(f"<li>{q}</li>" for q in x["quick"])}</ul><p class="jump"><a href="#dosing">Dosing &amp; timing</a><a href="#evidence">Evidence</a><a href="#faq">FAQ</a></p></div>{glp1_compare(slug) if slug in GLP1 else ""}
+<div class="quick"><h2>The highlights</h2><ul>{"".join(f"<li>{q}</li>" for q in x["quick"])}</ul><p class="jump"><a href="#dosing">Dosing &amp; timing</a><a href="#evidence">Evidence</a><a href="#faq">FAQ</a></p></div>{glp1_compare(slug) if slug in GLP1 else ""}
 <h2>{QH.get(slug,(f"What is {low}?",))[0]}</h2><p>{INTRO.get(slug,what)}</p><h2>{QH.get(slug,(0,f"Is {low} FDA-approved?"))[1]}</h2><p>{reg}</p>
 {x["dosing"]}
-<h2 id="evidence">What the research shows</h2><ul>{ev}</ul><p class="fine">New to these terms? See the <a href="../glossary.html">glossary</a>.</p>
+<h2 id="evidence">{EVH[bk]}</h2><ul>{ev}</ul><p class="fine">New to these terms? See the <a href="../glossary.html">glossary</a>.</p><p class="calc-callout"><strong>{GOALCTA[bk]}</strong> <a href="index.html" data-goatcounter-click="guide-goal-{slug}">Compare every peptide by goal →</a></p>
 <h2 id="faq">{short} FAQ</h2>{faqh}{DISC}
-{"" if slug in GLP1 else (f'<nav class="related" aria-label="Related guides"><h2>Same category</h2><ul>{rel}</ul></nav>' if rel else '')}
+{"" if slug in GLP1 else (f'<nav class="related" aria-label="Related guides"><h2>More for the same goal</h2><ul>{rel}</ul></nav>' if rel else '')}
 <p class="fine">All guides: {others} · <a href="../peptides-101.html">Peptides 101</a> · <a href="../why-peptide-info-is-confusing.html">Why is peptide info so confusing?</a></p></article>''',schema)
 chips='<button type="button" class="chip" aria-pressed="true" data-f="all">All</button>'+"".join(f'<button type="button" class="chip" aria-pressed="false" data-f="{c}">{icon(c)}{l}</button>' for c,l in CATS.items())
 FILTERJS='<script>(function(){var b=document.querySelectorAll(".chip");b.forEach(function(x){x.addEventListener("click",function(){var f=x.dataset.f;b.forEach(function(y){y.setAttribute("aria-pressed",y===x)});document.querySelectorAll("[data-cat]").forEach(function(e){e.hidden=!(f==="all"||e.dataset.cat===f)})})})})();</script>'

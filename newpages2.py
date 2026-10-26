@@ -88,7 +88,7 @@ def release(BASE,ORG,DISC,NOTE,badge):
       ("Oct 2, 2026","FDA: not a biologic",f'On remand from a federal court, FDA again concluded retatrutide is not a biological product, so an application would need to be submitted under section 505 of the FD&amp;C Act rather than as a BLA (<a href="{FDA_LTR}" rel="noopener">FDA letter, filed in the Seventh Circuit Oct 8, 2026</a>).')]
     tl="".join(f'<li><span class="tl-date">{d}</span><strong>{h}</strong><p>{x}</p></li>' for d,h,x in rows)
     body=f'''<article class="guide cat-weight"><p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Peptide guides</a> / <a href="retatrutide.html">Retatrutide</a> / FDA status</p>
-<p class="kicker">Status tracker · updated Oct 17, 2026</p><h1>Retatrutide release date &amp; FDA approval status</h1>
+<p class="kicker">Status tracker · updated Oct 17, 2026</p><h1>Retatrutide release date &amp; FDA approval status: every win so far</h1>
 <p><span class="badge {bk}">{bt}</span> <span class="fine">Not FDA-approved</span></p>
 <p class="lead">Retatrutide has racked up phase 3 win after phase 3 win, with average weight loss up to −25.0% in its published TRIUMPH-1 results. So when can you actually get it? Here's exactly where it stands, with every date sourced.</p>
 <aside class="excite" aria-label="Where it stands"><p class="kicker">Where it stands right now</p><ul>
@@ -96,7 +96,7 @@ def release(BASE,ORG,DISC,NOTE,badge):
 <li><strong>Filing:</strong> Lilly says it plans to submit to the FDA for U.S. approval in <strong>Q1 2027</strong>.</li>
 <li><strong>Release date:</strong> none announced. Lilly hasn't given an approval or launch date, so we don't predict one.</li>
 <li><strong>Five positive phase 3 studies</strong>, according to Lilly, and it says it has the clinical data to support global submissions for obesity, knee osteoarthritis pain and sleep apnea.</li></ul></aside>
-<h2>The TRIUMPH timeline</h2><ol class="timeline">{tl}</ol>
+<h2>The TRIUMPH winning streak, trial by trial</h2><ol class="timeline">{tl}</ol>
 <p class="fine">"Efficacy estimand" estimates the effect if everyone stayed on treatment; "treatment-regimen estimand" counts everyone randomized, including people who stopped. That's why Lilly's press-release numbers run higher than the published ones.</p>
 <h2>What happens next</h2><ul>
 <li><strong>Submission:</strong> Lilly says it is finishing the chemistry, manufacturing and controls (CMC) package and then plans to submit in Q1 2027.</li>

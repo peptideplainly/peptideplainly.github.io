@@ -37,7 +37,7 @@ def side_effects(BASE,ORG,DISC,NOTE,badge):
 <li><strong>13,589</strong> users described currently taking retatrutide.</li>
 <li><strong>7,823</strong> of them (57.6%) reported at least one symptom, after the researchers set aside expected effects like weight loss and appetite suppression.</li>
 <li>Top reports: <strong>increased appetite, fatigue, increased energy, nausea, food cravings, insomnia and a raised heart rate.</strong></li></ul></aside>
-<div class="quick"><h2>Quick facts</h2><ul>
+<div class="quick"><h2>The highlights</h2><ul>
 <li><strong>Study:</strong> "Self-Reported Adverse Effects Among Social Media Users Taking Nonapproved Retatrutide," {cite}. A University of Pennsylvania team, with Boston Children's Hospital and Harvard Medical School.</li>
 <li><strong>Type:</strong> a cross-sectional analysis of public Reddit posts. Self-reported, not a trial.</li>
 <li><strong>Method:</strong> large language models flagged posts about personal use and matched each symptom to standard medical terms (MedDRA). A manual check of 100 posts showed high precision and recall.</li>
