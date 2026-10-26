@@ -139,3 +139,4 @@ main>.atf-signup{width:calc(100% - 32px)}
 .g-lead{margin:14px 0 6px;font-size:1.06rem}.g-lead p{margin:0 0 6px}.lead-h{font-family:var(--serif);font-size:1.12rem}
 .social{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}.social a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-weight:600}.soc-i{flex:none}
 .bh-embed{min-height:340px}@media (max-width:600px){.bh-embed{min-height:400px}.foot-in a{display:inline-block;padding:12px 2px}.hero-cta .btn{min-height:48px}}
+@media (max-width:600px){.nav a,.brand{min-height:44px;display:inline-flex;align-items:center}.sub-fallback a,.hero a:not(.btn){display:inline-block;padding:12px 0}.bh-embed{min-height:440px}}
