@@ -137,3 +137,5 @@ main>.atf-signup{width:calc(100% - 32px)}
 
 .sponsor{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;margin:20px 0;background:var(--card);font-size:.92rem;overflow-wrap:anywhere}.sponsor p{margin:0}.sponsor-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.sponsor-body{margin:4px 0 2px!important}.sponsor-disc{font-size:.8rem;color:var(--muted)}
 .g-lead{margin:14px 0 6px;font-size:1.06rem}.g-lead p{margin:0 0 6px}.lead-h{font-family:var(--serif);font-size:1.12rem}
+.social{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}.social a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-weight:600}.soc-i{flex:none}
+.bh-embed{min-height:340px}@media (max-width:600px){.bh-embed{min-height:400px}.foot-in a{display:inline-block;padding:12px 2px}.hero-cta .btn{min-height:48px}}
