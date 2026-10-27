@@ -76,7 +76,7 @@ def page(BASE,ORG,DISC):
 <h2 id="research">Research-only peptides</h2>
 <p>None of these is an FDA-approved drug. The column on the right is what FDA's compounding lists say.</p>
 <div class="table-wrap"><table class="compare"><caption class="sr">Research-only peptides and their FDA compounding status</caption><thead><tr><th scope="col">Compound</th><th scope="col">Status</th><th scope="col">Can it be compounded? (FDA source)</th></tr></thead><tbody>{"".join(f'<tr><th scope="row">{nm(n,l)}</th><td>{RO}</td><td>{c}</td></tr>' for n,l,c in RESEARCH)}</tbody></table></div>
-<p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: not well studied in people; FDA cites immunogenicity, impurity and limited-safety-data concerns for several of these ({a(SAFE,"FDA")}). <a href="how-to-tell-if-a-peptide-source-is-legit.html">Choose a tested source</a>.</p>
+<p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: not well studied in people; FDA cites immunogenicity, impurity and limited-safety-data concerns for several of these ({a(SAFE,"FDA")}). <a href="how-to-tell-if-a-peptide-source-is-legit.html">How to check a lab report</a>.</p>
 <h2 id="whats-next">What could change next</h2>
 <ul><li><strong>The July 2026 PCAC votes.</strong> FDA's compounding advisory committee voted to recommend BPC-157, KPV, TB-500, MOTS-c, Semax and epitalon for the 503A list ({a(PCAC_JUL26,"FDA meeting page")}; {a(PCAC_VOTES,"vote report")}). The votes are advice. FDA hasn't added any of them yet.</li>
 <li><strong>An interim access policy.</strong> FDA sent "Interim Access Policy for Compounding Using Certain Peptides" (RIN 0910-ZD94) to White House review on Oct 14, 2026 ({a(RIN,"OIRA EO 12866 review entry, reginfo.gov")}). It hasn't appeared in the Unified Agenda or the Federal Register, isn't in effect, and which peptides it covers isn't public.</li>
@@ -84,7 +84,7 @@ def page(BASE,ORG,DISC):
 <li><strong>Retatrutide.</strong> Lilly plans to submit to FDA in Q1 2027. Track it on our <a href="peptides/retatrutide-fda-approval-status.html">retatrutide FDA status page</a>.</li></ul>
 <nav class="next-up" aria-label="Keep going"><h2>Keep going</h2><ul>
 <li><a href="compounded-vs-brand-semaglutide-tirzepatide.html" data-goatcounter-click="next-fda-cb"><strong>Compounded or brand-name?</strong><span>How to tell what's in your box in two minutes.</span></a></li>
-<li><a href="how-to-tell-if-a-peptide-source-is-legit.html" data-goatcounter-click="next-fda-legit"><strong>Is your source legit?</strong><span>How to read a COA and spot the red flags.</span></a></li>
+<li><a href="how-to-tell-if-a-peptide-source-is-legit.html" data-goatcounter-click="next-fda-legit"><strong>How to check a lab report</strong><span>How to read a COA and spot the red flags.</span></a></li>
 <li><a href="semaglutide-vs-tirzepatide.html" data-goatcounter-click="next-fda-vs"><strong>Semaglutide vs tirzepatide</strong><span>Who won the head-to-head.</span></a></li>
 <li><a href="{SUB}" data-goatcounter-click="next-fda-signup" rel="noopener"><strong>Get the Friday email</strong><span>We'll tell you the moment FDA moves on any of these.</span></a></li></ul></nav>
 {signup("signup-fda")}

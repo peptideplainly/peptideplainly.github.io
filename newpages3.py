@@ -65,7 +65,7 @@ def guide(BASE,ORG,DISC):
 <li>sends medicine that looks different from before, or arrives broken, damaged or without instructions</li>
 <li>doesn't require a screening and a prescription from a licensed doctor</li>
 <li>has spelling errors on the label, a wrong pharmacy address, or a pharmacy name you suspect is fake</li></ul>
-<p>Buying something other than a prescription drug? Our <a href="{LEGIT}">guide to spotting a legit source</a> shows how to read a COA.</p>
+<p>Looking at a lab report for something other than a prescription drug? Our <a href="{LEGIT}">guide to checking a lab report</a> shows how to read a COA.</p>
 <nav class="next-up" aria-label="Keep going"><h2>Keep going</h2><ul>
 <li><a href="peptides/semaglutide.html" data-goatcounter-click="next-cb-sema"><strong>Semaglutide guide</strong><span>Ozempic, Wegovy and Rybelsus: the trials, plainly.</span></a></li>
 <li><a href="peptides/tirzepatide.html" data-goatcounter-click="next-cb-tirz"><strong>Tirzepatide guide</strong><span>Mounjaro and Zepbound: the dual agonist explained.</span></a></li>

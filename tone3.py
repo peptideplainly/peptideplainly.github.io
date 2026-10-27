@@ -9,7 +9,7 @@ VOTES="https://www.peptides.media/updates/pcac-july-2026-vote-results"
 COSM="https://www.fda.gov/cosmetics/cosmetics-laws-regulations/fda-authority-over-cosmetics-how-cosmetics-are-not-fda-approved-are-fda-regulated"
 DSUP="https://www.fda.gov/food/information-consumers-using-dietary-supplements/questions-and-answers-dietary-supplements"
 def line(risks,status="Not FDA-approved; sold for research only."):
-    return f'<p class="safety-line"><strong>{status}</strong> Known risks: {risks}. <a href="{LEGIT}">Choose a tested source.</a></p>'
+    return f'<p class="safety-line"><strong>{status}</strong> Known risks: {risks}. <a href="{LEGIT}">How to check a lab report.</a></p>'
 def nodose(extra=""):
     return f'<h2 id="dosing">Dosage</h2><p>There\'s <strong>no established human dose</strong>, so we don\'t list one.{(" "+extra) if extra else ""}</p>'
 VOTE=f'In July 2026 an FDA advisory committee voted to recommend allowing it in pharmacy compounding (<a href="{JUL26}" rel="noopener">FDA meeting page</a>; <a href="{VOTES}" rel="noopener">vote report</a>). The vote is non-binding.'

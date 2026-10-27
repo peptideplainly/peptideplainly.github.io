@@ -5,7 +5,7 @@ MHRA_FOI="https://assets.publishing.service.gov.uk/media/669fbd3aa3c2a28abb50d55
 LEGIT="../how-to-tell-if-a-peptide-source-is-legit.html"
 def safety(items,legal):
     li="".join(f"<li>{x}</li>" for x in items)
-    return f'<aside class="safety" aria-label="Safety and legal"><h2>Safety &amp; legal, in 20 seconds</h2><ul><li><strong>Legal status:</strong> {legal}</li>{li}<li><strong>Quality:</strong> research vials are unregulated. Here\'s <a href="{LEGIT}">how to tell if a source is legit</a>.</li></ul></aside>'
+    return f'<aside class="safety" aria-label="Safety and legal"><h2>Safety &amp; legal, in 20 seconds</h2><ul><li><strong>Legal status:</strong> {legal}</li>{li}<li><strong>Quality:</strong> research vials are unregulated. Here\'s <a href="{LEGIT}">how to check a lab report</a>.</li></ul></aside>'
 MT2_SAFE=safety([
  f'<strong>Moles:</strong> case reports describe new and darkening moles, including within 24 hours of a single injection ({pm(24334249,"Eur J Dermatol, 2014")}), and a melanoma diagnosed in a 20-year-old user who also used sunbeds ({pm(24355990,"Dermatology, 2014, single case")}). A 2017 review counted four such melanoma reports and said conclusive evidence of a link is lacking ({pm(28266027,"Int J Dermatol, 2017")}).',
  f'<strong>Rare but serious:</strong> priapism needing surgery ({pm(33460908,"Sex Med, 2021")}), and a renal infarction case, with rhabdomyolysis and kidney failure described before ({pm(31953620,"CEN Case Rep, 2020")}).'],
@@ -149,7 +149,7 @@ B2_X={
 }
 FORZ_DOSE=f'''<h2 id="dosing">Forzinity dosing: what the FDA label says</h2><p class="fine">For the approved use only, as prescribed. Online "SS-31" vials have no label and aren't Forzinity.</p><ul><li>Patients weighing at least 30 kg: <strong>40 mg</strong> under the skin once daily, at the same time each day.</li><li>Adults with severe kidney impairment (eGFR under 30 mL/min, not on dialysis): <strong>20 mg</strong> once daily.</li><li>Missed dose: skip it and take the next one on schedule. Don't double up.</li></ul><p class="fine">Source: <a href="{FORZ}" rel="noopener">Forzinity FDA label on DailyMed</a>.</p>'''
 for k,x in B2_X.items():
-    if k=="elamipretide": x["dosing"]=f'<aside class="safety" aria-label="Safety"><h2>Safety, in 20 seconds</h2><ul><li><strong>Most common side effects:</strong> injection-site redness, pain, hardening, itching and bruising; increases in eosinophils (a type of white blood cell) were also seen (<a href="{FORZ}" rel="noopener">FDA label</a>).</li><li><strong>Don\'t use</strong> with serious allergy to elamipretide or its ingredients.</li><li><strong>Research vials:</strong> "SS-31" sold online is unregulated. Here\'s <a href="{LEGIT}">how to tell if a source is legit</a>.</li></ul></aside>'+FORZ_DOSE
+    if k=="elamipretide": x["dosing"]=f'<aside class="safety" aria-label="Safety"><h2>Safety, in 20 seconds</h2><ul><li><strong>Most common side effects:</strong> injection-site redness, pain, hardening, itching and bruising; increases in eosinophils (a type of white blood cell) were also seen (<a href="{FORZ}" rel="noopener">FDA label</a>).</li><li><strong>Don\'t use</strong> with serious allergy to elamipretide or its ingredients.</li><li><strong>Research vials:</strong> "SS-31" sold online is unregulated. Here\'s <a href="{LEGIT}">how to check a lab report</a>.</li></ul></aside>'+FORZ_DOSE
     elif k=="cagrilintide": x["dosing"]=B2_SAFE[k]+'<h2 id="dosing">Cagrilintide dosage: what we know</h2><p>There is <strong>no approved dose</strong>. The trials used one arm: cagrilintide 2.4 mg plus semaglutide 2.4 mg once weekly, the strength Novo submitted to the FDA. That\'s a trial arm name, not dosing advice.</p>'
     else:
         nm=B2_PEP[k][0].split(" (")[0]
@@ -182,7 +182,7 @@ QH3={"bpc-157-tb-500-stack":("What is the BPC-157 + TB-500 stack?","Are BPC-157 
 
 # ===== Bean tone update (Oct 18, 4:35 PM): one-line safety, bold headlines, less regulatory copy =====
 def line(risks, status="Not FDA-approved; sold for research only."):
-    return f'<p class="safety-line"><strong>{status}</strong> Known risks: {risks}. <a href="{LEGIT}">Choose a tested source.</a></p>'
+    return f'<p class="safety-line"><strong>{status}</strong> Known risks: {risks}. <a href="{LEGIT}">How to check a lab report.</a></p>'
 NODOSE='<h2 id="dosing">Dosage</h2><p>There\'s <strong>no established human dose</strong>, so we don\'t list one.</p>'
 ONE={
 "melanotan-2":line(f'new and darkening moles ({pm(24334249,"case report, 2014")}), melanoma in a 20-year-old who also used sunbeds ({pm(24355990,"single case, 2014")}; a review says a link isn\'t proven, {pm(28266027,"2017")}), priapism ({pm(33460908,"case, 2021")}) and kidney infarction ({pm(31953620,"case, 2020")})'),

@@ -58,9 +58,9 @@ def nsw(BASE,ORG,DISC):
 <li><strong>"Retatrutide" means the label, not a lab test.</strong> Nobody verified what was in the vials.</li></ul>
 <h2 id="us">What it means if you're in the US</h2>
 <p>Retatrutide isn't approved in Australia or the US. Lilly plans to submit it to the FDA in Q1 2027 (<a href="peptides/retatrutide-fda-approval-status.html">our tracker</a>). What's sold online as "retatrutide" is a research chemical with no FDA quality checks. Wondering what is approved? See our <a href="{FDAL}">FDA-approved peptides list</a>.</p>
-<p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: GI effects, chest pain, allergic reactions and reported kidney and liver injury in the NSW data ({a(REP,"NSW Health")}; {a(MR,"NSW Government")}). <a href="{LEGIT}">Choose a tested source</a>.</p>
+<p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: GI effects, chest pain, allergic reactions and reported kidney and liver injury in the NSW data ({a(REP,"NSW Health")}; {a(MR,"NSW Government")}). <a href="{LEGIT}">How to check a lab report</a>.</p>
 <p class="fine">Also covered by {a(AUSDOC,"AusDoc")}, the {a(NH,"Newcastle Herald")} and {a(ABC,"ABC News")}.</p>
-{nav([("peptides/retatrutide-side-effects.html","se","Retatrutide side effects","What the trials found, plainly."),("peptides/retatrutide-fda-approval-status.html","status","Retatrutide release date","FDA status and every phase 3 readout."),(LEGIT,"legit","Is your source legit?","How to read a COA and spot the red flags."),(BPCP,"bpc","Is BPC-157 about to be compoundable?","Where the FDA's interim peptide policy stands.")],"nsw")}
+{nav([("peptides/retatrutide-side-effects.html","se","Retatrutide side effects","What the trials found, plainly."),("peptides/retatrutide-fda-approval-status.html","status","Retatrutide release date","FDA status and every phase 3 readout."),(LEGIT,"legit","How to check a lab report","How to read a COA and spot the red flags."),(BPCP,"bpc","Is BPC-157 about to be compoundable?","Where the FDA's interim peptide policy stands.")],"nsw")}
 {signup("signup-nsw")}
 {share(BASE+"/"+NSWP,"Peptide ER visits in NSW went from 5 a month to 217. Retatrutide was mentioned in 833 of 1,180. The numbers, plainly","nsw","Share this story","Know someone buying retatrutide online? Send them the numbers.")}
 <h2 id="faq">NSW peptide surge FAQ</h2>{faqh(NSW_FAQ)}{DISC}</article>'''
@@ -101,7 +101,7 @@ def bpc(BASE,ORG,DISC):
 <p>Telehealth company <strong>Hims &amp; Hers</strong> has said it plans to offer peptides if regulations permit ({a(REU,"Reuters")}). Peptides have also been promoted by HHS Secretary Robert F. Kennedy Jr. ({a(REU,"Reuters")}).</p>
 <h2 id="next">What happens next</h2>
 <p>OIRA can clear the policy, ask for changes, or send it back. Until FDA publishes something, nothing changes: BPC-157 stays research-only. We'll update this page when OMB acts.</p>
-<p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: not well studied in people (mostly animal studies); FDA cites immunogenicity, impurity and limited-safety-data concerns ({a(SAFE,"FDA")}). <a href="{LEGIT}">Choose a tested source</a>.</p>
+<p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: not well studied in people (mostly animal studies); FDA cites immunogenicity, impurity and limited-safety-data concerns ({a(SAFE,"FDA")}). <a href="{LEGIT}">How to check a lab report</a>.</p>
 {nav([("peptides/bpc-157.html","bpc","BPC-157 guide","The research, plainly."),("peptides/bpc-157-tb-500-stack.html","stack","BPC-157 + TB-500 stack","What the 'Wolverine' stack research says."),(FDAL,"fda","FDA-approved peptides list","Approved, compoundable or research-only?"),(NSWP,"nsw","NSW peptide ER surge","5 visits a month to 217.")],"bpcpol")}
 {signup("signup-bpcpol")}
 {share(BASE+"/"+BPCP,"Is BPC-157 about to be compoundable? Where the FDA interim peptide policy actually stands, with sources","bpcpol","Share this explainer","Know someone who thinks BPC-157 is already legal to compound? Send them this.")}

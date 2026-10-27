@@ -56,7 +56,7 @@ def side_effects(BASE,ORG,DISC,NOTE,badge):
 <p>In the phase 2 obesity trial, gut effects (nausea, diarrhea, vomiting and constipation) were the most common side effects. On Reddit, gut symptoms were common but not dominant. Appetite, general (fatigue, energy), muscle, sleep and heart-rate reports stood out instead. The pattern also differed from the same team's earlier Reddit study of semaglutide and tirzepatide, where reports were more concentrated in nausea, vomiting and gut-motility categories. The authors suggest the difference <em>may</em> come from retatrutide's extra target, the glucagon receptor, since it's the only triple agonist in its class. They also flag the appetite finding as unexpected, given the big weight losses in trials.</p>
 <h2>Read this before you quote it</h2>
 <p>These are things people wrote online about products they bought outside the trials. The researchers point out that product identity, purity, dose and medical history couldn't be verified, and that the results may reflect dose or product differences, stacking several peptides, reconstitution practices, who posts on Reddit, or symptoms blamed on the drug that came from something else. So the study can't tell you how often a side effect happens, whether retatrutide caused it, or how it compares to approved GLP-1s. It's a map of what to test next, and prospective studies are the next step.</p>
-<p>Want the trial data? Our <a href="retatrutide.html">retatrutide guide</a> covers the phase 3 TRIUMPH results, status and FAQs. Comparing options? See <a href="../glp1-comparison.html">all four GLP-1s side by side</a>. Thinking about where a vial came from? Read <a href="../{LEGIT}">how to tell if a peptide source is legit</a>.</p>
+<p>Want the trial data? Our <a href="retatrutide.html">retatrutide guide</a> covers the phase 3 TRIUMPH results, status and FAQs. Comparing options? See <a href="../glp1-comparison.html">all four GLP-1s side by side</a>. Seen a lab report for a vial? Read <a href="../{LEGIT}">how to check a peptide lab report</a>.</p>
 {signup("signup-reta-side-effects")}
 <h2 id="faq">Retatrutide side effects FAQ</h2>{faqh(SE_FAQ)}
 <p class="fine">Sources: {cite} (doi:10.1001/jamanetworkopen.2026.38929); <a href="{PENN}" rel="noopener">Penn Engineering news release</a>.</p>{NOTE}{DISC}</article>'''
@@ -105,7 +105,7 @@ def calculator(BASE,ORG,DISC):
 <h2>The math, plainly</h2><ol><li><strong>Concentration</strong> (mg/mL) = mg in the vial ÷ mL of water added. Multiply by 1,000 for mcg/mL. If your label already says mg/mL, use that.</li><li><strong>mL to measure</strong> = amount in mg ÷ concentration. (Amount in mcg? Divide by 1,000 first.)</li><li><strong>Units on a U-100 syringe</strong> = mL × 100.</li></ol>
 <p>Three steps. Concentration is the one that changes everything: add more water and the same amount becomes more units.</p>
 <h2>Why people mix these up</h2><p>Milligrams (mg) and micrograms (mcg) measure the peptide. Milliliters (mL) and syringe "units" measure liquid. The FDA has <a href="{FDA_ERR}" rel="noopener">received reports of dosing errors</a> with compounded semaglutide where people confused mg, mL and units, including patients told to draw 5 units (0.05 mL) on a U-100 syringe who drew 50 units instead. FDA says compounded concentrations can vary, even from one compounder.</p>
-<p>On a GLP-1? Read the <a href="peptides/semaglutide.html">semaglutide guide</a> and the <a href="peptides/tirzepatide.html">tirzepatide guide</a> for label dosing straight from the FDA. Exploring other peptides? Browse <a href="peptides/index.html">all our peptide guides</a>, and see <a href="{LEGIT}">how to tell if a source is legit</a>.</p>
+<p>On a GLP-1? Read the <a href="peptides/semaglutide.html">semaglutide guide</a> and the <a href="peptides/tirzepatide.html">tirzepatide guide</a> for label dosing straight from the FDA. Exploring other peptides? Browse <a href="peptides/index.html">all our peptide guides</a>, and see <a href="{LEGIT}">how to check a lab report</a>.</p>
 {signup("signup-calc")}
 <h2 id="faq">Peptide calculator FAQ</h2>{faqh(CALC_FAQ)}
 <p class="fine">Sources: <a href="{FDA_ERR}" rel="noopener">FDA alert on compounded semaglutide dosing errors</a>; <a href="{FDA_GLP1}" rel="noopener">FDA's concerns with unapproved GLP-1 drugs</a>.</p>{DISC}</article>{CALCJS}'''
@@ -123,14 +123,27 @@ LEGIT_FAQ=[("What is a COA for peptides?","A certificate of analysis: a lab repo
 ("What are the biggest red flags?","No COA, a COA with no lot number or lab name, the same report used for every batch, prices that seem too good to be true, and prescription drugs sold without a prescription.")]
 def legit(BASE,ORG,DISC):
     url=f"{BASE}/{LEGIT}"
-    body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / Is your source legit?</p>
-<p class="kicker">Buyer's guide</p><h1>How to tell if a peptide source is legit</h1>
-<p class="lead">Great sources love showing their receipts. Here's how to read a COA in two minutes, check it's real, and spot the red flags, so you know exactly what's in the vial.</p>
+    body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / How to check a lab report</p>
+<p class="kicker">Lab report guide</p><h1>How to check a peptide lab report (COA)</h1>
+<p class="lead">A label, a purity claim or a slick website isn't proof of what's in a vial. Here's how to read a certificate of analysis (COA) in two minutes, check that it's real, and use the FDA's own lookup tools.</p>
+<blockquote class="pull"><p>"A professional looking website, a label, purity claim, reviews, or influencer endorsement is not proof of what is inside the product."</p><p class="fine">Dr Kerry Chant, NSW Chief Health Officer (<a href="https://www.nsw.gov.au/ministerial-releases/nsw-health-warns-of-surge-hospital-presentations-linked-to-peptide-use" rel="noopener">NSW Government, Oct 2026</a>)</p></blockquote>
 <aside class="excite" aria-label="The 30-second version"><p class="kicker">The 30-second version</p><ul><li><strong>COA for your exact batch:</strong> the lot number on the report matches your vial.</li><li><strong>Purity and identity:</strong> HPLC purity <em>and</em> a mass spec check.</li><li><strong>Independent lab you can contact:</strong> named, dated, and verifiable.</li><li><strong>Prescription drug?</strong> A licensed pharmacy that asks for your prescription.</li></ul></aside>
-<h2>Why it matters</h2><p>Testing is the whole game, and the research shows why:</p><ul>
+<h2>Why lab reports matter</h2><p>Independent tests of products bought online keep finding gaps between the label and the contents:</p><ul>
 <li>Researchers bought semaglutide vials from illegal online pharmacies with no prescription and tested them. Every vial contained endotoxin (a bacterial contaminant), measured purity was 7.7% to 14.37% against the 99% claimed on the labels, and the semaglutide content was 28.56% to 38.69% <em>above</em> the labeled amount ({pm(39509151,"Ashraf et al., J Med Internet Res, 2024")}).</li>
 <li>Melanotan II vials from three online shops each claimed 10 mg. Testing found 4.32 to 8.84 mg, and vials from two shops held 4.1% to 5.9% unknown impurities ({pm(24771717,"Breindahl et al., Drug Test Anal, 2015")}).</li>
 <li>Obestatin bought from five manufacturers by research groups: one product was a totally different peptide, and two-thirds of the rest fell short of research quality (under 95% purity and/or single impurities over 1%). The authors recommend quality-control testing before using any peptide in research ({pm(18342612,"De Spiegeleer et al., Anal Biochem, 2008")}).</li></ul>
+<h2 id="checklist">COA checklist</h2><div class="table-wrap"><table class="compare"><caption class="sr">What to check on a certificate of analysis</caption><thead><tr><th scope="col">Check</th><th scope="col">What good looks like</th></tr></thead><tbody>
+<tr><th scope="row">Lot number</th><td>Matches the number printed on the vial or pack</td></tr>
+<tr><th scope="row">Identity</th><td>Mass spectrometry confirms the expected molecule</td></tr>
+<tr><th scope="row">Purity</th><td>HPLC result, ideally with the chromatogram attached</td></tr>
+<tr><th scope="row">Amount</th><td>Measured content per vial, not just the label claim</td></tr>
+<tr><th scope="row">Endotoxin / sterility</th><td>Reported for anything injectable</td></tr>
+<tr><th scope="row">Lab, date, report number</th><td>A named lab you can contact to confirm the report</td></tr></tbody></table></div>
+<h2 id="fda-tools">FDA lookup tools</h2><ul>
+<li><strong>NDC Directory:</strong> look up a drug's National Drug Code to see the product and labeler it belongs to (<a href="https://www.accessdata.fda.gov/scripts/cder/ndc/" rel="noopener">FDA NDC Directory</a>). The FDA notes an NDC doesn't mean a drug is FDA-approved.</li>
+<li><strong>Registered outsourcing facilities (503B):</strong> FDA's list of facilities registered to compound under section 503B (<a href="https://www.fda.gov/drugs/human-drug-compounding/registered-outsourcing-facilities" rel="noopener">FDA list</a>).</li>
+<li><strong>BeSafeRx:</strong> FDA's resource for checking that an online pharmacy is licensed (<a href="https://www.fda.gov/drugs/quick-tips-buying-medicines-over-internet/besaferx-your-source-online-pharmacy-information" rel="noopener">FDA BeSafeRx</a>).</li>
+<li><strong>Is it approved at all?</strong> Check our <a href="fda-approved-peptides-list.html">FDA-approved peptides list</a>. A COA can't make an unapproved product approved.</li></ul>
 <h2>What's on a good COA</h2><p>A certificate of analysis (COA) is the lab report for one batch. Look for:</p><ul>
 <li><strong>Compound name</strong> and the amount the vial is supposed to hold.</li>
 <li><strong>Batch or lot number</strong> that matches the number printed on <em>your</em> vial. A report for a different batch tells you nothing about yours.</li>
@@ -155,10 +168,10 @@ def legit(BASE,ORG,DISC):
 <p>Next up: <a href="peptides/index.html">all our peptide guides</a>, <a href="peptides/retatrutide-side-effects.html">what retatrutide users report online</a>, or <a href="peptides-101.html">Peptides 101</a>.</p>
 {signup("signup-legit")}
 <h2 id="faq">Peptide source FAQ</h2>{faqh(LEGIT_FAQ)}{DISC}</article>'''
-    t="How to tell if a peptide source is legit: COAs, testing, red flags"
-    d="How to check a peptide source: what a real COA shows (lot match, HPLC purity, mass spec identity), how to verify third-party testing, and the red flags."
-    schema=[ORG,{"@type":"Article","headline":"How to tell if a peptide source is legit","description":d,"url":url,"inLanguage":"en","datePublished":"2026-10-17","dateModified":"2026-10-17","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}},
-        faqld(LEGIT_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("Is your source legit?",url)])]
+    t="How to check a peptide lab report (COA): checklist and FDA tools"
+    d="How to read a peptide certificate of analysis: lot match, HPLC purity, mass spec identity, verifying the lab, FDA lookup tools and red flags."
+    schema=[ORG,{"@type":"Article","headline":"How to check a peptide lab report (COA)","description":d,"url":url,"inLanguage":"en","datePublished":"2026-10-17","dateModified":"2026-10-17","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}},
+        faqld(LEGIT_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("How to check a lab report",url)])]
     return (t,d,body,schema)
 
 def add(pages,BASE,ORG,DISC,NOTE,X):
@@ -167,8 +180,8 @@ def add(pages,BASE,ORG,DISC,NOTE,X):
     pages[LEGIT]=legit(BASE,ORG,DISC)
 LLMS=[("Retatrutide side effects: what 13,589 users reported online",SE,"Penn's JAMA Network Open study (Oct 14, 2026) of self-reported symptoms in Reddit posts. Research purposes only."),
       ("Peptide reconstitution calculator",CALC,"Math-only peptide calculator: vial mg + water mL + your amount in mcg or mg gives concentration, mL and U-100 syringe units. No presets, no dose suggestions."),
-      ("How to tell if a peptide source is legit",LEGIT,"COAs, HPLC purity, mass spec identity, third-party testing and red flags.")]
-TILES=f'<section class="wide two" aria-label="Tools and buyer guides"><a class="tile" href="{{R}}{SE}"><h3>🔥 Retatrutide side effects</h3><p>What 13,589 users reported online, from the new JAMA study.</p></a><a class="tile" href="{{R}}{CALC}"><h3>Peptide reconstitution calculator</h3><p>Any vial: mg + water → mg/mL, mL and U-100 units. Math only.</p></a><a class="tile" href="{{R}}{LEGIT}"><h3>Is your source legit?</h3><p>Read a COA in two minutes and spot the red flags.</p></a></section>'
+      ("How to check a peptide lab report (COA)",LEGIT,"COA checklist (lot match, HPLC purity, mass spec identity, endotoxin), verifying the lab, FDA lookup tools and red flags.")]
+TILES=f'<section class="wide two" aria-label="Tools and buyer guides"><a class="tile" href="{{R}}{SE}"><h3>🔥 Retatrutide side effects</h3><p>What 13,589 users reported online, from the new JAMA study.</p></a><a class="tile" href="{{R}}{CALC}"><h3>Peptide reconstitution calculator</h3><p>Any vial: mg + water → mg/mL, mL and U-100 units. Math only.</p></a><a class="tile" href="{{R}}{LEGIT}"><h3>How to check a lab report</h3><p>Read a COA in two minutes and spot the red flags.</p></a></section>'
 def link_in(pages):
     def sub(k,a,b):
         v=list(pages[k]); assert a in v[2],(k,a); v[2]=v[2].replace(a,b,1); pages[k]=tuple(v)
@@ -176,12 +189,12 @@ def link_in(pages):
     sub("index.html",'<section id="this-week">','<section class="wide"><div class="sec-head"><h2>Trending tools &amp; guides</h2></div></section>'+TILES.replace("{R}","")+'<section id="this-week">')
 CARDS={SE:dict(card="retatrutide-side-effects",kicker="New JAMA study · Oct 2026",title="Retatrutide side effects: what 13,589 users reported",sub="Appetite, fatigue, energy, nausea, insomnia, heart rate.",badge="research",badge_t="Investigational · not approved",hot=True),
  CALC:dict(card="peptide-calculator",kicker="Free tool · math only",title="Peptide reconstitution calculator",sub="Vial mg + water mL → concentration, mL, units.",badge="",badge_t="",hot=False),
- LEGIT:dict(card="legit-source",kicker="Buyer's guide",title="How to tell if a peptide source is legit",sub="COAs, HPLC purity, mass spec and red flags.",badge="",badge_t="",hot=False)}
+ LEGIT:dict(card="legit-source",kicker="Lab report guide",title="How to check a peptide lab report",sub="COAs, HPLC purity, mass spec and red flags.",badge="",badge_t="",hot=False)}
 def next_links(slug):
     L=[]
     L.append((CALC,"Peptide reconstitution calculator","Vial mg + water mL → concentration, mL and U-100 units. Math only.","calc"))
     if slug in ("semaglutide","tirzepatide","retatrutide","orforglipron"): L.append((SE,"Retatrutide side effects","What 13,589 users reported online, from the new JAMA study.","reta-se"))
-    L.append((LEGIT,"Is your source legit?","Read a COA, verify third-party testing, spot the red flags.","legit"))
+    L.append((LEGIT,"How to check a lab report","Read a COA, verify third-party testing, spot the red flags.","legit"))
     li="".join(f'<li><a href="{"" if u.startswith("peptides/") else "../"}{u.split("/")[-1] if u.startswith("peptides/") else u}" data-goatcounter-click="next-{slug}-{tag}"><strong>{t}</strong><span>{d}</span></a></li>' for u,t,d,tag in L)
     return f'<nav class="next-up" aria-label="Keep going"><h2>Keep going</h2><ul>{li}<li><a href="{SUB}" data-goatcounter-click="next-{slug}-signup" rel="noopener"><strong>Get the Friday email</strong><span>The week\'s biggest peptide news, free, in five minutes.</span></a></li></ul></nav>'
 def link_guides(pages,slugs):
