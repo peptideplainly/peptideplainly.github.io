@@ -62,7 +62,7 @@ H1={
 }
 # replace quick-facts lines whose label matches
 QUICKFIX={
-"bpc-157":{"Human evidence":"<strong>Research:</strong> promising early research. A large animal literature on tendon, muscle and gut healing, plus small early human reports.","Status":"<strong>Status:</strong> research purposes only. Not FDA-approved."},
+"bpc-157":{"Human evidence":"<strong>Research:</strong> promising early research. A large animal literature on muscle, tendon, ligament and bone healing (mostly animal studies), plus small early human reports.","Status":"<strong>Status:</strong> research purposes only. Not FDA-approved."},
 "tb-500":{"Human evidence":"<strong>Research:</strong> promising early research on thymosin beta-4, the natural repair protein TB-500 is based on.","Status":"<strong>Status:</strong> research purposes only. Not FDA-approved."},
 "ghk-cu":{"Evidence":"<strong>Research:</strong> promising lab and animal research on skin repair and collagen."},
 "collagen-peptides":{"Evidence":"<strong>Evidence:</strong> solid. Meta-analyses of randomized trials show better skin hydration and elasticity."},
