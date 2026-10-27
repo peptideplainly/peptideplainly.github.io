@@ -286,5 +286,14 @@
   "badge": "",
   "badge_t": "",
   "hot": true
+ },
+ "peptide-recalls-and-fda-warning-letters.html": {
+  "card": "fda-warning-letters",
+  "kicker": "Enforcement watch · FDA",
+  "title": "Peptide FDA warning letters",
+  "sub": "What FDA told sellers, quoted and linked.",
+  "badge": "",
+  "badge_t": "",
+  "hot": false
  }
 }
