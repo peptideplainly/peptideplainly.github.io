@@ -25,7 +25,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{html.escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/{og}">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=22">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=23">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>
@@ -175,7 +175,7 @@ STATUS_CLASS=lambda bk:{"approved":"approved","research":"research","supplement"
 HOMECARDS=""; rows=""; gcards=""
 for slug,(name,desc,what,reg,ev,myths) in PEP.items():
     x=X[slug]; bk,bt=x["badge"]; cat,use,how,_=META[slug]
-    card=f'<a class="pcard cat-{cat}" href="{{R}}{slug}.html" data-cat="{cat}"><span class="pic">{icon(cat)}</span><span class="pbody"><span class="pcat">{CATS[cat]}</span><strong class="pname">{name}</strong><span class="badge {bk}">{bt}</span><span class="puse">{EXCITE[slug][2]}</span></span></a>'
+    card=f'<a class="pcard cat-{cat}" href="{{R}}{slug}.html" data-cat="{cat}"><span class="pic">{icon(cat)}</span><span class="pbody"><span class="pcat">{CATS[cat]}</span><strong class="pname">{name}</strong><span class="badge {bk}">{bt}</span><span class="puse">{EXCITE[slug][2]}</span><span class="pmeta">@@SRC:{slug}@@</span></span></a>'
     HOMECARDS+=card.replace("{R}","peptides/"); gcards+=card.replace("{R}","")
     rows+=f'<tr data-cat="{cat}"><th scope="row"><a href="{slug}.html">{name}</a></th><td>{use}</td><td><span class="badge {bk}">{bt}</span></td><td>{how}</td></tr>'
 for slug,(name,desc,what,reg,ev,myths) in PEP.items():
@@ -284,6 +284,16 @@ for _p,_c in CARDS.items():
 HAS_GLP1CMP="glp1-comparison.html" in pages or (P/"glp1-comparison.html").exists()
 import re as _re
 def _cmp(m): return f'<p class="glp1-cta"><a class="btn" href="{"../" if m.group(1)=="" else ""}glp1-comparison.html" data-goatcounter-click="glp1-compare">Compare all four GLP-1s →</a></p>' if HAS_GLP1CMP else ""
+import re as _re3
+def _meta(slug):
+    b=pages.get(f"peptides/{slug}.html",("","",""))[2]
+    skip=("peptideplainly","beehiiv","dosetrack","x.com","reddit.com","goatcounter","gc.zgo.at")
+    n=len({u for u in _re3.findall(r'href="(https?://[^"]+)"',b) if not any(k in u for k in skip)})
+    m=_re3.search(r'Status last checked ([A-Z][a-z]{2} \d{1,2}, \d{4})',b) or _re3.search(r'Checked against[^<]*?([A-Z][a-z]{2} \d{1,2}, \d{4})',b)
+    return f"{n} sources" + (f" · checked {m.group(1)}" if m else "")
+for _k,_v in list(pages.items()):
+    if "@@SRC:" in _v[2]:
+        _v=list(_v); _v[2]=_re3.sub(r"@@SRC:([\w-]+)@@",lambda m:_meta(m.group(1)),_v[2]); pages[_k]=tuple(_v)
 for path,v in pages.items():
     (P/path).parent.mkdir(exist_ok=True); (P/path).write_text(_re.sub(r'<!--GLP1CMP:([^>]*)-->',_cmp,page(path,*v)))
 import datetime;LASTMOD=datetime.date.today().isoformat()
