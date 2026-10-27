@@ -48,6 +48,7 @@ Our most popular guides. Retatrutide is the hottest one right now.
 - [FDA-approved peptides list](https://peptideplainly.com/fda-approved-peptides-list.html): Which peptides are FDA-approved (semaglutide, tirzepatide, tesamorelin, bremelanotide, elamipretide, oxytocin, hCG...), which can be compounded, and which are research-only (BPC-157, TB-500, GHK-Cu...), with FDA sources.
 - [NSW peptide ER surge](https://peptideplainly.com/nsw-peptide-emergency-department-surge.html): NSW Health surveillance: 1,180 ED presentations mentioning unapproved peptides (Jul 2025–Sep 2026), retatrutide in 833, with caveats and sources.
 - [Is BPC-157 about to be compoundable?](https://peptideplainly.com/bpc-157-compounding-fda-interim-policy.html): Where FDA's interim peptide compounding policy (RIN 0910-ZD94, OIRA review since Oct 14, 2026) stands; Doctors for America opposition; BPC-157's current status.
+- [Peptide FDA status tracker](https://peptideplainly.com/peptide-fda-status-tracker.html): Status by compound with latest FDA event, source and last-checked date, plus a dated What-changed log (approvals, PCAC votes, RIN 0910-ZD94).
 
 ## Newsletter (free, every Friday)
 - [This week's issue](https://peptideplainly.com/newsletter.html): Issue #2, October 23, 2026

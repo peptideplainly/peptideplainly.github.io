@@ -277,5 +277,14 @@
   "badge": "",
   "badge_t": "",
   "hot": true
+ },
+ "peptide-fda-status-tracker.html": {
+  "card": "fda-status-tracker",
+  "kicker": "Status tracker · FDA",
+  "title": "Peptide FDA status tracker",
+  "sub": "What changed, dated and sourced.",
+  "badge": "",
+  "badge_t": "",
+  "hot": true
  }
 }
