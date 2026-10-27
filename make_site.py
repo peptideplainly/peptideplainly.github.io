@@ -268,6 +268,7 @@ import fdalist; fdalist.add(pages,BASE,ORG,DISC); fdalist.wire(pages)
 import news4; news4.add(pages,BASE,ORG,DISC); news4.wire(pages)
 import tracker; tracker.add(pages,BASE,ORG,DISC)
 import fdawarn as _wl; _wl.add(pages,BASE,ORG,DISC)
+import nlarchive; nlarchive.add(pages,SENT,CUR,BASE,ORG)
 import leadins; LEADS=leadins.apply(pages); print('LEADINS',LEADS)
 import sponsor; from newpages import CALC as _CALC; SPONSORED=sponsor.apply(pages,_CALC)
 import extras3; extras3.wire3(pages)
@@ -308,7 +309,7 @@ _stub='<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Peptide
 _sent={i["stem"] for i in SENT}
 for h in (P/"issues").glob("issue-*.html"):
     if h.stem not in _sent: h.unlink()
-for st in _sent: (P/"issues"/f"{st}.html").write_text(_stub)
+for st in _sent: (P/"issues"/f"{st}.html").write_text(_stub.replace("../newsletter.html",f"../newsletter/issue-{int(st.split('-')[1]):03d}.html").replace(BASE+"/newsletter.html",f"{BASE}/newsletter/issue-{int(st.split('-')[1]):03d}.html"))
 (P/newpages.OLD_CALC).write_text(newpages.OLD_CALC_HTML)
 urls=list(pages)+["about.html"]
 (P/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n".replace("/index.html","/") for u in urls)+"</urlset>\n")
