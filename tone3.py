@@ -23,7 +23,7 @@ REG={
 "collagen-peptides":f'Sold as a dietary supplement. The FDA <a href="{DSUP}" rel="noopener">doesn\'t approve supplements</a> before they\'re sold.',
 }
 ONE={
-"bpc-157":line(f'not well studied; there\'s no clinical safety data in people yet ({pm(40756949,"HSS Journal, 2025")})'),
+"bpc-157":line(f'not well studied; there\'s no clinical safety data in people yet; the review also flags risks from unregulated manufacturing and contamination ({pm(40756949,"Vasireddi et al., HSS Journal 2025")})'),
 "tb-500":line(f'not well studied; FDA found no human exposure data for the TB-500 fragment (<a href="{FDA_RISK}" rel="noopener">FDA</a>)'),
 "mots-c":line('not well studied; there are no published human treatment trials yet'),
 "semax":line(f'not well studied; for the routes people use, FDA says it has little or no safety information (<a href="{FDA_RISK}" rel="noopener">FDA</a>)'),
