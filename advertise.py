@@ -6,11 +6,11 @@ REGULAR_LINKS={
  "site-sponsor":("$250/mo","https://buy.stripe.com/7sYcN47ry6M7gBGgniafS04"),
  "founding-partner-bundle":("$700/mo","https://buy.stripe.com/5kQ7sK9zG3zVgBG0okafS06"),
 }
-BANNER="Founding rates: first 5 sponsors, through Dec 31, 2026"
+BANNER="Founding rates: 4 of 5 founding spots left, through Dec 31, 2026"
 CALC="peptide-reconstitution-calculator.html"
 PACKAGES=[
  ("newsletter-feature","Newsletter Feature","$99","$150",None,
-  ["One Friday issue","Sole sponsor of that issue","Your logo","~75 words of copy","One link","Click report"],
+  ["One Friday issue","Sole sponsor of that issue","Your logo","50–80 words of copy","One link","Click report"],
   "https://buy.stripe.com/3cI3cu8vCb2ngBG6MIafS01"),
  ("newsletter-month","Newsletter Month","$349","$500",None,
   ["4 Friday issues in a row","Plus a recap"],
