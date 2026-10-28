@@ -34,7 +34,7 @@ def cards():
                    f'<a class="btn pkg-btn" href="{url}" rel="noopener" data-goatcounter-click="book-{slug}">Book this slot</a>'
                    f'<p class="pkg-reg"><a href="{REGULAR_LINKS[slug][1]}" rel="noopener" data-goatcounter-click="book-{slug}-regular">Pay regular rate ({REGULAR_LINKS[slug][0]})</a></p></div>')
     return f'<p class="pkg-banner" role="note">🎉 {BANNER}</p><div class="pkgs">{"".join(out)}</div>'
-TERMS=["Sponsor content is always labeled \"Sponsored\".","Sponsors get no editorial control over our guides or newsletter coverage.","No dosing claims in sponsor copy.","We review your copy before anything goes live.","We confirm your booking within 1 business day of payment."]
+TERMS=["Sponsor content is always labeled \"Sponsored\".","Sponsors get no editorial control over our guides or newsletter coverage.","No dosing claims in sponsor copy, and nothing that encourages human use of research-only compounds.","We review your copy before anything goes live.","We confirm your booking within 1 business day of payment."]
 def terms(): return '<h2 id="terms">Sponsor terms</h2><ul class="terms">'+"".join(f"<li>{t}</li>" for t in TERMS)+'</ul>'
 STEPS=[("Pick a package","from the cards above."),("Pay","securely through Stripe with the Book this slot button."),("Send your assets:","logo, copy and link, by email."),("We review","your copy against our terms."),("It goes live,","clearly labeled \"Sponsored\"."),("You get a report","with your clicks.")]
 def steps(): return '<h2>How booking works</h2><ol>'+"".join(f"<li><strong>{a}</strong> {b}</li>" for a,b in STEPS)+'</ol>'
