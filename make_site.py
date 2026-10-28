@@ -25,7 +25,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{html.escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/{og}">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=23">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=24">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{body}</main>
@@ -38,6 +38,8 @@ pages={}
 #   ---
 #   sent: true
 #   headline: One-line teaser for the home page (optional)
+#   sponsor_name / sponsor_copy / sponsor_url / sponsor_cta: optional paid sponsor block
+#     (all four required to render; absent = nothing rendered). See nlarchive.sponsor().
 #   ---
 # Unmarked issues are skipped entirely: no HTML, not "newest", not in sitemap or llms.txt.
 import markdown as _md, re as _r2, datetime as _dt
@@ -53,13 +55,14 @@ def _issue(p):
     heads=_r2.findall(r"^## (.+)$",t,_r2.M)
     return dict(n=n,stem=p.stem,md=t,sent=fm.get("sent","").lower()=="true" or fm.get("status","").lower()=="sent",date=date,
         iso=_dt.datetime.strptime(date,"%B %d, %Y").date().isoformat() if date else "",
-        headline=fm.get("headline") or (heads[0].split(". ",1)[-1] if heads else f"Issue #{n}"),count=len(heads))
+        headline=fm.get("headline") or (heads[0].split(". ",1)[-1] if heads else f"Issue #{n}"),count=len(heads),fm=fm)
 ALL_ISSUES=sorted((_issue(p) for p in (P/"issues").glob("issue-*.md")),key=lambda i:i["n"])
 SENT=[i for i in ALL_ISSUES if i["sent"]]
 CUR=SENT[-1] if SENT else None
 if CUR:
     _body=_md.markdown(CUR["md"],extensions=["extra","nl2br"])
     _body=_r2.sub(r"<h1>.*?</h1>","",_body,count=1,flags=_r2.S)
+    import nlarchive as _nla; _body+=_nla.sponsor(CUR)
     _d=f"Issue #{CUR['n']} of Peptide Plainly"+(f", week of {CUR['date']}" if CUR['date'] else "")+f": {CUR['count']} new peptide studies, explained plainly. New issue every Friday."
     _eb="This week's issue · Issue #"+str(CUR["n"])+(" · "+CUR["date"] if CUR["date"] else "")
     pages["newsletter.html"]=("This week's issue: Peptide Plainly newsletter",_d[:155],
