@@ -19,6 +19,8 @@ SAFE="https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substan
 from extras3 import PCAC_VOTES,PCAC_JUL26
 FRPI="https://www.federalregister.gov/public-inspection/2026-22192/enforcement-discretion-policy-regarding-503a-compounding-using-certain-peptide-bulk-drug-substances"
 HHSPDF="https://www.hhs.gov/sites/default/files/hhs-503a-peptide-enforcement-discretion-policy-appendix-b.pdf"
+FRDOC="https://www.federalregister.gov/documents/2026/10/30/2026-22192/enforcement-discretion-policy-regarding-503a-compounding-using-certain-peptide-bulk-drug-substances"
+REGDOC="https://www.regulations.gov/document/HHS-OASH-2026-0496-0002"
 NBC="https://www.nbcnews.com/health/health-news/rfk-jr-takes-shortcut-make-peptides-widely-available-rcna606133"
 DOCKET="https://www.regulations.gov/docket/HHS-OASH-2026-0496"
 LEGIT="how-to-tell-if-a-peptide-source-is-legit.html"
@@ -75,31 +77,32 @@ def nsw(BASE,ORG,DISC):
         faqld(NSW_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("NSW peptide ER surge",url)])]
     return (t,d,body,schema)
 BPC_FAQ=[
-("Is BPC-157 now legal to compound?",f'Not yet, and only in a narrow way. HHS\'s enforcement-discretion policy cleared White House review on Oct 27, 2026 and is scheduled to publish in the Federal Register on Oct 30, 2026 ({a(FRPI,"Federal Register public inspection")}). It says HHS does not intend to take enforcement action against "a State-licensed pharmacy, Federal facility, or licensed physician" compounding with a peptide listed in its Appendix A. It is interim, non-binding and can be revisited. BPC-157 is still not FDA-approved.'),
+("Is BPC-157 now legal to compound?",f'Only in a narrow way. HHS\'s enforcement-discretion policy was published in the Federal Register on Oct 30, 2026 (91 FR 68526; {a(FRDOC,"Federal Register")}). HHS says it does not intend to take enforcement action against "a State-licensed pharmacy, Federal facility, or licensed physician" compounding with a peptide listed in Appendix A, when the policy\'s conditions are met. It is interim, non-binding and can be revisited. BPC-157 is still not FDA-approved.'),
 ("Does this make \"research use only\" BPC-157 legal?",'No. The policy only covers compounding by state-licensed pharmacies, federal facilities and licensed physicians. It says nothing that makes "research use only" vials sold online legal for people to use, and it doesn\'t approve any product.'),
-("Which peptides are covered?",f'The notice points to a list in "Appendix A" of the HHS policy document ({a(HHSPDF,"HHS PDF")}). We couldn\'t open that PDF as of Oct 28, 2026 (the HHS site returned an access error), so we haven\'t verified the list ourselves. NBC News reports the six are BPC-157, epitalon, KPV, MOTS-c, semax and TB-500 ({a(NBC,"NBC News")}), the same six FDA\'s advisory committee recommended in July. We\'ll confirm against the HHS document.'),
-("Can I comment on it?",f'Yes. The notice says written comments can be submitted until 2 weeks after Federal Register publication, on regulations.gov docket {a(DOCKET,"HHS-OASH-2026-0496")}. If it publishes Oct 30, that\'s Nov 13, 2026 by our count.'),
+("Which peptides are covered?",f'Six, listed in Appendix A of the HHS policy document: BPC-157, epitalon, KPV, MOTS-c, semax and TB-500 ({a(HHSPDF,"HHS policy PDF")}). We checked the list against the HHS document on Oct 31, 2026; it matches what NBC News reported ({a(NBC,"NBC News")}). Appendix B limits each one to specific forms and routes.'),
+("Can I comment on it?",f'Yes. The notice says written comments can be submitted until 2 weeks after publication, on regulations.gov docket {a(DOCKET,"HHS-OASH-2026-0496")}. Regulations.gov lists the comment period as closing Nov 13, 2026 at 11:59 p.m. ET ({a(REGDOC,"regulations.gov")}).'),
 ("Is BPC-157 FDA-approved?",f'No. It isn\'t an approved drug for any use, and the notice itself says "Compounded drugs are not FDA-approved" ({a(FRPI,"Federal Register")}). See our <a href="{FDAL}">FDA-approved peptides list</a>.'),
 ]
 def bpc(BASE,ORG,DISC):
     url=f"{BASE}/{BPCP}"
     body=f'''<article class="issue"><p class="crumbs"><a href="index.html">Home</a> / <a href="peptides/index.html">Peptide guides</a> / BPC-157 and the FDA interim policy</p>
-<p class="kicker">Updated Oct 28, 2026 · cleared review, publishes Oct 30</p><h1>BPC-157 and the HHS peptide compounding policy</h1>
-<p class="lead"><strong>The HHS peptide policy cleared White House review on Oct 27 and publishes in the Federal Register on Fri, Oct 30.</strong> Here's what it does, what it doesn't, and where BPC-157 stands.</p>
+<p class="kicker">Updated Oct 31, 2026 · published Oct 30 · list verified</p><h1>BPC-157 and the HHS peptide compounding policy</h1>
+<p class="lead"><strong>The HHS peptide policy was published in the Federal Register on Fri, Oct 30, after clearing White House review on Oct 27.</strong> Here's what it does, what it doesn't, and where BPC-157 stands.</p>
 <p><strong>The short version:</strong> it's an interim, non-binding promise not to enforce, for state-licensed 503A pharmacies, federal facilities and licensed physicians compounding certain peptides. It is not an FDA approval, and it does not make "research use only" vials legal.</p>
 <h2 id="policy">What the notice says</h2>
 <ul><li><strong>Title:</strong> "Enforcement Discretion Policy Regarding 503A Compounding Using Certain Peptide Bulk Drug Substances," Federal Register doc 2026-22192, Docket No. HHS-OASH-2026-0496, RIN 0910-ZD94, from the HHS Office of the Secretary ({a(FRPI,"Federal Register public inspection")}).</li>
 <li><strong>Review:</strong> OIRA concluded its review on <strong>Oct 27, 2026</strong>: "Consistent with Change" ({a(RIN,"reginfo.gov")}). It was received Oct 14 under the working title "Interim Access Policy for Compounding Using Certain Peptides."</li>
-<li><strong>Publication:</strong> filed for public inspection Oct 28; scheduled to publish <strong>Oct 30, 2026</strong> ({a(FRPI,"Federal Register")}).</li>
+<li><strong>Publication:</strong> published <strong>Oct 30, 2026</strong>, 91 FR 68526 ({a(FRDOC,"Federal Register")}).</li>
 <li><strong>Who it covers:</strong> HHS "does not intend to take enforcement action against a State-licensed pharmacy, Federal facility, or licensed physician compounding a drug product using a peptide bulk drug substance found in Appendix A" ({a(FRPI,"Federal Register")}).</li>
 <li><strong>Interim and non-binding:</strong> HHS "may revisit application of this interim policy (in whole or in part) if, among other things, a safety signal or product quality issue arises," and the policy "is not binding on HHS or the public" ({a(FRPI,"Federal Register")}).</li>
 <li><strong>Not an approval:</strong> "Compounded drugs are not FDA-approved," the notice says ({a(FRPI,"Federal Register")}).</li>
-<li><strong>Comments:</strong> open until 2 weeks after publication, on regulations.gov docket {a(DOCKET,"HHS-OASH-2026-0496")} (Nov 13, 2026 by our count, if it publishes Oct 30).</li></ul>
+<li><strong>Comments:</strong> the notice says "until 2 weeks after date of publication"; regulations.gov lists the deadline as <strong>Nov 13, 2026, 11:59 p.m. ET</strong>, docket {a(DOCKET,"HHS-OASH-2026-0496")} ({a(REGDOC,"regulations.gov")}).</li></ul>
 <h2 id="list">Which peptides?</h2>
-<p>The list sits in <strong>Appendix A</strong> of the HHS policy document ({a(HHSPDF,"HHS PDF")}; the file name says "appendix-b"). As of Oct 28, 2026 the HHS site returned an access error, so <strong>we haven't verified the list ourselves</strong>. NBC News reports six: BPC-157, epitalon, KPV, MOTS-c, semax and TB-500 ({a(NBC,"NBC News")}). We'll update this page once we can read the appendix.</p>
+<p><strong>Six</strong>, listed in Appendix A of the HHS policy document ({a(HHSPDF,"HHS policy PDF")}; the file name says "appendix-b"): <strong>BPC-157, epitalon, KPV, MOTS-c, semax and TB-500</strong>. We checked the list against the HHS document on Oct 31, 2026, and it matches what NBC News reported ({a(NBC,"NBC News")}). Appendix B limits each peptide to specific forms and routes.</p>
+<p>The policy only applies when a set of conditions is met, including a patient-specific prescription, a bulk substance from an FDA-registered facility with a valid certificate of analysis, a single active ingredient per product, the label statement "This is a compounded drug product. Not for resale.", and reporting of serious adverse events and quality problems to FDA's MedWatch ({a(HHSPDF,"HHS policy")}).</p>
 <h2 id="doesnt">What it doesn't do</h2>
-<ul><li><strong>It doesn't approve BPC-157.</strong> No peptide on the reported list is FDA-approved.</li>
-<li><strong>It doesn't make "research use only" vials legal.</strong> It covers compounding by pharmacies, federal facilities and physicians, not research-chemical sellers.</li>
+<ul><li><strong>It doesn't approve BPC-157.</strong> None of the six peptides is FDA-approved.</li>
+<li><strong>It doesn't make "research use only" vials legal.</strong> It covers compounding by pharmacies, federal facilities and physicians, not research-chemical sellers. HHS says the policy is meant to "discourage the continued, widespread use of certain research-use-only peptides supplied by foreign manufacturers that pose a safety risk to US patients" ({a(HHSPDF,"HHS policy")}).</li>
 <li><strong>It doesn't add anything to the 503A bulks list.</strong> The notice says FDA's future rulemakings "may propose" adding some or all of these peptides.</li>
 <li><strong>It doesn't change the evidence.</strong> BPC-157's research is still mostly animal studies (<a href="peptides/bpc-157.html">our guide</a>).</li></ul>
 <h2 id="today">Where BPC-157 stands today</h2>
@@ -115,16 +118,16 @@ def bpc(BASE,ORG,DISC):
 <h2 id="for">Who wants it: telehealth</h2>
 <p>Telehealth company <strong>Hims &amp; Hers</strong> has said it plans to offer peptides if regulations permit ({a(REU,"Reuters")}). Peptides have also been promoted by HHS Secretary Robert F. Kennedy Jr. ({a(REU,"Reuters")}).</p>
 <h2 id="next">What happens next</h2>
-<p>The notice publishes Oct 30, then comments run for 2 weeks. HHS can revisit the policy at any time. We'll confirm the Appendix A list and track changes on our <a href="peptide-fda-status-tracker.html">FDA status tracker</a>.</p>
+<p>Comments close Nov 13, 2026. HHS can revisit the policy at any time, and FDA's future rulemakings "may propose" adding some or all of the six to the 503A bulks list. We track changes on our <a href="peptide-fda-status-tracker.html">FDA status tracker</a>.</p>
 <p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: not well studied in people (mostly animal studies); FDA cites immunogenicity, impurity and limited-safety-data concerns ({a(SAFE,"FDA")}). <a href="{LEGIT}">How to check a lab report</a>.</p>
 {nav([("peptides/bpc-157.html","bpc","BPC-157 guide","The research, plainly."),("peptides/bpc-157-tb-500-stack.html","stack","BPC-157 + TB-500 stack","What the 'Wolverine' stack research says."),(FDAL,"fda","FDA-approved peptides list","Approved, compoundable or research-only?"),(NSWP,"nsw","NSW peptide ER surge","5 visits a month to 217.")],"bpcpol")}
 {signup("signup-bpcpol")}
 {share(BASE+"/"+BPCP,"Is BPC-157 about to be compoundable? Where the FDA interim peptide policy actually stands, with sources","bpcpol","Share this explainer","Know someone who thinks BPC-157 is already legal to compound? Send them this.")}
 <h2 id="faq">BPC-157 policy FAQ</h2>{faqh(BPC_FAQ)}{DISC}</article>'''
     t="BPC-157 and the HHS peptide compounding policy, explained"
-    d="HHS's peptide enforcement-discretion policy cleared review Oct 27 and publishes Oct 30. Who it covers, what it doesn't do, and where BPC-157 stands."
-    schema=[ORG,{"@type":"NewsArticle","headline":"BPC-157 and the HHS peptide compounding policy","description":d,"url":url,"inLanguage":"en","datePublished":"2026-10-20","dateModified":"2026-10-28","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"},"image":BASE+"/og/bpc-157-policy.png",
-        "citation":[{"@type":"WebPage","name":"Federal Register public inspection 2026-22192","url":FRPI},{"@type":"WebPage","name":"RIN 0910-ZD94 EO 12866 review","url":RIN},{"@type":"WebPage","name":"Doctors for America statement","url":DFA},{"@type":"NewsArticle","name":"US FDA takes step to change peptide compounding policy (Reuters)","url":REU},{"@type":"WebPage","name":"503A bulk drug substance categories","url":CAT}]},
+    d="HHS's peptide compounding policy published Oct 30 and covers six peptides, including BPC-157. Who it covers, what it doesn't do, and comment deadline."
+    schema=[ORG,{"@type":"NewsArticle","headline":"BPC-157 and the HHS peptide compounding policy","description":d,"url":url,"inLanguage":"en","datePublished":"2026-10-20","dateModified":"2026-10-31","author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"},"image":BASE+"/og/bpc-157-policy.png",
+        "citation":[{"@type":"WebPage","name":"Federal Register 2026-22192 (91 FR 68526)","url":FRDOC},{"@type":"WebPage","name":"HHS Enforcement Discretion Policy (Appendices A and B)","url":HHSPDF},{"@type":"WebPage","name":"RIN 0910-ZD94 EO 12866 review","url":RIN},{"@type":"WebPage","name":"Doctors for America statement","url":DFA},{"@type":"NewsArticle","name":"US FDA takes step to change peptide compounding policy (Reuters)","url":REU},{"@type":"WebPage","name":"503A bulk drug substance categories","url":CAT}]},
         faqld(BPC_FAQ),crumbs(BASE,[("Peptide guides",BASE+"/peptides/"),("BPC-157 and the FDA interim policy",url)])]
     return (t,d,body,schema)
 def add(pages,BASE,ORG,DISC):
@@ -150,6 +153,6 @@ def wire(pages):
         sub(pages,f"peptides/{s}.html",D,co(f'<strong>New:</strong> NSW Health counted 1,180 peptide-linked ER visits, with retatrutide mentioned in 833. <a href="../{NSWP}" data-goatcounter-click="{s}-to-nsw">See the numbers</a>.'))
     sub(pages,LEGIT,D,co(f'<strong>Why it matters:</strong> <a href="{NSWP}" data-goatcounter-click="legit-to-nsw">peptide ER visits in NSW went from 5 a month to 217</a>. And <a href="{BPCP}" data-goatcounter-click="legit-to-bpcpol">is BPC-157 about to be compoundable?</a>'))
 LLMS=[("NSW peptide ER surge",NSWP,"NSW Health surveillance: 1,180 ED presentations mentioning unapproved peptides (Jul 2025–Sep 2026), retatrutide in 833, with caveats and sources."),
-      ("Is BPC-157 about to be compoundable?",BPCP,"HHS's 503A peptide enforcement-discretion policy (FR doc 2026-22192, docket HHS-OASH-2026-0496): cleared OIRA Oct 27, publishes Oct 30, 2026; who it covers, what it doesn't do.")]
+      ("Is BPC-157 about to be compoundable?",BPCP,"HHS's 503A peptide enforcement-discretion policy (FR doc 2026-22192, docket HHS-OASH-2026-0496): cleared OIRA Oct 27, published Oct 30, 2026 (91 FR 68526); covers BPC-157, epitalon, KPV, MOTS-c, semax, TB-500 (Appendix A); comments close Nov 13, 2026; who it covers, what it doesn't do.")]
 CARDS={NSWP:dict(card="nsw-peptide-surge",kicker="News · Australia",title="Peptide ER visits: 5 a month to 217",sub="NSW Health data: retatrutide mentioned in 833 of 1,180.",badge="",badge_t="",hot=True),
-       BPCP:dict(card="bpc-157-policy",kicker="News · FDA",title="Is BPC-157 about to be compoundable?",sub="Cleared review; publishes Oct 30. What it does and doesn't do.",badge="",badge_t="",hot=True)}
+       BPCP:dict(card="bpc-157-policy",kicker="News · FDA",title="Is BPC-157 about to be compoundable?",sub="Published Oct 30: six peptides. What it does and doesn't do.",badge="",badge_t="",hot=True)}
