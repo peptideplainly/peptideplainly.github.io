@@ -66,7 +66,7 @@ def nsw(BASE,ORG,DISC):
 <p>Retatrutide isn't approved in Australia or the US. Lilly plans to submit it to the FDA in Q1 2027 (<a href="peptides/retatrutide-fda-approval-status.html">our tracker</a>). What's sold online as "retatrutide" is a research chemical with no FDA quality checks. Wondering what is approved? See our <a href="{FDAL}">FDA-approved peptides list</a>.</p>
 <p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: GI effects, chest pain, allergic reactions and reported kidney and liver injury in the NSW data ({a(REP,"NSW Health")}; {a(MR,"NSW Government")}). <a href="{LEGIT}">How to check a lab report</a>.</p>
 <p class="fine">Also covered by {a(AUSDOC,"AusDoc")}, the {a(NH,"Newcastle Herald")} and {a(ABC,"ABC News")}.</p>
-{nav([("peptides/retatrutide-side-effects.html","se","Retatrutide side effects","What the trials found, plainly."),("peptides/retatrutide-fda-approval-status.html","status","Retatrutide release date","FDA status and every phase 3 readout."),(LEGIT,"legit","How to check a lab report","How to read a COA and spot the red flags."),(BPCP,"bpc","Is BPC-157 about to be compoundable?","Where the FDA's interim peptide policy stands.")],"nsw")}
+{nav([("peptides/retatrutide-side-effects.html","se","Retatrutide side effects","What the trials found, plainly."),("peptides/retatrutide-fda-approval-status.html","status","Retatrutide release date","FDA status and every phase 3 readout."),(LEGIT,"legit","How to check a lab report","How to read a COA and spot the red flags."),(BPCP,"bpc","BPC-157 and the HHS peptide policy","Where the FDA's interim peptide policy stands.")],"nsw")}
 {signup("signup-nsw")}
 {share(BASE+"/"+NSWP,"Peptide ER visits in NSW went from 5 a month to 217. Retatrutide was mentioned in 833 of 1,180. The numbers, plainly","nsw","Share this story","Know someone buying retatrutide online? Send them the numbers.")}
 <h2 id="faq">NSW peptide surge FAQ</h2>{faqh(NSW_FAQ)}{DISC}</article>'''
@@ -122,7 +122,7 @@ def bpc(BASE,ORG,DISC):
 <p class="safety-line"><strong>Not FDA-approved; sold for research only.</strong> Known risks: not well studied in people (mostly animal studies); FDA cites immunogenicity, impurity and limited-safety-data concerns ({a(SAFE,"FDA")}). <a href="{LEGIT}">How to check a lab report</a>.</p>
 {nav([("peptides/bpc-157.html","bpc","BPC-157 guide","The research, plainly."),("peptides/bpc-157-tb-500-stack.html","stack","BPC-157 + TB-500 stack","What the 'Wolverine' stack research says."),(FDAL,"fda","FDA-approved peptides list","Approved, compoundable or research-only?"),(NSWP,"nsw","NSW peptide ER surge","5 visits a month to 217.")],"bpcpol")}
 {signup("signup-bpcpol")}
-{share(BASE+"/"+BPCP,"Is BPC-157 about to be compoundable? Where the FDA interim peptide policy actually stands, with sources","bpcpol","Share this explainer","Know someone who thinks BPC-157 is already legal to compound? Send them this.")}
+{share(BASE+"/"+BPCP,"BPC-157 and the HHS peptide compounding policy: what it does and doesn\'t do, with sources","bpcpol","Share this explainer","Know someone who thinks BPC-157 is already legal to compound? Send them this.")}
 <h2 id="faq">BPC-157 policy FAQ</h2>{faqh(BPC_FAQ)}{DISC}</article>'''
     t="BPC-157 and the HHS peptide compounding policy, explained"
     d="HHS's peptide compounding policy published Oct 30 and covers six peptides, including BPC-157. Who it covers, what it doesn't do, and comment deadline."
@@ -134,7 +134,7 @@ def add(pages,BASE,ORG,DISC):
     pages[NSWP]=nsw(BASE,ORG,DISC); pages[BPCP]=bpc(BASE,ORG,DISC)
 def wire(pages):
     from newpages2 import sub
-    tile=lambda R:f'<section class="wide two" aria-label="Peptide news"><a class="tile" href="{R}{NSWP}"><h3>NSW peptide ER surge</h3><p>5 visits a month to 217. Retatrutide in 833.</p></a><a class="tile" href="{R}{BPCP}"><h3>Is BPC-157 about to be compoundable?</h3><p>Where the FDA interim policy stands.</p></a></section>'
+    tile=lambda R:f'<section class="wide two" aria-label="Peptide news"><a class="tile" href="{R}{NSWP}"><h3>NSW peptide ER surge</h3><p>5 visits a month to 217. Retatrutide in 833.</p></a><a class="tile" href="{R}{BPCP}"><h3>BPC-157 and the HHS peptide policy</h3><p>Published Oct 30: six peptides.</p></a></section>'
     h='<section class="wide"><div class="sec-head"><h2>Trending tools &amp; guides</h2></div></section>'
     sub(pages,"index.html",h,h+tile(""))
     h2='<section class="wide"><h2>Tools &amp; buyer guides</h2></section>'
@@ -142,7 +142,7 @@ def wire(pages):
     N='<nav class="next-up" aria-label="Keep going"><h2>Keep going</h2><ul>'
     li=lambda R,p,k,t,d:f'<li><a href="{R}{p}" data-goatcounter-click="next-{k}"><strong>{t}</strong><span>{d}</span></a></li>'
     nswli=lambda R,k:li(R,NSWP,k+"-nsw","NSW peptide ER surge","1,180 visits; retatrutide mentioned in 833.")
-    bpcli=lambda R,k:li(R,BPCP,k+"-bpcpol","Is BPC-157 about to be compoundable?","Where the FDA interim peptide policy stands.")
+    bpcli=lambda R,k:li(R,BPCP,k+"-bpcpol","BPC-157 and the HHS peptide policy","Published Oct 30: what it does and doesn\'t do.")
     sub(pages,"peptides/retatrutide.html",N,N+nswli("../","reta"))
     sub(pages,"peptides/bpc-157.html",N,N+bpcli("../","bpc"))
     sub(pages,"peptides/bpc-157-tb-500-stack.html",N,N+bpcli("../","stack"))
@@ -151,8 +151,8 @@ def wire(pages):
     co=lambda html:f'<p class="calc-callout">{html}</p>'+D
     for s in ("retatrutide-side-effects","retatrutide-fda-approval-status"):
         sub(pages,f"peptides/{s}.html",D,co(f'<strong>New:</strong> NSW Health counted 1,180 peptide-linked ER visits, with retatrutide mentioned in 833. <a href="../{NSWP}" data-goatcounter-click="{s}-to-nsw">See the numbers</a>.'))
-    sub(pages,LEGIT,D,co(f'<strong>Why it matters:</strong> <a href="{NSWP}" data-goatcounter-click="legit-to-nsw">peptide ER visits in NSW went from 5 a month to 217</a>. And <a href="{BPCP}" data-goatcounter-click="legit-to-bpcpol">is BPC-157 about to be compoundable?</a>'))
+    sub(pages,LEGIT,D,co(f'<strong>Why it matters:</strong> <a href="{NSWP}" data-goatcounter-click="legit-to-nsw">peptide ER visits in NSW went from 5 a month to 217</a>. And <a href="{BPCP}" data-goatcounter-click="legit-to-bpcpol">BPC-157 and the HHS peptide policy</a>'))
 LLMS=[("NSW peptide ER surge",NSWP,"NSW Health surveillance: 1,180 ED presentations mentioning unapproved peptides (Jul 2025–Sep 2026), retatrutide in 833, with caveats and sources."),
-      ("Is BPC-157 about to be compoundable?",BPCP,"HHS's 503A peptide enforcement-discretion policy (FR doc 2026-22192, docket HHS-OASH-2026-0496): cleared OIRA Oct 27, published Oct 30, 2026 (91 FR 68526); covers BPC-157, epitalon, KPV, MOTS-c, semax, TB-500 (Appendix A); comments close Nov 13, 2026; who it covers, what it doesn't do.")]
+      ("BPC-157 and the HHS peptide policy",BPCP,"HHS's 503A peptide enforcement-discretion policy (FR doc 2026-22192, docket HHS-OASH-2026-0496): cleared OIRA Oct 27, published Oct 30, 2026 (91 FR 68526); covers BPC-157, epitalon, KPV, MOTS-c, semax, TB-500 (Appendix A); comments close Nov 13, 2026; who it covers, what it doesn't do.")]
 CARDS={NSWP:dict(card="nsw-peptide-surge",kicker="News · Australia",title="Peptide ER visits: 5 a month to 217",sub="NSW Health data: retatrutide mentioned in 833 of 1,180.",badge="",badge_t="",hot=True),
-       BPCP:dict(card="bpc-157-policy",kicker="News · FDA",title="Is BPC-157 about to be compoundable?",sub="Published Oct 30: six peptides. What it does and doesn't do.",badge="",badge_t="",hot=True)}
+       BPCP:dict(card="bpc-157-policy",kicker="News · FDA",title="BPC-157 and the HHS peptide policy",sub="Published Oct 30: six peptides. What it does and doesn't do.",badge="",badge_t="",hot=True)}
