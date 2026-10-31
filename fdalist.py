@@ -20,6 +20,8 @@ AP='<span class="badge approved">FDA-approved</span>'
 RO='<span class="badge research">Research purposes only</span>'
 IV='<span class="badge research">Investigational</span>'
 NOCOMP=f'Generally no: it\'s a biological product, and biologics aren\'t eligible for the compounding exemptions ({a(BIO,"FDA")}).'
+HHSPDF="https://www.hhs.gov/sites/default/files/hhs-503a-peptide-enforcement-discretion-policy-appendix-b.pdf"
+HHS6=f'Not on FDA\'s category 1 list ({a(CAT,"FDA 503A list")}). It was on FDA\'s category 2 list until April 22, 2026, and is now named in Appendix A of the Oct 30, 2026 HHS 503A peptide policy (91 FR 68526; {a(HHSPDF,"HHS policy")}).'
 BADC=f'Not on FDA\'s category 1 list ({a(CAT,"FDA 503A list")}). FDA lists it as nominated, then withdrawn, with safety concerns ({a(SAFE,"FDA")}).'
 # (name, link, badge, what it is / brand, compounding, source)
 APPROVED=[
@@ -38,13 +40,13 @@ OTHER=[
 ("Retatrutide","peptides/retatrutide.html",IV,"Lilly's triple agonist, still in phase 3. Not approved; Lilly plans to file in Q1 2027",f'No. FDA says it can\'t be used in compounding under federal law ({a(FDA_C,"FDA")}).',f'{a(FDA_C,"FDA")}; <a href="peptides/retatrutide-fda-approval-status.html">our FDA status tracker</a>'),
 ]
 RESEARCH=[
-("BPC-157","peptides/bpc-157.html",f'{BADC} PCAC voted in favor in July 2026 (non-binding).'),
-("TB-500","peptides/tb-500.html",f'{BADC} PCAC voted 8–6–1 in favor in July 2026 (non-binding).'),
+("BPC-157","peptides/bpc-157.html",f'{HHS6} PCAC voted in favor in July 2026 (non-binding).'),
+("TB-500","peptides/tb-500.html",f'{HHS6} PCAC voted 8–6–1 in favor in July 2026 (non-binding).'),
 ("GHK-Cu","peptides/ghk-cu.html",f'Topical and other non-injectable forms are on FDA\'s category 1 list; <strong>injectable</strong> GHK-Cu is not ({a(CAT,"FDA 503A list")}).'),
 ("Ipamorelin","peptides/cjc-1295-ipamorelin.html",f'No. Placed in category 2 (safety concerns) ({a(SAFE,"FDA")}); PCAC voted 0–12–1 against in Oct 2024 ({a(PCAC_OCT24,"FDA minutes")}).'),
 ("CJC-1295","peptides/cjc-1295-ipamorelin.html",BADC),
-("MOTS-c","peptides/mots-c.html",f'{BADC} PCAC voted 7–5–2 in favor in July 2026 (non-binding).'),
-("Semax","peptides/semax.html",f'{BADC} PCAC voted 8–5–1 in favor in July 2026 (non-binding).'),
+("MOTS-c","peptides/mots-c.html",f'{HHS6} PCAC voted 7–5–2 in favor in July 2026 (non-binding).'),
+("Semax","peptides/semax.html",f'{HHS6} PCAC voted 8–5–1 in favor in July 2026 (non-binding).'),
 ("Selank","peptides/selank.html",BADC),
 ]
 def nm(n,l,R=""): return f'<a href="{R}{l}">{n}</a>' if l else n
@@ -54,7 +56,7 @@ HEAD='<thead><tr><th scope="col">Compound</th><th scope="col">Status</th><th sco
 FAQ=[
 ("Is BPC-157 FDA-approved?",f'No. BPC-157 is not an approved drug and is sold for research only. It\'s also not on FDA\'s list of bulk substances compounders can use while under review ({a(CAT,"FDA")}). A July 2026 advisory committee vote in its favor is a recommendation, not an approval.'),
 ("Which GLP-1s are FDA-approved?",f'Semaglutide (Ozempic, Wegovy, Rybelsus), tirzepatide (Mounjaro, Zepbound), liraglutide (Victoza, Saxenda) and dulaglutide (Trulicity), per Drugs@FDA. Orforglipron (Foundayo) is approved too, but it\'s a small molecule, not a peptide. Retatrutide is still investigational.'),
-("Can a pharmacy compound peptides like BPC-157 or TB-500?",f'Not under current FDA policy. Neither is on FDA\'s category 1 list, and FDA lists both as nominated, then withdrawn, with safety concerns ({a(SAFE,"FDA")}). The PCAC voted for them in July 2026, but FDA hasn\'t acted on that vote.'),
+("Can a pharmacy compound peptides like BPC-157 or TB-500?",f'Only under HHS\'s interim, non-binding enforcement-discretion policy, which covers state-licensed pharmacies, federal facilities and licensed physicians. Neither is on FDA\'s category 1 list. Both were on FDA\'s category 2 list until April 22, 2026, and are now named in Appendix A of the Oct 30, 2026 HHS 503A peptide policy (91 FR 68526; {a(HHSPDF,"HHS policy")}). Neither is FDA-approved. The PCAC voted for them in July 2026, but FDA hasn\'t acted on that vote.'),
 ("What is the FDA's interim peptide compounding policy?",f'A notice titled "Interim Access Policy for Compounding Using Certain Peptides" (RIN 0910-ZD94) reached White House review on Oct 14, 2026 ({a(RIN,"OIRA EO 12866 review entry, reginfo.gov")}). It hasn\'t appeared in the Unified Agenda or the Federal Register, isn\'t in effect, and its details aren\'t public yet.'),
 ]
 def share():
