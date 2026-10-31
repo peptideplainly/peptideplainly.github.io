@@ -100,6 +100,19 @@ def bpc(BASE,ORG,DISC):
 <h2 id="list">Which peptides?</h2>
 <p><strong>Six</strong>, listed in Appendix A of the HHS policy document ({a(HHSPDF,"HHS policy PDF")}; the file name says "appendix-b"): <strong>BPC-157, epitalon, KPV, MOTS-c, semax and TB-500</strong>. We checked the list against the HHS document on Oct 31, 2026, and it matches what NBC News reported ({a(NBC,"NBC News")}). Appendix B limits each peptide to specific forms and routes.</p>
 <p>The policy only applies when a set of conditions is met, including a patient-specific prescription, a bulk substance from an FDA-registered facility with a valid certificate of analysis, a single active ingredient per product, the label statement "This is a compounded drug product. Not for resale.", and reporting of serious adverse events and quality problems to FDA's MedWatch ({a(HHSPDF,"HHS policy")}).</p>
+<section class="cover-box" aria-labelledby="covers-h"><h2 id="covers-h">What it covers / doesn't cover</h2><div class="cb-cols">
+<div><h3>Covers</h3><ul>
+<li>Compounding by a state-licensed pharmacy, federal facility or licensed physician ({a(FRDOC,"Federal Register")}).</li>
+<li>Six peptides in Appendix A: BPC-157, epitalon, KPV, MOTS-c, semax, TB-500 ({a(HHSPDF,"HHS policy")}).</li>
+<li>Only the forms in Appendix B: BPC-157 acetate (subcutaneous, intramuscular, oral, topical); TB-500 acetate and MOTS-c acetate (subcutaneous or intramuscular injection); epitalon acetate (subcutaneous or intramuscular injection, in intermittent courses); semax free base (intranasal); KPV acetate (topical, oral) ({a(HHSPDF,"HHS policy")}).</li>
+<li>Only when conditions are met, including a patient-specific prescription, an FDA-registered source with a valid certificate of analysis, a "compounded drug product" label and MedWatch reporting ({a(HHSPDF,"HHS policy")}).</li></ul></div>
+<div><h3>Doesn't cover</h3><ul>
+<li><strong>Blends or stacks:</strong> each product must contain "only a single Active Pharmaceutical Ingredient (API) listed in Appendix A" ({a(HHSPDF,"HHS policy")}).</li>
+<li><strong>Forms Appendix B doesn't list</strong>, such as oral epitalon, injectable KPV or injectable semax. Oral products also need documentation of adequate oral bioavailability in humans ({a(HHSPDF,"HHS policy")}).</li>
+<li><strong>"Research use only" vials:</strong> the policy covers compounding by pharmacies, federal facilities and physicians; HHS says it aims to "discourage the continued, widespread use of certain research-use-only peptides" ({a(HHSPDF,"HHS policy")}).</li>
+<li><strong>FDA approval:</strong> "Compounded drugs are not FDA-approved" ({a(FRDOC,"Federal Register")}).</li>
+<li><strong>State law:</strong> the notice doesn't address state law, state boards of pharmacy or preemption ({a(FRDOC,"Federal Register")}).</li></ul></div>
+</div></section>
 <h2 id="doesnt">What it doesn't do</h2>
 <ul><li><strong>It doesn't approve BPC-157.</strong> None of the six peptides is FDA-approved.</li>
 <li><strong>It doesn't make "research use only" vials legal.</strong> It covers compounding by pharmacies, federal facilities and physicians, not research-chemical sellers. HHS says the policy is meant to "discourage the continued, widespread use of certain research-use-only peptides supplied by foreign manufacturers that pose a safety risk to US patients" ({a(HHSPDF,"HHS policy")}).</li>
