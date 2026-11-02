@@ -6,7 +6,7 @@ REGULAR_LINKS={
  "site-sponsor":("$250/mo","https://buy.stripe.com/7sYcN47ry6M7gBGgniafS04"),
  "founding-partner-bundle":("$700/mo","https://buy.stripe.com/5kQ7sK9zG3zVgBG0okafS06"),
 }
-BANNER="Founding rates: 4 of 5 founding spots left, through Dec 31, 2026"
+BANNER="Founding rates: 2 founding sponsors booked, 3 of 5 founding spots left, through Dec 31, 2026"
 CALC="peptide-reconstitution-calculator.html"
 PACKAGES=[
  ("newsletter-feature","Newsletter Feature","$99","$150",None,
@@ -38,7 +38,15 @@ TERMS=["Sponsor content is always labeled \"Sponsored\".","Sponsors get no edito
 def terms(): return '<h2 id="terms">Sponsor terms</h2><ul class="terms">'+"".join(f"<li>{t}</li>" for t in TERMS)+'</ul>'
 STEPS=[("Pick a package","from the cards above."),("Pay","securely through Stripe with the Book this slot button."),("Send your assets:","logo, copy and link, by email."),("We review","your copy against our terms."),("It goes live,","clearly labeled \"Sponsored\"."),("You get a report","with your clicks.")]
 def steps(): return '<h2>How booking works</h2><ol>'+"".join(f"<li><strong>{a}</strong> {b}</li>" for a,b in STEPS)+'</ol>'
-CSS=""".pkg-banner{background:var(--sun);color:var(--ink);border:2px solid var(--ink);border-radius:12px;padding:10px 14px;font-weight:700;margin:1em 0}
+OFFER=('<section class="offer" aria-labelledby="offer-h"><p class="kicker">Founding sponsor offer</p>'
+ '<h2 id="offer-h">Sponsor one Friday issue for $99 <s aria-label="regular price $150">$150</s></h2>'
+ '<p>Sole sponsor of the issue, your logo, 50–80 words of copy, one link and a click report. <strong>Two founding sponsors are already booked.</strong> 3 of 5 founding spots left, through Dec 31, 2026.</p>'
+ '<p><a class="btn offer-btn" href="https://buy.stripe.com/3cI3cu8vCb2ngBG6MIafS01" rel="noopener" data-goatcounter-click="book-newsletter-feature-top">Book a $99 issue (Stripe)</a></p>'
+ '<p class="fine">Always labeled "Sponsored." Research-only vendors welcome; no dosing claims and nothing that encourages human use of research-only compounds. We review your copy first.</p></section>')
+CSS=""".offer{background:var(--card);border:3px solid var(--ink);border-radius:var(--r);box-shadow:5px 5px 0 var(--sun);padding:16px 18px;margin:1.2em 0}
+.offer h2{margin:.2em 0 .4em}.offer h2 s{color:var(--muted);font-size:.7em;margin-left:.2em}
+.offer .offer-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;box-sizing:border-box;text-align:center}
+.pkg-banner{background:var(--sun);color:var(--ink);border:2px solid var(--ink);border-radius:12px;padding:10px 14px;font-weight:700;margin:1em 0}
 .pkgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;margin:1em 0 1.5em}
 .pkg{background:var(--card);border:2px solid var(--ink);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;min-width:0}
 .pkg-feat{box-shadow:5px 5px 0 var(--sun)}

@@ -151,3 +151,6 @@ main>.atf-signup{width:calc(100% - 32px)}
 .cover-box{border:2px solid var(--ink);border-radius:var(--r);padding:14px 16px;margin:20px 0;background:var(--card);overflow-wrap:anywhere}
 .cover-box h2{margin-top:0}.cover-box h3{margin:.4em 0}.cover-box ul{padding-left:1.1em;margin:0}
 .cb-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px 20px}
+.sub-strip{max-width:var(--w,860px);margin:12px auto 0;padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;background:var(--sun);border:2px solid var(--ink);border-radius:12px;box-sizing:border-box}
+.sub-strip p{margin:0;flex:1 1 220px}.sub-strip .sub-strip-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap}
+@media (max-width:900px){.sub-strip{margin:10px 12px 0}}
