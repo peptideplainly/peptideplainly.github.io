@@ -35,7 +35,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
 DISC='<p class="disclaimer"><strong>Not medical advice.</strong> Education only. Talk to a licensed clinician about your health.</p>'
 pages={}
 # ---- Newsletter: only the newest SENT issue is published, at /newsletter.html ----
-# An issue is published only if issues/issue-NNN.md starts with front matter containing `sent: true`:
+# Issue sources live in issues_src/ (gitignored: the repo and Pages site are public). An issue is published only if issues_src/issue-NNN.md starts with front matter containing `sent: true`:
 #   ---
 #   sent: true
 #   headline: One-line teaser for the home page (optional)
@@ -57,7 +57,7 @@ def _issue(p):
     return dict(n=n,stem=p.stem,md=t,sent=fm.get("sent","").lower()=="true" or fm.get("status","").lower()=="sent",date=date,
         iso=_dt.datetime.strptime(date,"%B %d, %Y").date().isoformat() if date else "",
         headline=fm.get("headline") or (heads[0].split(". ",1)[-1] if heads else f"Issue #{n}"),count=len(heads),fm=fm)
-ALL_ISSUES=sorted((_issue(p) for p in (P/"issues").glob("issue-*.md")),key=lambda i:i["n"])
+ALL_ISSUES=sorted((_issue(p) for p in (P/"issues_src").glob("issue-*.md")),key=lambda i:i["n"])
 SENT=[i for i in ALL_ISSUES if i["sent"]]
 CUR=SENT[-1] if SENT else None
 if CUR:

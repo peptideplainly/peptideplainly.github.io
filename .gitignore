@@ -12,3 +12,5 @@ guide_leadins.md
 drafts/
 # sponsor ops (private): calendar, contacts, deadlines
 sponsors/calendar.md
+# newsletter issue sources (private until sent; repo + Pages are public)
+issues_src/
