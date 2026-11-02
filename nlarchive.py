@@ -22,7 +22,7 @@ def sponsor(i,ROOT=""):
         else: src=logo
     camp=f"issue-{i['n']:03d}"; u=urlsplit(fm["sponsor_url"])
     if u.scheme!="https": raise SystemExit("sponsor_url must be https")
-    q=[(k,v) for k,v in parse_qsl(u.query) if not k.startswith("utm_")]+[("utm_source","peptideplainly"),("utm_medium","newsletter"),("utm_campaign",camp)]
+    q=[(k,v) for k,v in parse_qsl(u.query,keep_blank_values=True) if not k.startswith("utm_")]+[("utm_source","peptideplainly"),("utm_medium","newsletter"),("utm_campaign",camp)]
     url=urlunsplit(u._replace(query=urlencode(q)))
     slug=re.sub(r"[^a-z0-9]+","-",fm["sponsor_name"].lower()).strip("-")
     e=_h.escape; n=e(fm["sponsor_name"])
