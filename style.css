@@ -154,3 +154,10 @@ main>.atf-signup{width:calc(100% - 32px)}
 .sub-strip{max-width:var(--w,860px);margin:12px auto 0;padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;background:var(--sun);border:2px solid var(--ink);border-radius:12px;box-sizing:border-box}
 .sub-strip p{margin:0;flex:1 1 220px}.sub-strip .sub-strip-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap}
 @media (max-width:900px){.sub-strip{margin:10px 12px 0}}
+/* Advertise founding offer box (Nov 1 mobile polish) */
+.offer{background:var(--card);border:3px solid var(--ink);border-radius:var(--r);box-shadow:5px 5px 0 var(--sun);padding:16px 18px;margin:1.2em 0;overflow-wrap:anywhere}
+.offer .kicker{margin:0}.offer h2{margin:.2em 0 .4em}.offer h2 s{color:var(--muted);font-size:.7em;margin-left:.2em}
+.offer .offer-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;box-sizing:border-box;text-align:center}
+.offer .fine{margin-bottom:0}
+.pkg-reg a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+@media (max-width:600px){.nav{position:static}}
