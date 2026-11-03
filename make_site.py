@@ -26,7 +26,7 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{html.escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/{og}">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=29">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}<link rel="stylesheet" href="{root}style.css?v=30">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{"" if path in ("index.html","newsletter.html") else SUBSTRIP}{body}</main>
@@ -275,6 +275,7 @@ import fdawarn as _wl; _wl.add(pages,BASE,ORG,DISC)
 import nlarchive; nlarchive.add(pages,SENT,CUR,BASE,ORG)
 import leadins; LEADS=leadins.apply(pages); print('LEADINS',LEADS)
 import sponsor; from newpages import CALC as _CALC; SPONSORED=sponsor.apply(pages,_CALC)
+import renpho; AFFILIATE=renpho.apply(pages)
 import extras3; extras3.wire3(pages)
 seo.check(pages)
 # ---- OG cards: manifest for scripts/og.py; wire og:image only where the PNG exists ----
@@ -292,7 +293,7 @@ def _cmp(m): return f'<p class="glp1-cta"><a class="btn" href="{"../" if m.group
 import re as _re3
 def _meta(slug):
     b=pages.get(f"peptides/{slug}.html",("","",""))[2]
-    skip=("peptideplainly","beehiiv","dosetrack","x.com","reddit.com","goatcounter","gc.zgo.at")
+    skip=("peptideplainly","beehiiv","dosetrack","renpho","x.com","reddit.com","goatcounter","gc.zgo.at")
     n=len({u for u in _re3.findall(r'href="(https?://[^"]+)"',b) if not any(k in u for k in skip)})
     m=_re3.search(r'Status last checked ([A-Z][a-z]{2} \d{1,2}, \d{4})',b) or _re3.search(r'Checked against[^<]*?([A-Z][a-z]{2} \d{1,2}, \d{4})',b)
     return f"{n} sources" + (f" · checked {m.group(1)}" if m else "")

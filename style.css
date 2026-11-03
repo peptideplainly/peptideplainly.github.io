@@ -161,3 +161,12 @@ main>.atf-signup{width:calc(100% - 32px)}
 .offer .fine{margin-bottom:0}
 .pkg-reg a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
 @media (max-width:600px){.nav{position:static}}
+/* RENPHO affiliate box (Nov 3) */
+.affiliate{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;margin:20px 0;background:var(--card);font-size:.92rem;overflow-wrap:anywhere}
+.affiliate p{margin:0}.aff-body{margin:4px 0 6px!important}
+.aff-list{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:8px}
+.aff-list li{display:flex;align-items:center;gap:10px;min-width:0}
+.aff-list img{width:64px;height:64px;flex:0 0 64px;object-fit:contain;background:#fff;border-radius:8px}
+.aff-list li>span{flex:1;min-width:0}.aff-what{color:var(--muted);font-size:.85rem}
+.aff-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;flex:0 0 auto}
+.aff-more a{display:inline-flex;align-items:center;min-height:44px}
