@@ -170,3 +170,4 @@ main>.atf-signup{width:calc(100% - 32px)}
 .aff-list li>span{flex:1;min-width:0}.aff-what{color:var(--muted);font-size:.85rem}
 .aff-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;flex:0 0 auto}
 .aff-more a{display:inline-flex;align-items:center;min-height:44px}
+.next-issue{margin:.4rem 0 1rem;font-size:.95rem;color:var(--muted)}.next-issue strong{color:inherit}

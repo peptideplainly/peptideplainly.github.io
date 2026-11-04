@@ -49,6 +49,6 @@ def add(pages,SENT,CUR,BASE,ORG):
         t=f"Peptide Plainly newsletter Issue #{i['n']}"+(f" ({i['date']})" if i['date'] else "")
         d=(f"Issue #{i['n']}: {i['headline']}")[:155]
         eb=f"Issue #{i['n']}"+(f" · {i['date']}" if i['date'] else "")
-        cur=' <a href="../newsletter.html">Read this week\'s issue</a>.' if i is not CUR else ""
+        cur=' <a href="../newsletter.html">Read the latest issue</a>.' if i is not CUR else ""
         pages[path]=(t[:70],d,f'<article class="issue"><p class="crumbs"><a href="../index.html">Home</a> / <a href="../newsletter.html">Newsletter</a> / Issue #{i["n"]}</p><p class="eyebrow">{eb}</p><h1>{i["headline"]}</h1>{body}{sponsor(i,"../")}{watch(i["iso"],"../")}<p class="fine">Archived issue, published as sent.{cur}</p></article>',
             [ORG,{"@type":"Article","headline":t,"url":f"{BASE}/{path}","datePublished":i["iso"],"author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}}])
