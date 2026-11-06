@@ -60,13 +60,26 @@ def _issue(p):
 ALL_ISSUES=sorted((_issue(p) for p in (P/"issues_src").glob("issue-*.md")),key=lambda i:i["n"])
 SENT=[i for i in ALL_ISSUES if i["sent"]]
 CUR=SENT[-1] if SENT else None
-# Next-issue line. NEXT_ISSUE overrides (e.g. "2026-11-13", or "" to derive); otherwise it is the
-# first Friday on/after the build date (America/New_York), so it advances on any rebuild after a send day.
-NEXT_ISSUE="2026-11-13"
+# Next-issue line. NEXT_ISSUE overrides when non-empty (e.g. "2026-11-20"); otherwise derive:
+# first Friday on/after build day (America/New_York). If that Friday is on/before the latest
+# sent issue's date, step to the first Friday strictly after that sent date (covers same-day
+# Friday publishes and early sends of next week's issue).
+NEXT_ISSUE=""
+def _first_fri_on_or_after(d):
+    return d+_dt.timedelta(days=(4-d.weekday())%7)
 def _next_fri():
     import zoneinfo
-    d=_dt.date.fromisoformat(NEXT_ISSUE) if NEXT_ISSUE else _dt.datetime.now(zoneinfo.ZoneInfo("America/New_York")).date()
-    return d if NEXT_ISSUE else d+_dt.timedelta(days=(4-d.weekday())%7)
+    if NEXT_ISSUE: return _dt.date.fromisoformat(NEXT_ISSUE)
+    today=_dt.datetime.now(zoneinfo.ZoneInfo("America/New_York")).date()
+    cand=_first_fri_on_or_after(today)
+    latest=None
+    for i in SENT:
+        if i.get("iso"):
+            di=_dt.date.fromisoformat(i["iso"])
+            if latest is None or di>latest: latest=di
+    if latest is not None and cand<=latest:
+        return _first_fri_on_or_after(latest+_dt.timedelta(days=1))
+    return cand
 _nf=_next_fri(); NEXT_TXT=f"Friday, {_nf.strftime('%b')} {_nf.day}" if _nf.weekday()==4 else f"{_nf.strftime('%A, %b')} {_nf.day}"
 NEXT_LINE=f'<p class="next-issue"><strong>Next issue:</strong> {NEXT_TXT}</p>'
 if CUR:
