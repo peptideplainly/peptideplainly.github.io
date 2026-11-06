@@ -62,7 +62,7 @@ SENT=[i for i in ALL_ISSUES if i["sent"]]
 CUR=SENT[-1] if SENT else None
 # Next-issue line. NEXT_ISSUE overrides (e.g. "2026-11-13", or "" to derive); otherwise it is the
 # first Friday on/after the build date (America/New_York), so it advances on any rebuild after a send day.
-NEXT_ISSUE=""
+NEXT_ISSUE="2026-11-13"
 def _next_fri():
     import zoneinfo
     d=_dt.date.fromisoformat(NEXT_ISSUE) if NEXT_ISSUE else _dt.datetime.now(zoneinfo.ZoneInfo("America/New_York")).date()
