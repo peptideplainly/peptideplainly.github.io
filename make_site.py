@@ -23,10 +23,11 @@ def page(path,title,desc,body,schema=(),root=None,robots=""):
     og=OG_IMG.get(path,"preview.png")
     nav="".join(f'<a href="{root}{h}"'+(' aria-current="page"' if h==cur else '')+f'>{t}</a>' for h,t in NAV)
     url=f"{BASE}/{path}".replace("/index.html","/")
+    gc_pre='<link rel="preconnect" href="https://peptideplainly.goatcounter.com" crossorigin>' if path=="index.html" else ""
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0f766e">{robots and f'<meta name="robots" content="{robots}">'}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Peptide Plainly"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{html.escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/{og}">
-{FONTS}<link rel="stylesheet" href="{root}style.css?v=31">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
+{FONTS}{gc_pre}<link rel="stylesheet" href="{root}style.css?v=31">{ld(schema)}<script data-goatcounter="https://peptideplainly.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="nav-in"><a class="brand" href="{root}index.html">{LOGO}<span>Peptide <b>Plainly</b></span></a><nav aria-label="Main">{nav}<a class="nav-sub" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-cta" rel="noopener">Get the Friday email</a></nav></div></header>
 <main id="main">{"" if path in ("index.html","newsletter.html") else SUBSTRIP}{body}</main>
@@ -39,6 +40,10 @@ pages={}
 #   ---
 #   sent: true
 #   headline: One-line teaser for the home page (optional)
+#   studies: optional integer; when set, used as the study/trial count on the home
+#     "Latest issue" row and newsletter meta description. Otherwise the count is
+#     the number of distinct PubMed/DOI study links in the issue body. If neither
+#     yields a count, the number is omitted rather than guessed.
 #   sponsor_name / sponsor_copy / sponsor_url / sponsor_cta: optional paid sponsor block
 #     (all four required to render; absent = nothing rendered). See nlarchive.sponsor().
 #   ---
@@ -56,7 +61,26 @@ def _issue(p):
     heads=_r2.findall(r"^## (.+)$",t,_r2.M)
     return dict(n=n,stem=p.stem,md=t,sent=fm.get("sent","").lower()=="true" or fm.get("status","").lower()=="sent",date=date,
         iso=_dt.datetime.strptime(date,"%B %d, %Y").date().isoformat() if date else "",
-        headline=fm.get("headline") or (heads[0].split(". ",1)[-1] if heads else f"Issue #{n}"),count=len(heads),fm=fm)
+        headline=fm.get("headline") or (heads[0].split(". ",1)[-1] if heads else f"Issue #{n}"),count=_study_count(fm,t),fm=fm)
+def _study_count(fm, body):
+    """Count studies/trials in an issue: front-matter `studies:` wins; else distinct PubMed/DOI links; else None."""
+    raw=(fm.get("studies") or "").strip()
+    if raw:
+        try:
+            n=int(raw)
+            if n>0: return n
+        except ValueError:
+            pass
+    ids=set()
+    for m in _r2.finditer(r"https?://(?:www\.)?pubmed\.ncbi\.nlm\.nih\.gov/(\d+)", body, _r2.I):
+        ids.add(("pmid", m.group(1)))
+    for m in _r2.finditer(r"\bPMID[:\s#]+(\d+)", body, _r2.I):
+        ids.add(("pmid", m.group(1)))
+    for m in _r2.finditer(r"https?://(?:(?:dx|www)\.)?doi\.org/(10\.\S+?)(?:[)\]\s]|$)", body, _r2.I):
+        ids.add(("doi", m.group(1).rstrip(".,;")))
+    for m in _r2.finditer(r"\bdoi:\s*(10\.\S+?)(?:[)\]\s]|$)", body, _r2.I):
+        ids.add(("doi", m.group(1).rstrip(".,;")))
+    return len(ids) or None
 ALL_ISSUES=sorted((_issue(p) for p in (P/"issues_src").glob("issue-*.md")),key=lambda i:i["n"])
 SENT=[i for i in ALL_ISSUES if i["sent"]]
 CUR=SENT[-1] if SENT else None
@@ -86,13 +110,22 @@ if CUR:
     _body=_md.markdown(CUR["md"],extensions=["extra","nl2br"])
     _body=_r2.sub(r"<h1>.*?</h1>","",_body,count=1,flags=_r2.S)
     import nlarchive as _nla; _body+=_nla.sponsor(CUR)
-    _d=f"Issue #{CUR['n']} of Peptide Plainly"+(f", week of {CUR['date']}" if CUR['date'] else "")+f": {CUR['count']} new peptide studies, explained plainly. New issue every Friday."
+    _d="Issue #"+str(CUR["n"])+" of Peptide Plainly"+((", week of "+CUR["date"]) if CUR["date"] else "")
+    if CUR["count"]:
+        _noun="study" if CUR["count"]==1 else "studies"
+        _d+=f": {CUR['count']} new peptide {_noun}, explained plainly. New issue every Friday."
+    else:
+        _d+=": new peptide research, explained plainly. New issue every Friday."
     _eb="Latest issue · Issue #"+str(CUR["n"])+(" · Week of "+CUR["date"] if CUR["date"] else "")
     pages["newsletter.html"]=("Latest issue: Peptide Plainly newsletter",_d[:155],
      f'''<article class="issue"><p class="eyebrow">{_eb}</p><h1>Latest issue</h1>{NEXT_LINE}{_body}
 <div class="nl-cta"><h2>Get next Friday's issue in your inbox</h2><p>Free, five minutes, every Friday.</p><p><a class="btn" href="https://peptideplainly.beehiiv.com/subscribe" data-goatcounter-click="signup-newsletter-page" rel="noopener">Get next Friday's issue</a></p></div></article>''',
      [ORG,{"@type":"Article","headline":f"Peptide Plainly Issue #{CUR['n']}","url":BASE+"/newsletter.html","datePublished":CUR["iso"],"author":{"@id":BASE+"/#org"},"publisher":{"@id":BASE+"/#org"}}])
-    HOME_ISSUE=f'<a class="row-link" href="newsletter.html"><span class="issue-n">#{CUR["n"]}</span><span><strong>{html.escape(CUR["headline"])}</strong><br><span class="fine">Week of {CUR["date"]} · {CUR["count"]} studies</span></span></a>'
+    _home_fine=("Week of "+CUR["date"]) if CUR["date"] else ""
+    if CUR["count"]:
+        _noun="study" if CUR["count"]==1 else "studies"
+        _home_fine=(f"{_home_fine} · " if _home_fine else "")+f"{CUR['count']} {_noun}"
+    HOME_ISSUE=f'<a class="row-link" href="newsletter.html"><span class="issue-n">#{CUR["n"]}</span><span><strong>{html.escape(CUR["headline"])}</strong><br><span class="fine">{_home_fine}</span></span></a>'
 else:
     HOME_ISSUE='<p>The first issue lands Friday. <a href="#signup">Get it in your inbox</a>.</p>'
 pages["peptides-101.html"]=("Peptides 101: a beginner's guide to peptides | Peptide Plainly","What are peptides? A plain-English beginner's guide: approved medicines vs research-only compounds, how to read a study, and how to pick a quality source.",f'''<article class="issue">
