@@ -47,7 +47,7 @@ def add(pages,SENT,CUR,BASE,ORG):
         body=re.sub(r"<h1>.*?</h1>","",body,count=1,flags=re.S)
         path=f"newsletter/issue-{i['n']:03d}.html"
         t=f"Peptide Plainly newsletter Issue #{i['n']}"+(f" ({i['date']})" if i['date'] else "")
-        d=(f"Issue #{i['n']}: {i['headline']}")[:155]
+        d=((i.get("fm") or {}).get("description") or f"Issue #{i['n']}: {i['headline']}")[:155]
         eb=f"Issue #{i['n']}"+(f" · {i['date']}" if i['date'] else "")
         cur=' <a href="../newsletter.html">Read the latest issue</a>.' if i is not CUR else ""
         pages[path]=(t[:70],d,f'<article class="issue"><p class="crumbs"><a href="../index.html">Home</a> / <a href="../newsletter.html">Newsletter</a> / Issue #{i["n"]}</p><p class="eyebrow">{eb}</p><h1>{i["headline"]}</h1>{body}{sponsor(i,"../")}{watch(i["iso"],"../")}<p class="fine">Archived issue, published as sent.{cur}</p></article>',
