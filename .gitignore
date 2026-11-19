@@ -14,3 +14,6 @@ drafts/
 sponsors/calendar.md
 # newsletter issue sources (private until sent; repo + Pages are public)
 issues_src/
+
+# unsent newsletter drafts
+newsletter/*_draft.md
