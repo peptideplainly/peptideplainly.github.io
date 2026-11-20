@@ -27,7 +27,7 @@ def sponsor(i,ROOT=""):
     slug=re.sub(r"[^a-z0-9]+","-",fm["sponsor_name"].lower()).strip("-")
     e=_h.escape; n=e(fm["sponsor_name"])
     LOGO=f'<img class="sp-logo" src="{e(ROOT+src if not src.startswith("https://") else src)}" alt="{n}" loading="lazy" decoding="async">' if logo else ""
-    return (f'<aside class="sponsor" aria-label="Sponsored by {n}"><p class="sp-label">Sponsored</p>{LOGO}<h2>{n}</h2><p>{e(fm["sponsor_copy"])}</p>'
+    return (f'<aside class="sponsor" aria-label="Sponsored by {n}"><p class="sp-label">Sponsored{(' · '+e(fm['sponsor_disclosure'])) if fm.get('sponsor_disclosure') else ''}</p>{LOGO}<h2>{n}</h2><p>{e(fm["sponsor_copy"])}</p>'
         f'<p><a class="btn sp-btn" href="{e(url)}" rel="sponsored noopener" target="_blank" data-goatcounter-click="sponsor-{slug}-{camp}">{e(fm["sponsor_cta"])}</a></p>'
         f'<p class="fine sp-disc">Paid sponsorship. {n} paid to appear in this issue. Sponsors don\'t review or influence our editorial content, and a sponsorship is not an endorsement. Not medical advice; research-only compounds are not approved for human use.</p></aside>')
 def watch(upto_iso=None, root=""):
