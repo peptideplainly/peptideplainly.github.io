@@ -13,7 +13,7 @@ TITLE_FIX={
 "peptides/semax.html":"Semax nasal brain peptide: benefits & research | Peptide Plainly",
 }
 DESC_FIX={
-"peptides/index.html":"Compare 13 popular peptides side by side: what each is for, FDA status and how it's taken. Semaglutide, tirzepatide, retatrutide, BPC-157 & more.",
+"peptides/index.html":"Compare 21 popular peptides side by side: what each is for, FDA status and how it's taken. Semaglutide, tirzepatide, retatrutide, BPC-157 & more.",
 "index.html":"The real results behind today's hottest peptides: weight loss, recovery, skin and longevity. Sourced, plain-English guides plus a free weekly email.",
 "advertise.html":"Put your brand in front of curious peptide beginners. Sponsor Peptide Plainly's guides or Friday newsletter. Lab-tested vendors only, always disclosed.",
 }
